@@ -1,13 +1,16 @@
 package at.kraweu.starscroller;
 
+import at.kraweu.collisionDetection.Border;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas.AtlasRegion;
+
+import java.awt.*;
 
 /**
  * Created by Alex on 19.05.2015.
  */
 public class Projectile
 {
-
+    Point gamesize = new Point(Starscroller.gamewidth,Starscroller.gameheight);
     boolean deleted = false;
 
     double damage = 1;
@@ -40,37 +43,15 @@ public class Projectile
     {
         if (deleted)
             return;
-        if (posx+speedx>0-sizex)//ganzlinks
+        if(Border.inside(new Point((int)posx,(int)posy),gamesize,sizex,sizey))
         {
-            if (posx+speedx<480+sizex)//ganzrechts
-            {
-                posx += speedx;
-            }
-            else
-            {
-                deleted = true;
-            }
+            posx += speedx;
+            posy += speedy;
         }
         else
         {
             deleted = true;
         }
-        if (posy+speedy>0-sizey)//ganzunten
-        {
-            if (posy+speedy<854+sizey)//ganzoben
-            {
-                posy += speedy;
-            }
-            else
-            {
-                deleted = true;
-            }
-        }
-        else
-        {
-            deleted = true;
-        }
-        
     }
 
     public double getAcceleration()

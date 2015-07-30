@@ -21,8 +21,8 @@ public class Starscroller extends ApplicationAdapter {
     public Player player;
 
     //Aimed native Resolution 854x480
-    static int gamewidth=480;
-    static int gameheight=854;
+    public static int gamewidth=480;
+    public static int gameheight=854;
 
     private Viewport viewport;
     private Camera camera;
