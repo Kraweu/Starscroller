@@ -40,6 +40,7 @@ public class Border
 
         } catch (falseborderexception e)
         {
+            System.out.println(e.getStackTrace());
             System.out.print("Beginn: " + borderBeginn.getX() + "/");
             System.out.print(borderBeginn.getY() + " ");
             System.out.print("End: " + borderEnd.getX() + "/");
@@ -48,10 +49,12 @@ public class Border
             return false;
         } catch (invalidsizeexception e)
         {
+            System.out.println(e.getStackTrace());
             System.out.print("x: " + sizex+" y: " + sizey);
             return false;
         } catch (NullPointerException e)
         {
+            System.out.println(e.getStackTrace());
             System.out.println("NullPointerException");
             System.out.println("Coordinate: "+coordinate+" BorderEnd: "+borderEnd+" BorderBeginn: "+borderBeginn+" ");
             return false;
