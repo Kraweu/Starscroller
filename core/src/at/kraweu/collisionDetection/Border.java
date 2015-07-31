@@ -12,9 +12,10 @@ public class Border
     {
         return inside(coordinate, borderEnd, new Point(0, 0));
     }
+
     public static boolean inside(Point coordinate, Point borderEnd, int sizex, int sizey)
     {
-        return inside(coordinate, borderEnd, new Point(0, 0),sizex,sizey);
+        return inside(coordinate, borderEnd, new Point(0, 0), sizex, sizey);
     }
 
     public static boolean inside(Point coordinate, Point borderEnd, Point borderBeginn)
@@ -26,15 +27,15 @@ public class Border
     {
         try
         {
-            if (coordinate==null||borderEnd==null||borderBeginn==null)
+            if (coordinate == null || borderEnd == null || borderBeginn == null)//Checks for Null
                 throw new NullPointerException();
-            if (borderBeginn.getX() > borderEnd.getX() || borderBeginn.getY() > borderEnd.getY())
+            if (borderBeginn.getX() > borderEnd.getX() || borderBeginn.getY() > borderEnd.getY())//Checks if BorderEnd smaller than Borderbeginn
                 throw new falseborderexception();
-            if (sizex < 0 || sizey < 0)
-                throw new InvalidSizeException(sizex,sizey);
-            if (coordinate.getX() < borderBeginn.getX() || coordinate.getX() + sizex > borderEnd.getX())
+            if (sizex < 0 || sizey < 0)//Checks if size is Valid
+                throw new InvalidSizeException(sizex, sizey);
+            if (coordinate.getX() < borderBeginn.getX() || coordinate.getX() + sizex > borderEnd.getX())//Checks if x coordinate is completely inside Border
                 return false;
-            if (coordinate.getY() < borderBeginn.getY() || coordinate.getY() + sizey > borderEnd.getY())
+            if (coordinate.getY() < borderBeginn.getY() || coordinate.getY() + sizey > borderEnd.getY())//Checks if y coordinate is completely inside Border
                 return false;
             return true;
 
@@ -54,7 +55,7 @@ public class Border
         {
             System.out.println(e.getStackTrace());
             System.out.println("NullPointerException");
-            System.out.println("Coordinate: "+coordinate+" BorderEnd: "+borderEnd+" BorderBeginn: "+borderBeginn+" ");
+            System.out.println("Coordinate: " + coordinate + " BorderEnd: " + borderEnd + " BorderBeginn: " + borderBeginn + " ");
             return false;
         }
     }

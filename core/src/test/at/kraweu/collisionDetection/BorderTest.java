@@ -10,7 +10,7 @@ import java.awt.*;
 /**
  * Border Tester.
  *
- * @author <Authors name>
+ * @author Kraweu
  * @version 1.0
  * @since <pre>07/30/2015</pre>
  */
@@ -67,7 +67,7 @@ public class BorderTest extends TestCase
 
     public void testInsideForCoordinateBorderEndSizexSizey() throws Exception
     {
-        assertEquals(true, Border.inside(new Point(0, 0), new Point(0, 0),-5,1));
+
     }
 
     /**
