@@ -4,25 +4,57 @@ package at.kraweu.collisionDetection;
 import java.awt.*;
 
 /**
+ * Contains methods correlated with the collision detection with a Border<p>
  * Created by Kraweu on 30.07.2015.
  */
 public class Border
 {
+    /**
+     * Returns if coordinate is completely inside the Border 0,0 - borderEnd x,y
+     *
+     * @param coordinate
+     * @param borderEnd
+     * @return
+     */
     public static boolean inside(Point coordinate, Point borderEnd)
     {
         return inside(coordinate, borderEnd, new Point(0, 0));
     }
 
+    /**
+     * Returns if coordinate+size is completely inside the Border 0,0 - borderEnd x,y
+     * @param coordinate
+     * @param borderEnd
+     * @param sizex
+     * @param sizey
+     * @return
+     */
     public static boolean inside(Point coordinate, Point borderEnd, int sizex, int sizey)
     {
         return inside(coordinate, borderEnd, new Point(0, 0), sizex, sizey);
     }
 
+    /**
+     * Returns if coordinate is completely inside the Border borderBeginn x,y - borderEnd x,y
+     * @param coordinate
+     * @param borderEnd
+     * @param borderBeginn
+     * @return
+     */
     public static boolean inside(Point coordinate, Point borderEnd, Point borderBeginn)
     {
         return inside(coordinate, borderEnd, borderBeginn, 0, 0);
     }
 
+    /**
+     * Returns if coordinate+size is completely inside the Border
+     * @param coordinate
+     * @param borderEnd
+     * @param borderBeginn
+     * @param sizex
+     * @param sizey
+     * @return
+     */
     public static boolean inside(Point coordinate, Point borderEnd, Point borderBeginn, int sizex, int sizey)
     {
         try
