@@ -1,9 +1,10 @@
 package at.kraweu.starscroller;
 
 
+import at.kraweu.collisionDetection.Border;
+
 import java.util.HashSet;
 import java.util.Iterator;
-import java.util.Map;
 
 /**
  * Created by Alex on 17.05.2015.
@@ -100,9 +101,9 @@ public class Player
             speedy/=1+(breakspeed*10)/((Math.abs(speedy)/(Math.abs(speedy)*0.8))*0.4)*delta;
 
         //Bewegung + Randkontrolle
-        if (posx+speedx>0)//ganzlinks
+        if (!Border.left((int) (posx + speedx), Starscroller.gamesize.x, sizeshipx))//ganzlinks
         {
-            if (posx+speedx<480-sizeshipx)//ganzrechts
+            if (!Border.right((int) (posx + speedx), Starscroller.gamesize.x, sizeshipx))//ganzrechts
             {
                 posx += speedx;
                 if (speedx != 0);
@@ -110,7 +111,7 @@ public class Player
             }
             else
             {
-                posx=480-sizeshipx;
+                posx = Starscroller.gamesize.x - sizeshipx;
                 speedx=0;
             }
         }
@@ -121,9 +122,23 @@ public class Player
         }
 
 
-        if (posy+speedy>0&&posy+speedy<854-sizeshipy)
-            posy+=speedy;
-
+        if (!Border.left((int) (posy + speedy), Starscroller.gamesize.y, sizeshipy))//ganzlinks
+        {
+            if (!Border.right((int) (posy + speedy), Starscroller.gamesize.y, sizeshipy))//ganzrechts
+            {
+                posy += speedy;
+                if (speedy != 0) ;
+//                    System.out.println("processing movement " + speedy + "  " + posy);
+            } else
+            {
+                posy = Starscroller.gamesize.y - sizeshipy;
+                speedy = 0;
+            }
+        } else
+        {
+            posy = 0;
+            speedy = 0;
+        }
 
 
         return;

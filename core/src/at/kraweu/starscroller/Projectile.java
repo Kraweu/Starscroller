@@ -10,7 +10,6 @@ import java.awt.*;
  */
 public class Projectile
 {
-    Point gamesize = new Point(Starscroller.gamewidth,Starscroller.gameheight);
     boolean deleted = false;
 
     double damage = 1;
@@ -43,7 +42,7 @@ public class Projectile
     {
         if (deleted)
             return;
-        if(Border.inside(new Point((int)posx,(int)posy),gamesize,sizex,sizey))
+        if (Border.inside(new Point((int) posx, (int) posy), Starscroller.gamesize, sizex, sizey))
         {
             posx += speedx;
             posy += speedy;

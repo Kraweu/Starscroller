@@ -9,6 +9,8 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 
+import java.awt.*;
+
 
 public class Starscroller extends ApplicationAdapter {
 
@@ -21,8 +23,9 @@ public class Starscroller extends ApplicationAdapter {
     public Player player;
 
     //Aimed native Resolution 854x480
-    public static int gamewidth=480;
-    public static int gameheight=854;
+    public static final int gamewidth = 480;
+    public static final int gameheight = 854;
+    public static final Point gamesize = new Point(gamewidth, gameheight);
 
     private Viewport viewport;
     private Camera camera;

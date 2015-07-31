@@ -24,6 +24,7 @@ public class Border
 
     /**
      * Returns if coordinate+size is completely inside the Border 0,0 - borderEnd x,y
+     *
      * @param coordinate
      * @param borderEnd
      * @param sizex
@@ -37,6 +38,7 @@ public class Border
 
     /**
      * Returns if coordinate is completely inside the Border borderBeginn x,y - borderEnd x,y
+     *
      * @param coordinate
      * @param borderEnd
      * @param borderBeginn
@@ -49,6 +51,7 @@ public class Border
 
     /**
      * Returns if coordinate+size is completely inside the Border
+     *
      * @param coordinate
      * @param borderEnd
      * @param borderBeginn
@@ -107,6 +110,60 @@ public class Border
     {
         return inside(new Point(coordinate, 0), new Point(borderEnd, 0), new Point(0, 0), sizex, 0);
     }
+
+
+    /**
+     * Returns if outside left
+     *
+     * @param coordinate
+     * @param borderEnd
+     * @param sizex
+     * @return
+     */
+    public static boolean left(int coordinate, int borderEnd, int sizex)
+    {
+        return (coordinate < 0);
+    }
+
+    /**
+     * Returns if outside right
+     *
+     * @param coordinate
+     * @param borderEnd
+     * @param sizex
+     * @return
+     */
+    public static boolean right(int coordinate, int borderEnd, int sizex)
+    {
+        return (coordinate + sizex < borderEnd);
+    }
+
+    /**
+     * Returns if outside up
+     *
+     * @param coordinate
+     * @param borderEnd
+     * @param sizey
+     * @return
+     */
+    public static boolean up(int coordinate, int borderEnd, int sizey)
+    {
+        return (coordinate < 0);
+    }
+
+    /**
+     * Returns if outside down
+     *
+     * @param coordinate
+     * @param borderEnd
+     * @param sizey
+     * @return
+     */
+    public static boolean down(int coordinate, int borderEnd, int sizey)
+    {
+        return (coordinate + sizey < borderEnd);
+    }
+
     private static class falseborderexception extends Throwable
     {
     }
