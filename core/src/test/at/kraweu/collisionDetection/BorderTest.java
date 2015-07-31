@@ -1,16 +1,14 @@
 package test.at.kraweu.collisionDetection;
 
 import at.kraweu.collisionDetection.Border;
-import junit.framework.Test;
 import junit.framework.TestCase;
-import junit.framework.TestSuite;
 
 import java.awt.*;
 
 /**
  * Border Tester.
  *
- * @author <Authors name>
+ * @author Kraweu
  * @version 1.0
  * @since <pre>07/30/2015</pre>
  */
@@ -67,8 +65,8 @@ public class BorderTest extends TestCase
 
     public void testInsideForCoordinateBorderEndSizexSizey() throws Exception
     {
-        //TODO: Test goes here...
-
+        assertEquals(true, Border.inside(new Point(0, 0), new Point(1, 1), 1, 1));
+        assertEquals(false, Border.inside(new Point(0, 0), new Point(1, 1), 2, 2));
     }
 
     /**
@@ -92,9 +90,21 @@ public class BorderTest extends TestCase
         //TODO: Test goes here...
     }
 
-
-    public static Test suite()
+    /**
+     * Method: insidex(int coordinate, int borderEnd, int sizex)
+     */
+    public void testInsidex() throws Exception
     {
-        return new TestSuite(BorderTest.class);
+        assertEquals(true, Border.insidex(0, 0, 0));
+        assertEquals(false, Border.insidex(1, 0, 0));
+        assertEquals(true, Border.insidex(0, 1, 1));
+        assertEquals(false, Border.insidex(0, 0, 1));
+        assertEquals(true, Border.insidex(0, 1, 0));
+
+        assertEquals(false, Border.insidex(-1, 200, 0));
+        assertEquals(false, Border.insidex(199, 200, 2));
+        assertEquals(true, Border.insidex(200, 200, 0));
+        assertEquals(true, Border.insidex(0, 200, 100));
     }
-} 
+
+}
