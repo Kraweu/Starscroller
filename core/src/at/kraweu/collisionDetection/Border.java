@@ -94,6 +94,19 @@ public class Border
         }
     }
 
+    /**
+     * One Dimensional check<p>
+     * Returns if coordinate+size is completely inside the Border
+     *
+     * @param coordinate
+     * @param borderEnd
+     * @param sizex
+     * @return
+     */
+    public static boolean insidex(int coordinate, int borderEnd, int sizex)
+    {
+        return inside(new Point(coordinate, 0), new Point(borderEnd, 0), new Point(0, 0), sizex, 0);
+    }
     private static class falseborderexception extends Throwable
     {
     }

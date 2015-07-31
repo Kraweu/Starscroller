@@ -1,9 +1,7 @@
 package test.at.kraweu.collisionDetection;
 
 import at.kraweu.collisionDetection.Border;
-import junit.framework.Test;
 import junit.framework.TestCase;
-import junit.framework.TestSuite;
 
 import java.awt.*;
 
@@ -90,6 +88,23 @@ public class BorderTest extends TestCase
     public void testInsideForCoordinateBorderEndBorderBeginnSizexSizey() throws Exception
     {
         //TODO: Test goes here...
+    }
+
+    /**
+     * Method: insidex(int coordinate, int borderEnd, int sizex)
+     */
+    public void testInsidex() throws Exception
+    {
+        assertEquals(true, Border.insidex(0, 0, 0));
+        assertEquals(false, Border.insidex(1, 0, 0));
+        assertEquals(true, Border.insidex(0, 1, 1));
+        assertEquals(false, Border.insidex(0, 0, 1));
+        assertEquals(true, Border.insidex(0, 1, 0));
+
+        assertEquals(false, Border.insidex(-1, 200, 0));
+        assertEquals(false, Border.insidex(199, 200, 2));
+        assertEquals(true, Border.insidex(200, 200, 0));
+        assertEquals(true, Border.insidex(0, 200, 100));
     }
 
 }
