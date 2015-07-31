@@ -7,6 +7,7 @@ import java.awt.*;
  * Contains methods correlated with the collision detection with a Border<p>
  * Created by Kraweu on 30.07.2015.
  */
+@SuppressWarnings("JavaDoc")
 public class Border
 {
     /**
@@ -69,11 +70,12 @@ public class Border
                 return false;
             if (coordinate.getY() < borderBeginn.getY() || coordinate.getY() + sizey > borderEnd.getY())//Checks if y coordinate is completely inside Border
                 return false;
+
             return true;
 
         } catch (falseborderexception e)
         {
-            System.out.println(e.getStackTrace());
+            e.printStackTrace();
             System.out.print("Beginn: " + borderBeginn.getX() + "/");
             System.out.print(borderBeginn.getY() + " ");
             System.out.print("End: " + borderEnd.getX() + "/");
@@ -85,7 +87,7 @@ public class Border
             return false;
         } catch (NullPointerException e)
         {
-            System.out.println(e.getStackTrace());
+            e.printStackTrace();
             System.out.println("NullPointerException");
             System.out.println("Coordinate: " + coordinate + " BorderEnd: " + borderEnd + " BorderBeginn: " + borderBeginn + " ");
             return false;
