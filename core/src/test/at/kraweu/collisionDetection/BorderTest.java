@@ -67,8 +67,7 @@ public class BorderTest extends TestCase
 
     public void testInsideForCoordinateBorderEndSizexSizey() throws Exception
     {
-        //TODO: Test goes here...
-
+        assertEquals(true, Border.inside(new Point(0, 0), new Point(0, 0),-5,1));
     }
 
     /**

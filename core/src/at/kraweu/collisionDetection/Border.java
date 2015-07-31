@@ -31,7 +31,7 @@ public class Border
             if (borderBeginn.getX() > borderEnd.getX() || borderBeginn.getY() > borderEnd.getY())
                 throw new falseborderexception();
             if (sizex < 0 || sizey < 0)
-                throw new invalidsizeexception();
+                throw new InvalidSizeException(sizex,sizey);
             if (coordinate.getX() < borderBeginn.getX() || coordinate.getX() + sizex > borderEnd.getX())
                 return false;
             if (coordinate.getY() < borderBeginn.getY() || coordinate.getY() + sizey > borderEnd.getY())
@@ -40,18 +40,19 @@ public class Border
 
         } catch (falseborderexception e)
         {
+            System.out.println(e.getStackTrace());
             System.out.print("Beginn: " + borderBeginn.getX() + "/");
             System.out.print(borderBeginn.getY() + " ");
             System.out.print("End: " + borderEnd.getX() + "/");
             System.out.print(borderEnd.getY() + " ");
             System.out.println();
             return false;
-        } catch (invalidsizeexception e)
+        } catch (InvalidSizeException e)
         {
-            System.out.print("x: " + sizex+" y: " + sizey);
             return false;
         } catch (NullPointerException e)
         {
+            System.out.println(e.getStackTrace());
             System.out.println("NullPointerException");
             System.out.println("Coordinate: "+coordinate+" BorderEnd: "+borderEnd+" BorderBeginn: "+borderBeginn+" ");
             return false;
@@ -60,11 +61,6 @@ public class Border
 
     private static class falseborderexception extends Throwable
     {
-
     }
 
-    private static class invalidsizeexception extends Throwable
-    {
-
-    }
 }
