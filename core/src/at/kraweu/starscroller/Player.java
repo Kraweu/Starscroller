@@ -37,9 +37,9 @@ public class Player
 
     public Player(Assets assets)
     {
-        weapons = new Weapon[2];
-        weapons[0]=new Weapon("Waffe1",5,25,25,assets.weapon,5,5,40,9,54,assets.projectile);
-        weapons[1]=new Weapon("Waffe2",5,75,25,assets.weapon,5,5,40,9,54,assets.projectile);
+//        weapons = new Weapon[2];
+//        weapons[0]=new Weapon();
+//        weapons[1]=new Weapon();
         projectiles = new HashSet();
         projectilesit = projectiles.iterator();
     }

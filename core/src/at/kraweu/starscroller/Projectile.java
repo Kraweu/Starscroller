@@ -1,7 +1,6 @@
 package at.kraweu.starscroller;
 
 import at.kraweu.collisionDetection.Border;
-import com.badlogic.gdx.graphics.g2d.TextureAtlas.AtlasRegion;
 
 import java.awt.*;
 
@@ -20,13 +19,13 @@ public class Projectile
     int sizex;
     int sizey;
 
-    AtlasRegion asset=null;
+    String asset = null;
 
     double acceleration = 0;
     double swaying = 0;
     double rotation = 0;
 
-    public Projectile(double damage, double posx, double posy, double speedx, double speedy, int sizex, int sizey, AtlasRegion asset)
+    public Projectile(double damage, double posx, double posy, double speedx, double speedy, int sizex, int sizey, String asset)
     {
         this.damage = damage;
         this.posx = posx;
@@ -56,6 +55,96 @@ public class Projectile
     public double getAcceleration()
     {
         return acceleration;
+    }
+
+    public boolean isDeleted()
+    {
+        return deleted;
+    }
+
+    public void setDeleted(boolean deleted)
+    {
+        this.deleted = deleted;
+    }
+
+    public double getDamage()
+    {
+        return damage;
+    }
+
+    public void setDamage(double damage)
+    {
+        this.damage = damage;
+    }
+
+    public double getPosx()
+    {
+        return posx;
+    }
+
+    public void setPosx(double posx)
+    {
+        this.posx = posx;
+    }
+
+    public double getPosy()
+    {
+        return posy;
+    }
+
+    public void setPosy(double posy)
+    {
+        this.posy = posy;
+    }
+
+    public double getSpeedx()
+    {
+        return speedx;
+    }
+
+    public void setSpeedx(double speedx)
+    {
+        this.speedx = speedx;
+    }
+
+    public double getSpeedy()
+    {
+        return speedy;
+    }
+
+    public void setSpeedy(double speedy)
+    {
+        this.speedy = speedy;
+    }
+
+    public int getSizex()
+    {
+        return sizex;
+    }
+
+    public void setSizex(int sizex)
+    {
+        this.sizex = sizex;
+    }
+
+    public int getSizey()
+    {
+        return sizey;
+    }
+
+    public void setSizey(int sizey)
+    {
+        this.sizey = sizey;
+    }
+
+    public String getAsset()
+    {
+        return asset;
+    }
+
+    public void setAsset(String asset)
+    {
+        this.asset = asset;
     }
 
     public void setAcceleration(double acceleration)
