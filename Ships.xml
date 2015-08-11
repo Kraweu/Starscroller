@@ -1,0 +1,25 @@
+<!DOCTYPE ships[
+        <!ELEMENT ships (ship)>
+        <!ELEMENT ship (asset, weapon)>
+        <!ATTLIST ship Name CDATA #IMPLIED>
+        <!ELEMENT asset (#PCDATA)>
+        <!ELEMENT weapon (weapontype,position,mirrorhoriz)>
+        <!ATTLIST weapon Name CDATA #IMPLIED>
+        <!ELEMENT weapontype EMPTY>
+        <!ATTLIST weapontype Name CDATA #IMPLIED>
+        <!ELEMENT position EMPTY>
+        <!ATTLIST position x CDATA #IMPLIED>
+        <!ATTLIST position y CDATA #IMPLIED>
+        <!ELEMENT mirrorhoriz (#PCDATA)>
+        ]>
+
+<ships>
+    <ship Name="Player01">
+        <asset>playerShip1_blue</asset>
+        <weapon Name="Laser1">
+            <weapontype Name="Laser"/>
+            <mirrorhoriz>true</mirrorhoriz>
+            <!--74,19 Mirror Position(By Hand)-->
+        </weapon>
+    </ship>
+</ships>
