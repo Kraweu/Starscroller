@@ -7,6 +7,10 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.Properties;
 
 /**
  * Created by Kraweu on 02.08.2015.
@@ -39,28 +43,39 @@ public class Loader
     {
         File folder = new File("./");
         File[] listOfFiles = folder.listFiles();
-        int numberofxmlfiles = 0;
+        int numberoffiles = 0;
 
         for (int i = 0; i < listOfFiles.length; i++)
         {
             String filename = listOfFiles[i].getName();
-            if (filename.endsWith(".xml") || filename.endsWith(".XML"))
+            if (filename.endsWith(".properties"))
             {
-                numberofxmlfiles++;
+                numberoffiles++;
             }
         }
-        documentStrings = new String[numberofxmlfiles];
-        documents = new MyDocument[numberofxmlfiles];
-        int readxmlfiles = 0;
+        //File files[] = new File[numberoffiles];
+        FileReader file;
+        Properties files[] = new Properties[numberoffiles];
+        int readfiles = 0;
         for (int i = 0; i < listOfFiles.length; i++)
         {
             String filename = listOfFiles[i].getName();
-            if (filename.endsWith(".xml") || filename.endsWith(".XML"))
+            if (filename.endsWith(".properties"))
             {
-                documentStrings[readxmlfiles] = listOfFiles[i].getName();
-                documents[readxmlfiles] = new MyDocument(documentStrings[readxmlfiles]);
+                try
+                {
+                    file = new FileReader(listOfFiles[i].getName());
+                    files[readfiles] = new Properties();
+                    files[readfiles].load(file);
 //              System.out.println("Loaded: "filename);//Prints the Loaded Files
-                readxmlfiles++;
+                    readfiles++;
+                } catch (FileNotFoundException e)
+                {
+                    e.printStackTrace();
+                } catch (IOException e)
+                {
+                    e.printStackTrace();
+                }
             }
         }
     }
@@ -78,45 +93,48 @@ public class Loader
             if (wrapperlist.getLength() == 0 && weaponTypeList.getLength() == 0)
                 break;
             weaponTypes = new WeaponType[weaponTypeList.getLength()];
-            int i = 0;
-            for (WeaponType weaponType : weaponTypes)
+            for (int i = 0; i <= weaponTypes.length; i++)
             {
-                weaponType = new WeaponType();
-
+                weaponTypes[i] = new WeaponType();
+                if (((Element) weaponTypeList.item(i)).getAttribute("Name").e)
+                    weaponTypes[i].setName(((Element) weaponTypeList.item(i)).getAttribute("Name"));
                 Node tempnode = null;
                 tempnode = getChild(weaponTypeList.item(i), "reloadtime");
                 if (tempnode != null)
-                    weaponType.setReloadtime(Integer.parseInt(tempnode.getNodeValue()));
+                {
+                    weaponTypes[i].setReloadtime(Integer.parseInt(tempnode.getFirstChild().getNodeValue()));
+                }
+
 
                 tempnode = getChild(weaponTypeList.item(i), "shotpos");
                 if (tempnode != null)
                 {
                     Element element = (Element) document.adoptNode(tempnode);
-                    weaponType.setShotposx(Integer.parseInt(element.getAttribute("x")));
-                    weaponType.setShotposy(Integer.parseInt(element.getAttribute("y")));
+                    weaponTypes[i].setShotposx(Integer.parseInt(element.getAttribute("x")));
+                    weaponTypes[i].setShotposy(Integer.parseInt(element.getAttribute("y")));
                 }
 
                 tempnode = getChild(weaponTypeList.item(i), "assetname");
                 if (tempnode != null)
-                    weaponType.setAsset(tempnode.getNodeValue());
+                    weaponTypes[i].setAsset(tempnode.getNodeValue());
 
                 tempnode = getChild(weaponTypeList.item(i), "accelleration");
                 if (tempnode != null)
-                    weaponType.setAcceleration(Integer.parseInt(tempnode.getNodeValue()));
+                    weaponTypes[i].setAcceleration(Integer.parseInt(tempnode.getFirstChild().getNodeValue()));
 
 
                 //Projectile
                 Node projectile = getChild(weaponTypeList.item(i), "projectile");
                 tempnode = getChild(projectile, "damage");
                 if (tempnode != null)
-                    weaponType.setDamage(Integer.parseInt(tempnode.getNodeValue()));
+                    weaponTypes[i].setDamage(Integer.parseInt(tempnode.getFirstChild().getNodeValue()));
 
                 tempnode = getChild(projectile, "speed");
                 if (tempnode != null)
                 {
                     Element element = (Element) document.adoptNode(tempnode);
-                    weaponType.setSpeedx(Integer.parseInt(element.getAttribute("x")));
-                    weaponType.setSpeedy(Integer.parseInt(element.getAttribute("y")));
+                    weaponTypes[i].setSpeedx(Integer.parseInt(element.getAttribute("x")));
+                    weaponTypes[i].setSpeedy(Integer.parseInt(element.getAttribute("y")));
 
                 }
 
@@ -124,20 +142,21 @@ public class Loader
                 if (tempnode != null)
                 {
                     Element element = (Element) document.adoptNode(tempnode);
-                    weaponType.setSizex(Integer.parseInt(element.getAttribute("x")));
-                    weaponType.setSizey(Integer.parseInt(element.getAttribute("y")));
+                    weaponTypes[i].setSizex(Integer.parseInt(element.getAttribute("x")));
+                    weaponTypes[i].setSizey(Integer.parseInt(element.getAttribute("y")));
                 }
 
                 tempnode = getChild(projectile, "asset");
                 if (tempnode != null)
-                    weaponType.setProjectileasset(tempnode.getNodeValue());
+                    weaponTypes[i].setProjectileasset(tempnode.getFirstChild().getNodeValue());
                 tempnode = getChild(projectile, "rotation");
                 if (tempnode != null)
-                    weaponType.setRotation(Integer.parseInt(tempnode.getNodeValue()));
+                    weaponTypes[i].setRotation(Integer.parseInt(tempnode.getFirstChild().getNodeValue()));
                 tempnode = getChild(projectile, "swaying");
                 if (tempnode != null)
-                    weaponType.setSwaying(Integer.parseInt(tempnode.getNodeValue()));
+                    weaponTypes[i].setSwaying(Integer.parseInt(tempnode.getFirstChild().getNodeValue()));
                 i++;
+
             }
         }
         if (weaponTypes != null)
