@@ -12,18 +12,15 @@ public class WeaponType
 
 
     double reloadtime = 1;
-    String asset = null;
-    double shotposx; //Position relative to the Weapon
+    double shotposx; //Position relative to the Weapons left upper corner
     double shotposy;
-
+    String asset = null;
 
     //Projectile properties
 
     private double damage = 1;
     private double speedx;
     private double speedy;
-    private int sizex;
-    private int sizey;
     private double acceleration = 0;
     private double swaying = 0;
     private double rotation = 0;
@@ -150,23 +147,4 @@ public class WeaponType
         this.speedy = speedy;
     }
 
-    public int getSizex()
-    {
-        return sizex;
-    }
-
-    public void setSizex(int sizex)
-    {
-        this.sizex = sizex;
-    }
-
-    public int getSizey()
-    {
-        return sizey;
-    }
-
-    public void setSizey(int sizey)
-    {
-        this.sizey = sizey;
-    }
 }
