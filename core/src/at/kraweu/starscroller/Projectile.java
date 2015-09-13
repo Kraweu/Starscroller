@@ -16,8 +16,6 @@ public class Projectile
     double posy;
     double speedx;
     double speedy;
-    int sizex;
-    int sizey;
 
     String asset = null;
 
@@ -25,23 +23,21 @@ public class Projectile
     double swaying = 0;
     double rotation = 0;
 
-    public Projectile(double damage, double posx, double posy, double speedx, double speedy, int sizex, int sizey, String asset)
+    public Projectile(double damage, double posx, double posy, double speedx, double speedy, String asset)
     {
         this.damage = damage;
         this.posx = posx;
         this.posy = posy;
         this.speedx = speedx;
         this.speedy = speedy;
-        this.sizex = sizex;
-        this.sizey = sizey;
         this.asset = asset;
     }
 
-    public void movement(float delta)
+    public void movement(float delta, Assets assets)
     {
         if (deleted)
             return;
-        if (Border.inside(new Point((int) posx, (int) posy), Starscroller.gamesize, sizex, sizey))
+        if (Border.inside(new Point((int) posx, (int) posy), Starscroller.gamesize, assets.getRegion(asset).packedWidth, assets.getRegion(asset).packedHeight))
         {
             posx += speedx;
             posy += speedy;
@@ -117,25 +113,6 @@ public class Projectile
         this.speedy = speedy;
     }
 
-    public int getSizex()
-    {
-        return sizex;
-    }
-
-    public void setSizex(int sizex)
-    {
-        this.sizex = sizex;
-    }
-
-    public int getSizey()
-    {
-        return sizey;
-    }
-
-    public void setSizey(int sizey)
-    {
-        this.sizey = sizey;
-    }
 
     public String getAsset()
     {

@@ -23,7 +23,7 @@ public class Weapon
     public Projectile shoot(double shipposx, double shipposy)
     {
         if (lastshot==0)
-            return new Projectile(type.getDamage(), shipposx + posx + type.shotposx, shipposy + posy + type.shotposy, type.getSpeedx(), type.getSpeedy(), type.getSizex(), type.getSizey(), type.projectileasset);
+            return new Projectile(type.getDamage(), shipposx + posx + type.shotposx, shipposy + posy + type.shotposy, type.getSpeedx(), type.getSpeedy(), type.projectileasset);
         return null;
     }
     public void reload(float delta)

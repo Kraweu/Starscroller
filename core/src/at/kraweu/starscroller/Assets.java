@@ -13,19 +13,19 @@ import java.util.Iterator;
 public class Assets
 {
 
-    private Array<AtlasRegion> regions;
+    private Array<AtlasRegion> regionlist;
     private Iterator<AtlasRegion> iterator;
     private String name;
 
     public Assets()
     {
-        //Load all assets into regions
+        //Load all assets into regionlist
         TextureAtlas assetatlas = new TextureAtlas("packedImgs/Starscroller.pack");
 
-        regions = assetatlas.getRegions();
+        regionlist = assetatlas.getRegions();
 
 
-        iterator = regions.iterator();
+        iterator = regionlist.iterator();
     }
 
     /**
@@ -36,13 +36,13 @@ public class Assets
     {
         try
         {
-            iterator = regions.iterator();
+            iterator = regionlist.iterator();
             while (iterator.hasNext())
             {
-                AtlasRegion region = iterator.next();
-                if ((region).name.equals(name))
+                AtlasRegion regiontemp = iterator.next();
+                if ((regiontemp).name.equals(name))
                 {
-                    return region;
+                    return regiontemp;
                 }
             }
             throw new RegionNotFound();
