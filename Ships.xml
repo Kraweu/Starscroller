@@ -1,25 +1,33 @@
 <!DOCTYPE ships[
         <!ELEMENT ships (ship)>
-        <!ELEMENT ship (asset, weapon)>
+        <!ELEMENT ship (speed, health, asset, weaponslot)>
         <!ATTLIST ship Name CDATA #IMPLIED>
+        <!ELEMENT speed (#PCDATA)>
+        <!ELEMENT health (#PCDATA)>
         <!ELEMENT asset (#PCDATA)>
-        <!ELEMENT weapon (weapontype,position,mirrorhoriz)>
-        <!ATTLIST weapon Name CDATA #IMPLIED>
-        <!ELEMENT weapontype EMPTY>
-        <!ATTLIST weapontype Name CDATA #IMPLIED>
+        <!ELEMENT weaponslot (position,weapon)>
         <!ELEMENT position EMPTY>
         <!ATTLIST position x CDATA #IMPLIED>
         <!ATTLIST position y CDATA #IMPLIED>
-        <!ELEMENT mirrorhoriz (#PCDATA)>
+        <!ELEMENT weapon (weapontype,mirrorhoriz)>
+        <!ATTLIST weapon Name CDATA #IMPLIED>
+        <!ELEMENT weapontype EMPTY>
+        <!ATTLIST weapontype Name CDATA #IMPLIED>
+        <!ELEMENT mirrorhoriz EMPTY>
+        <!ATTLIST mirrorhoriz mirror CDATA #IMPLIED>
         ]>
 
 <ships>
     <ship Name="Player01">
+        <speed>1.2</speed>
+        <health>120</health>
         <asset>playerShip1_blue</asset>
-        <weapon Name="Laser1">
-            <weapontype Name="Laser"/>
-            <mirrorhoriz>true</mirrorhoriz>
-            <!--74,19 Mirror Position(By Hand)-->
-        </weapon>
+        <weaponslot>
+            <position x="5" y="5"/>
+            <weapon Name="Laser1">
+                <weapontype Name="Laser"/>
+                <mirrorhoriz mirror="true"/>
+            </weapon>
+        </weaponslot>
     </ship>
 </ships>

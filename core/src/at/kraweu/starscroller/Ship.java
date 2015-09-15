@@ -8,10 +8,11 @@ import java.util.Iterator;
  */
 public class Ship
 {
+    private String name = null;
     private double speed = 1;
     private double health = 100;
     private String asset = null;
-    private Weapon[] weapons = null;
+    private WeaponSlot[] weaponSlots = null;
     private HashSet projectiles = new HashSet();
     private Iterator projectilesit = projectiles.iterator();
 
@@ -22,8 +23,18 @@ public class Ship
         Ship copy = new Ship();
         copy.speed = this.speed;
         copy.health = this.health;
-        copy.weapons = this.weapons;
+        copy.weaponSlots = this.weaponSlots;
         return copy;
+    }
+
+    public String getName()
+    {
+        return name;
+    }
+
+    public void setName(String name)
+    {
+        this.name = name;
     }
 
     public double getSpeed()
@@ -46,14 +57,24 @@ public class Ship
         this.health = health;
     }
 
-    public Weapon[] getWeapons()
+    public String getAsset()
     {
-        return weapons;
+        return asset;
     }
 
-    public void setWeapons(Weapon[] weapons)
+    public void setAsset(String asset)
     {
-        this.weapons = weapons;
+        this.asset = asset;
+    }
+
+    public WeaponSlot[] getWeaponSlots()
+    {
+        return weaponSlots;
+    }
+
+    public void setWeaponSlots(WeaponSlot[] weaponSlots)
+    {
+        this.weaponSlots = weaponSlots;
     }
 
     public HashSet getProjectiles()

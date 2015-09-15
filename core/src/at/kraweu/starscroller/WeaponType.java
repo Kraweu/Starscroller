@@ -12,8 +12,8 @@ public class WeaponType
 
 
     double reloadtime = 1;
-    double shotposx; //Position relative to the Weapons left upper corner
-    double shotposy;
+    int shotposx; //Position relative to the Weapons left upper corner
+    int shotposy;
     String asset = null;
 
     //Projectile properties
@@ -34,7 +34,10 @@ public class WeaponType
 
     public void setName(String name)
     {
-        this.name = name;
+        if (name != null)
+            this.name = name;
+        else
+            this.name = "unnamed";
     }
 
     public String getAsset()
@@ -52,7 +55,7 @@ public class WeaponType
         return shotposx;
     }
 
-    public void setShotposx(double shotposx)
+    public void setShotposx(int shotposx)
     {
         this.shotposx = shotposx;
     }
@@ -62,7 +65,7 @@ public class WeaponType
         return shotposy;
     }
 
-    public void setShotposy(double shotposy)
+    public void setShotposy(int shotposy)
     {
         this.shotposy = shotposy;
     }
