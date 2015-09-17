@@ -1,8 +1,8 @@
 package at.kraweu.starscroller.desktop;
 
+import at.kraweu.starscroller.Starscroller;
 import com.badlogic.gdx.backends.lwjgl.LwjglApplication;
 import com.badlogic.gdx.backends.lwjgl.LwjglApplicationConfiguration;
-import at.kraweu.starscroller.Starscroller;
 
 public class DesktopLauncher {
 	public static void main (String[] arg) {

@@ -17,9 +17,8 @@ public class Ship
     private Iterator projectilesit = projectiles.iterator();
 
     @Override
-    public Ship clone()
+    public Ship clone()//whithout Projectiles
     {
-        //TODO
         Ship copy = new Ship();
         copy.speed = this.speed;
         copy.health = this.health;

@@ -18,6 +18,10 @@ public class Starscroller extends ApplicationAdapter {
 
     public Assets assets;
 
+    public WeaponType[] weaponTypes;
+
+    public Ship[] ships;
+
     public Input input;
 
     public Player player;
@@ -39,8 +43,17 @@ public class Starscroller extends ApplicationAdapter {
 
         input = new Input(this);
         assets = new Assets();
+        System.out.println();
+        System.out.println();
+        Loader loader = new Loader();
+        loader.setAssets(assets);
+        weaponTypes = loader.loadWeaponTypes();
+        ships = loader.loadShips(weaponTypes);
+        System.out.println();
+        System.out.println();
         Gdx.input.setInputProcessor(input);
-        player = new Player(assets);
+        player = new Player();
+        player.setShip(ships[0]);
     }
 
     @Override
@@ -49,7 +62,7 @@ public class Starscroller extends ApplicationAdapter {
         Gdx.gl.glClearColor(0, 0, 0, 0);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT | GL20.GL_DEPTH_BUFFER_BIT);
         batch.begin();
-        batch.draw(assets.getRegion("playerShip1_blue"), player.getPosx(), player.getPosy());
+        batch.draw(assets.getRegion(player.getShip().getAsset()), player.getPosx(), player.getPosy());
         batch.end();
     }
     public void updateGame()//called when Game is running

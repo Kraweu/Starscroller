@@ -3,9 +3,6 @@ package at.kraweu.starscroller;
 
 import at.kraweu.collisionDetection.Border;
 
-import java.util.HashSet;
-import java.util.Iterator;
-
 /**
  * Created by Alex on 17.05.2015.
  */
@@ -22,7 +19,7 @@ public class Player
     private int sizeshipy=75;
 
     private double posx = (Starscroller.gamewidth/2) - sizeshipx; //Zentriert
-    private double posy = 0;
+    private double posy = 100;
 
     private float speed=1;
 
@@ -31,19 +28,23 @@ public class Player
     
     private float breakspeed = 1f;
 
-    private Weapon[] weapons;
-    private HashSet projectiles;
-    private Iterator projectilesit;
+    private Ship ship;
 
-    public Player(Assets assets)
+
+    public Player()
     {
-//        weapons = new Weapon[2];
-//        weapons[0]=new Weapon();
-//        weapons[1]=new Weapon();
-        projectiles = new HashSet();
-        projectilesit = projectiles.iterator();
+
     }
 
+    public void setShip(Ship ship)
+    {
+        this.ship = ship;
+    }
+
+    public Ship getShip()
+    {
+        return ship;
+    }
     public void setMoveLeft(boolean b)
     {
         if(rightMove && b)
@@ -86,15 +87,19 @@ public class Player
 //            System.out.println(speedx + " * " + breakspeed + "  left " +leftMove + "   right " +rightMove);
 //            System.out.println("break " + breakspeed + " / " + delta);
         }
-        //Bremsen
         if (downMove)
             speedy-=speed*delta*150;
         else if (upMove)
             speedy+=speed*delta*150;
+
+        //Bremsen
+
         if (speedx<0.2&&speedx>-0.2)
             speedx=0;
         else
-            speedx/=1+(breakspeed*10)/((Math.abs(speedx)/(Math.abs(speedx)*0.8))*0.4)*delta;//Bremsgeschwindigkeit Abhängig von delta und speedx
+        {
+            speedx /= 1 + (breakspeed * 10) / ((Math.abs(speedx) / (Math.abs(speedx) * 0.8)) * 0.4) * delta;//Bremsgeschwindigkeit Abhängig von delta und speedx
+        }
         if (speedy<0.2&&speedy>-0.2)
             speedy=0;
         else
@@ -122,9 +127,9 @@ public class Player
         }
 
 
-        if (!Border.left((int) (posy + speedy), Starscroller.gamesize.y, sizeshipy))//ganzlinks
+        if (!Border.left((int) (posy + speedy), Starscroller.gamesize.y, sizeshipy))//if not ganzlinks
         {
-            if (!Border.right((int) (posy + speedy), Starscroller.gamesize.y, sizeshipy))//ganzrechts
+            if (!Border.right((int) (posy + speedy), Starscroller.gamesize.y, sizeshipy))//if not ganzrechts
             {
                 posy += speedy;
                 if (speedy != 0) ;

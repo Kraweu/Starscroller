@@ -14,9 +14,9 @@ import java.io.FileFilter;
  */
 public class Loader
 {
-    String[] documentStrings;
-    MyDocument[] documents;
-    Assets assets;
+    private String[] documentStrings;
+    private MyDocument[] documents;
+    private Assets assets;
     public static void main(String[] args)
     {
         Loader loader = new Loader(new Assets());
@@ -32,8 +32,19 @@ public class Loader
         System.out.println(weaponTypes[0].getAsset());
         System.out.println(weaponTypes[0].getProjectileasset());
         System.out.println(weaponTypes[0].getShotposx());
+        Ship[] ships = loadShips(weaponTypes);
+        System.out.println(ships[0].getHealth());
     }
 
+    public Loader()
+    {
+        loadXmlFiles();
+    }
+
+    public void setAssets(Assets assets)
+    {
+        this.assets = assets;
+    }
     /**
      * Loads all XML Files in the main Directory into documentStrings and documents
      */
@@ -70,7 +81,7 @@ public class Loader
         }
     }
 
-    private Ship[] loadShips(WeaponType[] weapontypes)
+    public Ship[] loadShips(WeaponType[] weapontypes)
     {
         Ship[] ships = null;
         for (MyDocument mydocument : documents)
@@ -142,31 +153,33 @@ public class Loader
                 {
                     if (child.getNodeName().equals("weaponslot"))
                     {
-
                         tempnode = getChild(child, "position");
                         if (tempnode != null)
                         {
                             try
                             {
                                 Element element = (Element) tempnode;
-                                weaponSlots[j].posx = (Integer.parseInt(element.getAttribute("x")));
-                                weaponSlots[j].posy = (Integer.parseInt(element.getAttribute("y")));
+                                int x = 0, y = 0;
+                                x = Integer.parseInt(element.getAttribute("x"));
+                                y = Integer.parseInt(element.getAttribute("y"));
+                                weaponSlots[j] = new WeaponSlot(x, y);
                             } catch (NumberFormatException e)
                             {
 
                             }
                         }
 
-                        weaponSlots[j].weapon.setName(((Element) getChild(child, "weapon")).getAttribute("Name"));
+                        String name = (((Element) getChild(child, "weapon")).getAttribute("Name"));
 
                         tempnode = getChild(getChild(child, "weapon"), "weapontype");
+                        WeaponType type = null;
                         if (tempnode != null)
                         {
-                            weaponSlots[j].weapon.setType(findWeaponType(weapontypes, tempnode.getFirstChild().getNodeValue()));
+                            type = (findWeaponType(weapontypes, ((Element) tempnode).getAttribute("Name")));
                         }
-
+                        weaponSlots[j].weapon = new Weapon(type, name);
                         tempnode = getChild(getChild(child, "weapon"), "mirrorhoriz");
-                        if (tempnode != null)
+                        if (tempnode != null && ((Element) tempnode).getAttribute("Mirror").equals("true"))
                         {
                             WeaponSlot[] tempslot = new WeaponSlot[weaponSlots.length + 1];
                             for (int k = 0; k < weaponSlots.length; k++)
@@ -174,16 +187,16 @@ public class Loader
                                 tempslot[k] = weaponSlots[k];
                             }
                             weaponSlots = tempslot;
-                            weaponSlots[weaponSlots.length] = weaponSlots[j].clone();
+                            weaponSlots[weaponSlots.length - 1] = weaponSlots[j].clone();
                             int height, width;
                             if (assets.getRegion(weaponSlots[j].weapon.getType().getAsset()) != null)
                             {
                                 height = assets.getRegion(weaponSlots[j].weapon.getType().getAsset()).packedHeight;
                                 width = assets.getRegion(weaponSlots[j].weapon.getType().getAsset()).packedWidth;
-                                weaponSlots[weaponSlots.length].posx = weaponSlots[j].posx;//Stays the same because of Horizontal Mirroing
-                                weaponSlots[weaponSlots.length].posy = width - weaponSlots[j].posy;
+                                weaponSlots[weaponSlots.length - 1].posx = weaponSlots[j].posx;//Stays the same because of Horizontal Mirroing
+                                weaponSlots[weaponSlots.length - 1].posy = width - weaponSlots[j].posy;
                             } else
-                                System.out.println("Region for duplication not found on Ship: " + ships[i].getName() + " for " + j + ". Weapon");
+                                System.out.println("Region for duplication not found on Ship: " + ships[i].getName() + " for " + j + 1 + ". Weapon");
                         }
 
                         j++;
@@ -212,7 +225,7 @@ public class Loader
         return null;
     }
 
-    private WeaponType[] loadWeaponTypes()
+    public WeaponType[] loadWeaponTypes()
     {
         WeaponType[] weaponTypes = null;
         for (MyDocument mydocument : documents)

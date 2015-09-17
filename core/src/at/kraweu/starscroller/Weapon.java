@@ -19,6 +19,7 @@ public class Weapon
     public Weapon(WeaponType type, String name)
     {
         this.type = type;
+        this.name = name;
     }
 
     public Projectile shoot(double shipposx, double shipposy)

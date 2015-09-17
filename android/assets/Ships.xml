@@ -14,7 +14,7 @@
         <!ELEMENT weapontype EMPTY>
         <!ATTLIST weapontype Name CDATA #IMPLIED>
         <!ELEMENT mirrorhoriz EMPTY>
-        <!ATTLIST mirrorhoriz mirror CDATA #IMPLIED>
+        <!ATTLIST mirrorhoriz Mirror CDATA #IMPLIED>
         ]>
 
 <ships>
@@ -26,7 +26,7 @@
             <position x="5" y="5"/>
             <weapon Name="Laser1">
                 <weapontype Name="Laser"/>
-                <mirrorhoriz mirror="true"/>
+                <mirrorhoriz Mirror="true"/>
             </weapon>
         </weaponslot>
     </ship>

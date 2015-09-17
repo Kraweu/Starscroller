@@ -36,11 +36,16 @@ public class Assets
     {
         try
         {
+            if (name == null || name.isEmpty())
+            {
+                System.out.println("Searched Regionname was null or empty");
+                throw new RegionNotFound();
+            }
             iterator = regionlist.iterator();
             while (iterator.hasNext())
             {
                 AtlasRegion regiontemp = iterator.next();
-                if ((regiontemp).name.equals(name))
+                if (regiontemp.name.equals(name))
                 {
                     return regiontemp;
                 }
