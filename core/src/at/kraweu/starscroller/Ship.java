@@ -24,6 +24,8 @@ public class Ship
         copy.speed = this.speed;
         copy.health = this.health;
         copy.weaponSlots = this.weaponSlots;
+        copy.asset = this.asset;
+
         return copy;
     }
 

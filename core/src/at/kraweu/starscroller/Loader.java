@@ -168,7 +168,22 @@ public class Loader
                         tempnode = getChild(getChild(child, "weapon"), "mirrorhoriz");
                         if (tempnode != null)
                         {
-                            //TODO Mirroring
+                            WeaponSlot[] tempslot = new WeaponSlot[weaponSlots.length + 1];
+                            for (int k = 0; k < weaponSlots.length; k++)
+                            {
+                                tempslot[k] = weaponSlots[k];
+                            }
+                            weaponSlots = tempslot;
+                            weaponSlots[weaponSlots.length] = weaponSlots[j].clone();
+                            int height, width;
+                            if (assets.getRegion(weaponSlots[j].weapon.getType().getAsset()) != null)
+                            {
+                                height = assets.getRegion(weaponSlots[j].weapon.getType().getAsset()).packedHeight;
+                                width = assets.getRegion(weaponSlots[j].weapon.getType().getAsset()).packedWidth;
+                                weaponSlots[weaponSlots.length].posx = weaponSlots[j].posx;//Stays the same because of Horizontal Mirroing
+                                weaponSlots[weaponSlots.length].posy = width - weaponSlots[j].posy;
+                            } else
+                                System.out.println("Region for duplication not found on Ship: " + ships[i].getName() + " for " + j + ". Weapon");
                         }
 
                         j++;

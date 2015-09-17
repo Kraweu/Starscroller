@@ -6,8 +6,8 @@ package at.kraweu.starscroller;
 public class WeaponSlot
 {
     Weapon weapon = null;
-    double posx;    //Center Position relative to the ship
-    double posy;
+    int posx;    //Center Position relative to the ship
+    int posy;
 
     public WeaponSlot(int posx, int posy)
     {
@@ -23,5 +23,23 @@ public class WeaponSlot
     public void setWeapon(Weapon weapon)
     {
         this.weapon = weapon;
+    }
+
+    @Override
+    public WeaponSlot clone()
+    {
+        WeaponSlot copy = new WeaponSlot(this.posx, this.posy);
+        copy.weapon = this.weapon.clone(copy);
+        return copy;
+    }
+
+    public static WeaponSlot[] clone(WeaponSlot[] slots)
+    {
+        WeaponSlot[] newslots = new WeaponSlot[slots.length];
+        for (int i = 0; i < slots.length; i++)
+        {
+            newslots[i] = slots[i].clone();
+        }
+        return newslots;
     }
 }

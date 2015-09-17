@@ -85,4 +85,13 @@ public class Weapon
     {
         this.damagemultiplier = damagemultiplier;
     }
+
+    public Weapon clone(WeaponSlot newslot)
+    {
+        Weapon copy = new Weapon(this.type, this.name);//type is not Copied (hopefully)
+        copy.setDamagemultiplier(this.getDamagemultiplier());
+        copy.setLevel(this.getLevel());
+        copy.setSlot(newslot);
+        return copy;
+    }
 }
