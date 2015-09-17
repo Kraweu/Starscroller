@@ -7,6 +7,7 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
 import java.io.File;
+import java.io.FileFilter;
 
 /**
  * Created by Kraweu on 02.08.2015.
@@ -15,14 +16,15 @@ public class Loader
 {
     String[] documentStrings;
     MyDocument[] documents;
-
+    Assets assets;
     public static void main(String[] args)
     {
-        Loader loader = new Loader();
+        Loader loader = new Loader(new Assets());
     }
 
-    public Loader()
+    public Loader(Assets assets)
     {
+        this.assets = assets;
         loadXmlFiles();
         WeaponType[] weaponTypes = loadWeaponTypes();
         System.out.println(weaponTypes[0].getAcceleration());
@@ -38,17 +40,20 @@ public class Loader
     public void loadXmlFiles()
     {
         File folder = new File("./");
-        File[] listOfFiles = folder.listFiles();
-        int numberofxmlfiles = 0;
-
-        for (int i = 0; i < listOfFiles.length; i++)
+        FileFilter filter = new FileFilter()
         {
-            String filename = listOfFiles[i].getName();
-            if (filename.endsWith(".xml") || filename.endsWith(".XML"))
+            @Override
+            public boolean accept(File pathname)
             {
-                numberofxmlfiles++;
+                if (pathname.getName().endsWith(".xml") || pathname.getName().endsWith(".XML"))
+                    return true;
+                else
+                    return false;
             }
-        }
+        };
+        File[] listOfFiles = folder.listFiles(filter);
+        int numberofxmlfiles = listOfFiles.length;
+
         documentStrings = new String[numberofxmlfiles];
         documents = new MyDocument[numberofxmlfiles];
         int readxmlfiles = 0;
