@@ -113,20 +113,18 @@ public class Border
 
 
     /**
-     * Returns if outside left
+     * Returns true if outside left
      *
      * @param coordinate
-     * @param borderEnd
-     * @param sizex
      * @return
      */
-    public static boolean left(int coordinate, int borderEnd, int sizex)
+    public static boolean left(int coordinate)
     {
-        return (coordinate < 0);
+        return (coordinate > 0);
     }
 
     /**
-     * Returns if outside right
+     * Returns true if outside right
      *
      * @param coordinate
      * @param borderEnd
@@ -142,13 +140,11 @@ public class Border
      * Returns if outside up
      *
      * @param coordinate
-     * @param borderEnd
-     * @param sizey
      * @return
      */
-    public static boolean up(int coordinate, int borderEnd, int sizey)
+    public static boolean up(int coordinate)
     {
-        return (coordinate < 0);
+        return (coordinate > 0);
     }
 
     /**

@@ -6,7 +6,7 @@ import at.kraweu.collisionDetection.Border;
 /**
  * Created by Alex on 17.05.2015.
  */
-public class Player
+public class Player implements MovementInterface
 {
     private boolean leftMove;
     private boolean rightMove;
@@ -15,10 +15,10 @@ public class Player
 
     private boolean shoot;
 
-    private int sizeshipx=99;
-    private int sizeshipy=75;
+    private int sizeshipx = 0;
+    private int sizeshipy = 0;
 
-    private double posx = (Starscroller.gamewidth/2) - sizeshipx; //Zentriert
+    private double posx = (Starscroller.gamewidth / 2) - 100; //Zentriert
     private double posy = 100;
 
     private float speed=1;
@@ -36,9 +36,11 @@ public class Player
 
     }
 
-    public void setShip(Ship ship)
+    public void setShip(Ship ship, Assets assets)
     {
         this.ship = ship;
+        setSizeshipx(assets.getRegion(getShip().getAsset()).packedWidth);
+        setSizeshipy(assets.getRegion(getShip().getAsset()).packedHeight);
     }
 
     public Ship getShip()
@@ -106,9 +108,9 @@ public class Player
             speedy/=1+(breakspeed*10)/((Math.abs(speedy)/(Math.abs(speedy)*0.8))*0.4)*delta;
 
         //Bewegung + Randkontrolle
-        if (!Border.left((int) (posx + speedx), Starscroller.gamesize.x, sizeshipx))//ganzlinks
+        if (Border.left((int) (posx + speedx)))//ganzlinks
         {
-            if (!Border.right((int) (posx + speedx), Starscroller.gamesize.x, sizeshipx))//ganzrechts
+            if (Border.right((int) (posx + speedx), Starscroller.gamesize.x, sizeshipx))//ganzrechts
             {
                 posx += speedx;
                 if (speedx != 0);
@@ -127,9 +129,9 @@ public class Player
         }
 
 
-        if (!Border.left((int) (posy + speedy), Starscroller.gamesize.y, sizeshipy))//if not ganzlinks
+        if (Border.up((int) (posy + speedy)))//if not ganzoben
         {
-            if (!Border.right((int) (posy + speedy), Starscroller.gamesize.y, sizeshipy))//if not ganzrechts
+            if (Border.down((int) (posy + speedy), Starscroller.gamesize.y, sizeshipy))//if not ganzunten
             {
                 posy += speedy;
                 if (speedy != 0) ;
@@ -149,6 +151,54 @@ public class Player
         return;
     }
 
+    @Override
+    public boolean getLeftMove()
+    {
+        return leftMove;
+    }
+
+    @Override
+    public boolean getRightMove()
+    {
+        return rightMove;
+    }
+
+    @Override
+    public boolean getUpMove()
+    {
+        return upMove;
+    }
+
+    @Override
+    public boolean getDownMove()
+    {
+        return downMove;
+    }
+
+    @Override
+    public double getspeedx()
+    {
+        return speedx;
+    }
+
+    @Override
+    public double getspeedy()
+    {
+        return speedy;
+    }
+
+    @Override
+    public double getSpeed()
+    {
+        return speed;
+    }
+
+    @Override
+    public double getBreakspeed()
+    {
+        return breakspeed;
+    }
+
     public int getPosx()
     {
         return (int)posx;
@@ -164,11 +214,44 @@ public class Player
         return (int)posy;
     }
 
+    @Override
+    public void setspeedx(double speedx)
+    {
+
+    }
+
+    @Override
+    public void setspeedy(double speedy)
+    {
+
+    }
+
+    @Override
+    public void setPosx(double posx)
+    {
+
+    }
+
+    @Override
+    public void setPosy(double posy)
+    {
+
+    }
+
     public void setPosy(float posy)
     {
         this.posy = posy;
     }
 
+    public void setSizeshipx(int sizeshipx)
+    {
+        this.sizeshipx = sizeshipx;
+    }
+
+    public void setSizeshipy(int sizeshipy)
+    {
+        this.sizeshipy = sizeshipy;
+    }
 
     public void shoot(float delta)
     {
@@ -176,6 +259,6 @@ public class Player
         {
 
         }
-
+        ship.updateProjectiles();
     }
 }

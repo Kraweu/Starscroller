@@ -14,7 +14,6 @@ public class Ship
     private String asset = null;
     private WeaponSlot[] weaponSlots = null;
     private HashSet projectiles = new HashSet();
-    private Iterator projectilesit = projectiles.iterator();
 
     @Override
     public Ship clone()//whithout Projectiles
@@ -90,11 +89,16 @@ public class Ship
 
     public Iterator getProjectilesit()
     {
-        return projectilesit;
+        return projectiles.iterator();
     }
 
-    public void setProjectilesit(Iterator projectilesit)
+    public void updateProjectiles()
     {
-        this.projectilesit = projectilesit;
+        //TODO
+        Iterator iter = getProjectilesit();
+        while (iter.hasNext())
+        {
+            iter.next();
+        }
     }
 }

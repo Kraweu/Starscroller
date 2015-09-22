@@ -53,7 +53,7 @@ public class Starscroller extends ApplicationAdapter {
         System.out.println();
         Gdx.input.setInputProcessor(input);
         player = new Player();
-        player.setShip(ships[0]);
+        player.setShip(ships[0].clone(), assets);
     }
 
     @Override
