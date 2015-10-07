@@ -13,11 +13,23 @@ public interface MovementInterface
 
     boolean getDownMove();
 
-    double getspeedx();
+    void setLeftMove(boolean leftMove);
 
-    double getspeedy();
+    void setRightMove(boolean rightMove);
+
+    void setUpMove(boolean upMove);
+
+    void setDownMove(boolean downMove);
+
+    double getSpeedx();
+
+    double getSpeedy();
 
     double getSpeed();
+
+    void setSpeed(double speed);
+
+    double setBreakspeed();
 
     double getBreakspeed();
 
@@ -25,13 +37,14 @@ public interface MovementInterface
 
     double getPosy();
 
-    void setspeedx(double speedx);
+    void setSpeedx(double speedx);
 
-    void setspeedy(double speedy);
+    void setSpeedy(double speedy);
 
     void setPosx(double posx);
 
     void setPosy(double posy);
 
+    MovementInterface getInterface(MovementInterface interf);
 
 }

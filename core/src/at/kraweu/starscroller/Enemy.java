@@ -5,6 +5,19 @@ package at.kraweu.starscroller;
  */
 public class Enemy implements MovementInterface
 {
+    static int idPosition = 0;
+
+    private int id;
+
+    private boolean leftMove = false;
+    private boolean rightMove = false;
+    private boolean downMove = false;
+    private boolean upMove = false;
+
+
+    /**
+     * True if ship wants to shoot at the moment
+     */
     private boolean shoot;
 
     private int sizeshipx = 0;
@@ -13,14 +26,23 @@ public class Enemy implements MovementInterface
     private double posx = (Starscroller.gamewidth / 2) - 100; //Zentriert
     private double posy = 100;
 
-    private float speed = 1;
+    private double speed = 1;
 
-    private float speedx = 0;//HorizontalSpeed
-    private float speedy = 0;//VerticalSpeed
+    private double speedx = 0;//HorizontalSpeed
+    private double speedy = 0;//VerticalSpeed
 
-    private float breakspeed = 1f;
+    private double breakspeed = 1;
 
     private Ship ship;
+
+    public Enemy()
+    {
+        id = idPosition;
+        if (idPosition < Integer.MAX_VALUE)
+            idPosition++;
+        else
+            idPosition = 0;
+    }
 
     public void setShip(Ship ship, Assets assets)
     {
@@ -29,7 +51,7 @@ public class Enemy implements MovementInterface
         setSizeshipy(assets.getRegion(getShip().getAsset()).packedHeight);
     }
 
-    public boolean isShoot()
+    public boolean getShoot()
     {
         return shoot;
     }
@@ -59,66 +81,6 @@ public class Enemy implements MovementInterface
         this.sizeshipy = sizeshipy;
     }
 
-    public double getPosx()
-    {
-        return posx;
-    }
-
-    public void setPosx(double posx)
-    {
-        this.posx = posx;
-    }
-
-    public double getPosy()
-    {
-        return posy;
-    }
-
-    public void setPosy(double posy)
-    {
-        this.posy = posy;
-    }
-
-    public float getSpeed()
-    {
-        return speed;
-    }
-
-    public void setSpeed(float speed)
-    {
-        this.speed = speed;
-    }
-
-    public float getSpeedx()
-    {
-        return speedx;
-    }
-
-    public void setSpeedx(float speedx)
-    {
-        this.speedx = speedx;
-    }
-
-    public float getSpeedy()
-    {
-        return speedy;
-    }
-
-    public void setSpeedy(float speedy)
-    {
-        this.speedy = speedy;
-    }
-
-    public float getBreakspeed()
-    {
-        return breakspeed;
-    }
-
-    public void setBreakspeed(float breakspeed)
-    {
-        this.breakspeed = breakspeed;
-    }
-
     public Ship getShip()
     {
         return ship;
@@ -128,4 +90,138 @@ public class Enemy implements MovementInterface
     {
         this.ship = ship;
     }
+
+    public int getId()
+    {
+        return id;
+    }
+
+    //Movement Interface
+    @Override
+    public boolean getLeftMove()
+    {
+        return leftMove;
+    }
+
+    @Override
+    public boolean getRightMove()
+    {
+        return rightMove;
+    }
+
+    @Override
+    public boolean getUpMove()
+    {
+        return upMove;
+    }
+
+    @Override
+    public boolean getDownMove()
+    {
+        return downMove;
+    }
+
+    @Override
+    public void setLeftMove(boolean leftMove)
+    {
+        this.leftMove = leftMove;
+    }
+
+    @Override
+    public void setRightMove(boolean rightMove)
+    {
+        this.rightMove = rightMove;
+    }
+
+    @Override
+    public void setUpMove(boolean upMove)
+    {
+        this.upMove = upMove;
+    }
+
+    @Override
+    public void setDownMove(boolean downMove)
+    {
+        this.downMove = downMove;
+    }
+
+    @Override
+    public double getSpeedx()
+    {
+        return speedx;
+    }
+
+    @Override
+    public double getSpeedy()
+    {
+        return speedy;
+    }
+
+    @Override
+    public void setSpeedx(double speedx)
+    {
+        this.speedx = speedx;
+    }
+
+    @Override
+    public void setSpeedy(double speedy)
+    {
+        this.speedy = speedy;
+    }
+
+    @Override
+    public double getSpeed()
+    {
+        return speed;
+    }
+
+    @Override
+    public void setSpeed(double speed)
+    {
+        this.speed = speed;
+    }
+
+    @Override
+    public double setBreakspeed()
+    {
+        return 0;
+    }
+
+    @Override
+    public double getBreakspeed()
+    {
+        return breakspeed;
+    }
+
+    @Override
+    public double getPosx()
+    {
+        return posx;
+    }
+
+    @Override
+    public double getPosy()
+    {
+        return posy;
+    }
+
+    @Override
+    public void setPosx(double posx)
+    {
+        this.posx = posx;
+    }
+
+    @Override
+    public void setPosy(double posy)
+    {
+        this.posy = posy;
+    }
+
+    @Override
+    public MovementInterface getInterface(MovementInterface interf)
+    {
+        return this;
+    }
+
+
 }

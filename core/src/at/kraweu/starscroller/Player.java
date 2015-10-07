@@ -21,12 +21,12 @@ public class Player implements MovementInterface
     private double posx = (Starscroller.gamewidth / 2) - 100; //Zentriert
     private double posy = 100;
 
-    private float speed=1;
+    private double speed = 1;
 
-    private float speedx=0;//HorizontalSpeed
-    private float speedy=0;//VerticalSpeed
-    
-    private float breakspeed = 1f;
+    private double speedx = 0;//HorizontalSpeed
+    private double speedy = 0;//VerticalSpeed
+
+    private double breakspeed = 1f;
 
     private Ship ship;
 
@@ -151,6 +151,27 @@ public class Player implements MovementInterface
         return;
     }
 
+
+    public void setSizeshipx(int sizeshipx)
+    {
+        this.sizeshipx = sizeshipx;
+    }
+
+    public void setSizeshipy(int sizeshipy)
+    {
+        this.sizeshipy = sizeshipy;
+    }
+
+    public void shoot(float delta)
+    {
+        if (shoot)
+        {
+
+        }
+        ship.updateProjectiles();
+    }
+
+    //Movement Interface
     @Override
     public boolean getLeftMove()
     {
@@ -176,15 +197,51 @@ public class Player implements MovementInterface
     }
 
     @Override
-    public double getspeedx()
+    public void setLeftMove(boolean leftMove)
+    {
+        this.leftMove = leftMove;
+    }
+
+    @Override
+    public void setRightMove(boolean rightMove)
+    {
+        this.rightMove = rightMove;
+    }
+
+    @Override
+    public void setUpMove(boolean upMove)
+    {
+        this.upMove = upMove;
+    }
+
+    @Override
+    public void setDownMove(boolean downMove)
+    {
+        this.downMove = downMove;
+    }
+
+    @Override
+    public double getSpeedx()
     {
         return speedx;
     }
 
     @Override
-    public double getspeedy()
+    public double getSpeedy()
     {
         return speedy;
+    }
+
+    @Override
+    public void setSpeedx(double speedx)
+    {
+        this.speedx = speedx;
+    }
+
+    @Override
+    public void setSpeedy(double speedy)
+    {
+        this.speedy = speedy;
     }
 
     @Override
@@ -194,71 +251,51 @@ public class Player implements MovementInterface
     }
 
     @Override
+    public void setSpeed(double speed)
+    {
+        this.speed = speed;
+    }
+
+    @Override
+    public double setBreakspeed()
+    {
+        return 0;
+    }
+
+    @Override
     public double getBreakspeed()
     {
         return breakspeed;
     }
 
-    public int getPosx()
+    @Override
+    public double getPosx()
     {
-        return (int)posx;
-    }
-
-    public void setPosx(float posx)
-    {
-        this.posx = posx;
-    }
-
-    public int getPosy()
-    {
-        return (int)posy;
+        return posx;
     }
 
     @Override
-    public void setspeedx(double speedx)
+    public double getPosy()
     {
-
-    }
-
-    @Override
-    public void setspeedy(double speedy)
-    {
-
+        return posy;
     }
 
     @Override
     public void setPosx(double posx)
     {
-
+        this.posx = posx;
     }
 
     @Override
     public void setPosy(double posy)
     {
-
-    }
-
-    public void setPosy(float posy)
-    {
         this.posy = posy;
     }
 
-    public void setSizeshipx(int sizeshipx)
+    @Override
+    public MovementInterface getInterface(MovementInterface interf)
     {
-        this.sizeshipx = sizeshipx;
+        return this;
     }
 
-    public void setSizeshipy(int sizeshipy)
-    {
-        this.sizeshipy = sizeshipy;
-    }
-
-    public void shoot(float delta)
-    {
-        if (shoot)
-        {
-
-        }
-        ship.updateProjectiles();
-    }
 }
