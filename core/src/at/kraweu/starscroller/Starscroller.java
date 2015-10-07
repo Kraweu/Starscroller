@@ -10,6 +10,7 @@ import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 
 import java.awt.*;
+import java.util.Iterator;
 
 
 public class Starscroller extends ApplicationAdapter {
@@ -25,6 +26,8 @@ public class Starscroller extends ApplicationAdapter {
     public Input input;
 
     public Player player;
+
+    public Enemies enemies;
 
     //Aimed native Resolution 854x480
     public static final int gamewidth = 480;
@@ -54,6 +57,7 @@ public class Starscroller extends ApplicationAdapter {
         Gdx.input.setInputProcessor(input);
         player = new Player();
         player.setShip(ships[0].clone(), assets);
+
     }
 
     @Override
@@ -62,7 +66,19 @@ public class Starscroller extends ApplicationAdapter {
         Gdx.gl.glClearColor(0, 0, 0, 0);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT | GL20.GL_DEPTH_BUFFER_BIT);
         batch.begin();
-        batch.draw(assets.getRegion(player.getShip().getAsset()), player.getPosx(), player.getPosy());
+        batch.draw(assets.getRegion(player.getShip().getAsset()), (float) player.getPosx(), (float) player.getPosy());
+        Iterator iter = enemies.getIterator();
+        while (iter.hasNext())
+        {
+            Enemy enem = (Enemy) iter.next();
+            batch.draw(assets.getRegion(enem.getShip().getAsset()), (float) enem.getPosx(), (float) enem.getPosy());
+            Iterator projiter = enem.getShip().getProjectilesit();
+            while (projiter.hasNext())
+            {
+                Projectile pro = (Projectile) projiter.next();
+                batch.draw(assets.getRegion(pro.getAsset()), (float) pro.getPosx(), (float) pro.getPosy());
+            }
+        }
         batch.end();
     }
     public void updateGame()//called when Game is running
