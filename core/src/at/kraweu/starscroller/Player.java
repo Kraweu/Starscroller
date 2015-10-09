@@ -2,6 +2,7 @@ package at.kraweu.starscroller;
 
 
 import at.kraweu.collisionDetection.Border;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 /**
  * Created by Alex on 17.05.2015.
@@ -36,9 +37,17 @@ public class Player implements MovementInterface
 
     }
 
+    /**
+     * Sets ship and Sizeship
+     * Also sets owner in given ship
+     *
+     * @param ship
+     * @param assets
+     */
     public void setShip(Ship ship, Assets assets)
     {
         this.ship = ship;
+        this.ship.setOwner(this);
         setSizeshipx(assets.getRegion(getShip().getAsset()).packedWidth);
         setSizeshipy(assets.getRegion(getShip().getAsset()).packedHeight);
     }
@@ -298,4 +307,8 @@ public class Player implements MovementInterface
         return this;
     }
 
+    public void render(SpriteBatch batch, Assets assets)
+    {
+        ship.render(batch, assets);
+    }
 }

@@ -44,9 +44,17 @@ public class Enemy implements MovementInterface
             idPosition = 0;
     }
 
+    /**
+     * Sets ship and Sizeship
+     * Also sets owner in given ship
+     *
+     * @param ship
+     * @param assets
+     */
     public void setShip(Ship ship, Assets assets)
     {
         this.ship = ship;
+        this.ship.setOwner(this);
         setSizeshipx(assets.getRegion(getShip().getAsset()).packedWidth);
         setSizeshipy(assets.getRegion(getShip().getAsset()).packedHeight);
     }

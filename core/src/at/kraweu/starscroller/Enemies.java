@@ -1,5 +1,7 @@
 package at.kraweu.starscroller;
 
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+
 import java.util.Iterator;
 import java.util.List;
 
@@ -29,4 +31,15 @@ public class Enemies
     {
         return enemies.iterator();
     }
+
+    void render(SpriteBatch batch, Assets assets)
+    {
+        Iterator iter = getIterator();
+        while (iter.hasNext())
+        {
+            Enemy enem = (Enemy) iter.next();
+            enem.getShip().render(batch, assets);
+        }
+    }
+
 }

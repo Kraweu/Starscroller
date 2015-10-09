@@ -1,5 +1,8 @@
 package at.kraweu.starscroller;
 
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
+
 import java.util.HashSet;
 import java.util.Iterator;
 
@@ -12,6 +15,7 @@ public class Ship
     private double speed = 1;
     private double health = 100;
     private String asset = null;
+    private MovementInterface owner = null;
     private WeaponSlot[] weaponSlots = null;
     private HashSet projectiles = new HashSet();
 
@@ -92,6 +96,21 @@ public class Ship
         return projectiles.iterator();
     }
 
+    public MovementInterface getOwner()
+    {
+        return owner;
+    }
+
+    /**
+     * Should only be called from the owner
+     *
+     * @param owner
+     */
+    public void setOwner(MovementInterface owner)
+    {
+        this.owner = owner;
+    }
+
     public void updateProjectiles()
     {
         //TODO
@@ -99,6 +118,27 @@ public class Ship
         while (iter.hasNext())
         {
             iter.next();
+        }
+    }
+
+    /**
+     * Renders Ship and all Projectiles
+     *
+     * @param batch
+     * @param assets
+     */
+    public void render(SpriteBatch batch, Assets assets)
+    {
+        batch.draw(assets.getRegion(getAsset()), (float) owner.getPosx(), (float) owner.getPosy());
+        Iterator iter = projectiles.iterator();
+        while (iter.hasNext())
+        {
+            Projectile proj = (Projectile) iter.next();
+            TextureRegion textureRegion = assets.getRegion(proj.getAsset());
+            batch.draw(textureRegion, (float) proj.getPosx(), (float) proj.getPosy(),
+                    (float) proj.getPosx(), (float) proj.getPosy(),
+                    textureRegion.getRegionWidth(), textureRegion.getRegionHeight(),
+                    1, 1, (float) proj.getRotation());
         }
     }
 }
