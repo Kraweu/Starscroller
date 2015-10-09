@@ -232,4 +232,8 @@ public class Enemy implements MovementInterface
     }
 
 
+    public void update(float delta)
+    {
+        Movement.movement(this, delta);
+    }
 }

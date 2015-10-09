@@ -1,7 +1,6 @@
 package at.kraweu.starscroller;
 
 
-import at.kraweu.collisionDetection.Border;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 /**
@@ -84,7 +83,7 @@ public class Player implements MovementInterface
     {
         this.shoot = shoot;
     }
-    public void movement(float delta)
+    /*public void movement(float delta)
     {
 //        System.out.println(delta);
         if (leftMove)
@@ -158,7 +157,7 @@ public class Player implements MovementInterface
 
 
         return;
-    }
+    }*///Old movement
 
 
     public void setSizeshipx(int sizeshipx)
@@ -305,6 +304,11 @@ public class Player implements MovementInterface
     public MovementInterface getInterface(MovementInterface interf)
     {
         return this;
+    }
+
+    public void movement(float delta)
+    {
+        Movement.movement(this, delta);
     }
 
     public void render(SpriteBatch batch, Assets assets)

@@ -42,4 +42,14 @@ public class Enemies
         }
     }
 
+    void update(float delta)
+    {
+        Iterator iter = getIterator();
+        while (iter.hasNext())
+        {
+            Enemy enem = (Enemy) iter.next();
+            enem.update(delta);
+        }
+    }
+
 }

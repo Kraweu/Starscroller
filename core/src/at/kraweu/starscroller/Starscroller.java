@@ -71,11 +71,12 @@ public class Starscroller extends ApplicationAdapter {
     }
     public void updateGame()//called when Game is running
     {
-
         float delta = 0;
         delta = Gdx.graphics.getRawDeltaTime();
         player.movement(delta);
         player.shoot(delta);
+        enemies.update(delta);
+
     }
     @Override
     public void resize(int width, int height) {
