@@ -26,7 +26,7 @@ public class Player implements MovementInterface
     private double speedx = 0;//HorizontalSpeed
     private double speedy = 0;//VerticalSpeed
 
-    private double breakspeed = 1f;
+    private double breakspeed = 2f;
 
     private Ship ship;
 
@@ -160,25 +160,6 @@ public class Player implements MovementInterface
     }*///Old movement
 
 
-    public void setSizeshipx(int sizeshipx)
-    {
-        this.sizeshipx = sizeshipx;
-    }
-
-    public void setSizeshipy(int sizeshipy)
-    {
-        this.sizeshipy = sizeshipy;
-    }
-
-    public void shoot(float delta)
-    {
-        if (shoot)
-        {
-
-        }
-        ship.updateProjectiles();
-    }
-
     //Movement Interface
     @Override
     public boolean getLeftMove()
@@ -301,6 +282,30 @@ public class Player implements MovementInterface
     }
 
     @Override
+    public int getSizeshipx()
+    {
+        return sizeshipx;
+    }
+
+    @Override
+    public void setSizeshipx(int size)
+    {
+        this.sizeshipx = size;
+    }
+
+    @Override
+    public int getSizeshipy()
+    {
+        return sizeshipy;
+    }
+
+    @Override
+    public void setSizeshipy(int size)
+    {
+        this.sizeshipy = size;
+    }
+
+    @Override
     public MovementInterface getInterface(MovementInterface interf)
     {
         return this;
@@ -309,6 +314,15 @@ public class Player implements MovementInterface
     public void movement(float delta)
     {
         Movement.movement(this, delta);
+    }
+
+    public void shoot(float delta)
+    {
+        if (shoot)
+        {
+            ship.shoot(delta);
+        }
+        ship.updateProjectiles();
     }
 
     public void render(SpriteBatch batch, Assets assets)

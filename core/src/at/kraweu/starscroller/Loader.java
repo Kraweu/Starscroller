@@ -177,7 +177,7 @@ public class Loader
                         {
                             type = (findWeaponType(weapontypes, ((Element) tempnode).getAttribute("Name")));
                         }
-                        weaponSlots[j].weapon = new Weapon(type, name);
+                        weaponSlots[j].setWeapon(new Weapon(type, name));
                         tempnode = getChild(getChild(child, "weapon"), "mirrorhoriz");
                         if (tempnode != null && ((Element) tempnode).getAttribute("Mirror").equals("true"))
                         {
@@ -189,10 +189,10 @@ public class Loader
                             weaponSlots = tempslot;
                             weaponSlots[weaponSlots.length - 1] = weaponSlots[j].clone();
                             int height, width;
-                            if (assets.getRegion(weaponSlots[j].weapon.getType().getAsset()) != null)
+                            if (assets.getRegion(weaponSlots[j].getWeapon().getType().getAsset()) != null)
                             {
-                                height = assets.getRegion(weaponSlots[j].weapon.getType().getAsset()).packedHeight;
-                                width = assets.getRegion(weaponSlots[j].weapon.getType().getAsset()).packedWidth;
+                                height = assets.getRegion(weaponSlots[j].getWeapon().getType().getAsset()).packedHeight;
+                                width = assets.getRegion(weaponSlots[j].getWeapon().getType().getAsset()).packedWidth;
                                 weaponSlots[weaponSlots.length - 1].posx = weaponSlots[j].posx;//Stays the same because of Horizontal Mirroing
                                 weaponSlots[weaponSlots.length - 1].posy = width - weaponSlots[j].posy;
                             } else

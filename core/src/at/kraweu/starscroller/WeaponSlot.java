@@ -5,7 +5,7 @@ package at.kraweu.starscroller;
  */
 public class WeaponSlot
 {
-    Weapon weapon = null;
+    private Weapon weapon = null;
     int posx;    //Center Position relative to the ship
     int posy;
 
@@ -23,6 +23,7 @@ public class WeaponSlot
     public void setWeapon(Weapon weapon)
     {
         this.weapon = weapon;
+        this.weapon.setSlot(this);
     }
 
     @Override

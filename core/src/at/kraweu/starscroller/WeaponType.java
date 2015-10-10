@@ -11,7 +11,7 @@ public class WeaponType
     String name = "unnamed";
 
 
-    double reloadtime = 1;
+    double reloadtime = 0.01;
     int shotposx; //Position relative to the Weapons left upper corner
     int shotposy;
     String asset = null;

@@ -69,26 +69,6 @@ public class Enemy implements MovementInterface
         this.shoot = shoot;
     }
 
-    public int getSizeshipx()
-    {
-        return sizeshipx;
-    }
-
-    public void setSizeshipx(int sizeshipx)
-    {
-        this.sizeshipx = sizeshipx;
-    }
-
-    public int getSizeshipy()
-    {
-        return sizeshipy;
-    }
-
-    public void setSizeshipy(int sizeshipy)
-    {
-        this.sizeshipy = sizeshipy;
-    }
-
     public Ship getShip()
     {
         return ship;
@@ -223,6 +203,30 @@ public class Enemy implements MovementInterface
     public void setPosy(double posy)
     {
         this.posy = posy;
+    }
+
+    @Override
+    public int getSizeshipx()
+    {
+        return sizeshipx;
+    }
+
+    @Override
+    public void setSizeshipx(int size)
+    {
+        this.sizeshipx = size;
+    }
+
+    @Override
+    public int getSizeshipy()
+    {
+        return sizeshipy;
+    }
+
+    @Override
+    public void setSizeshipy(int size)
+    {
+        this.sizeshipy = size;
     }
 
     @Override

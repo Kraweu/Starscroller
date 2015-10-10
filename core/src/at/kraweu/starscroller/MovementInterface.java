@@ -45,6 +45,14 @@ public interface MovementInterface
 
     void setPosy(double posy);
 
+    int getSizeshipx();
+
+    void setSizeshipx(int size);
+
+    int getSizeshipy();
+
+    void setSizeshipy(int size);
+
     MovementInterface getInterface(MovementInterface interf);
 
 }

@@ -3,6 +3,7 @@ package at.kraweu.starscroller;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -12,7 +13,7 @@ public class Enemies
 {
     private int ammount;
 
-    private List<Enemy> enemies;
+    private List<Enemy> enemies = new LinkedList<Enemy>();
 
     Enemy getEnemiebyId(int id)
     {

@@ -3,8 +3,9 @@ package at.kraweu.starscroller;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 
-import java.util.HashSet;
 import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.List;
 
 /**
  * Created by Kraweu on 13.09.2015.
@@ -17,7 +18,7 @@ public class Ship
     private String asset = null;
     private MovementInterface owner = null;
     private WeaponSlot[] weaponSlots = null;
-    private HashSet projectiles = new HashSet();
+    private List<Projectile> projectiles = new LinkedList<Projectile>();
 
     @Override
     public Ship clone()//whithout Projectiles
@@ -81,12 +82,12 @@ public class Ship
         this.weaponSlots = weaponSlots;
     }
 
-    public HashSet getProjectiles()
+    public List<Projectile> getProjectiles()
     {
         return projectiles;
     }
 
-    public void setProjectiles(HashSet projectiles)
+    public void setProjectiles(List projectiles)
     {
         this.projectiles = projectiles;
     }
@@ -117,7 +118,8 @@ public class Ship
         Iterator iter = getProjectilesit();
         while (iter.hasNext())
         {
-            iter.next();
+            Projectile proj = (Projectile) iter.next();
+
         }
     }
 
@@ -139,6 +141,19 @@ public class Ship
                     (float) proj.getPosx(), (float) proj.getPosy(),
                     textureRegion.getRegionWidth(), textureRegion.getRegionHeight(),
                     1, 1, (float) proj.getRotation());
+        }
+    }
+
+    public void shoot(float delta)
+    {
+        for (int i = 0; i < weaponSlots.length; i++)
+        {
+            if (weaponSlots[i].getWeapon().nextshot == 0)
+            {
+                projectiles.add(weaponSlots[i].getWeapon().shoot(owner.getPosx(), owner.getPosy()));
+                weaponSlots[i].getWeapon().reload(delta);
+            }
+
         }
     }
 }

@@ -27,6 +27,7 @@ public class Weapon
         if (nextshot == 0)
         {
             nextshot = type.getReloadtime();
+            System.out.println("damage " + type.getDamage() + "shippos" + shipposx + "+" + slot.posx + "+" + type.shotposx + " " + shipposy + "+" + slot.posy + "+" + type.shotposy + " " + type.getSpeedx() + type.getSpeedy() + type.projectileasset);
             return new Projectile(type.getDamage(), shipposx + slot.posx + type.shotposx, shipposy + slot.posy + type.shotposy, type.getSpeedx(), type.getSpeedy(), type.projectileasset);
         }
         return null;

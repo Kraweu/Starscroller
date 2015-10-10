@@ -9,6 +9,10 @@ public class Movement
 {
     static int speedmult = 150;
 
+    public static void move(MovementInterface obj, float delta)
+    {
+
+    }
     public static void movement(MovementInterface obj, float delta)
     {
 
@@ -31,55 +35,69 @@ public class Movement
         else if (obj.getUpMove())
             obj.setSpeedy(obj.getSpeedy() + obj.getSpeed() * delta * speedmult);
 
-        //Breaking
+        //Bremsen
 
         if (obj.getSpeedx() < 0.2 && obj.getSpeedx() > -0.2)
             obj.setSpeedx(0);
         else
         {
-            speedx /= 1 + (breakspeed * 10) / ((Math.abs(speedx) / (Math.abs(speedx) * 0.8)) * 0.4) * delta;//Bremsgeschwindigkeit Abhängig von delta und speedx
+            obj.setSpeedx((obj.getSpeedx() * (0.8 + (0.2 * (1 - delta * 50)))));
         }
-        if (speedy < 0.2 && speedy > -0.2)
-            speedy = 0;
+        if (obj.getSpeedy() < 0.2 && obj.getSpeedy() > -0.2)
+            obj.setSpeedy(0);
         else
-            speedy /= 1 + (breakspeed * 10) / ((Math.abs(speedy) / (Math.abs(speedy) * 0.8)) * 0.4) * delta;
+            obj.setSpeedy((obj.getSpeedy() * (0.8 + (0.2 * (1 - delta * 50)))));
+
+
+//        //Breaking
+//
+//        if (obj.getSpeedx() < 0.2 && obj.getSpeedx() > -0.2)
+//            obj.setSpeedx(0);
+//        else
+//        {
+//            obj.setSpeedx((obj.getSpeedx()/(obj.getSpeedx()*)) * delta);//Bremsgeschwindigkeit Abhängig von delta und speedx);
+//        }
+//        if (obj.getSpeedy() < 0.2 && obj.getSpeedy() > -0.2)
+//            obj.setSpeedy(0);
+//        else
+//            obj.setSpeedy((obj.getSpeedy()/(obj.getSpeedy()/speedmult)) * delta);
 
         //Bewegung + Randkontrolle
-        if (Border.left((int) (posx + speedx)))//ganzlinks
+        if (Border.left((int) (obj.getPosx() + obj.getSpeedx())))//ganzlinks
         {
-            if (Border.right((int) (posx + speedx), Starscroller.gamesize.x, sizeshipx))//ganzrechts
+            if (Border.right((int) (obj.getPosx() + obj.getSpeedx()), Starscroller.gamesize.x, obj.getSizeshipx()))//ganzrechts
             {
-                posx += speedx;
-                if (speedx != 0) ;
+                obj.setPosx(obj.getPosx() + obj.getSpeedx());
+                if (obj.getSpeedx() != 0) ;
 //                    System.out.println("processing movement " + speedx + "  " + posx);
             } else
             {
-                posx = Starscroller.gamesize.x - sizeshipx;
-                speedx = 0;
+                obj.setPosx(Starscroller.gamesize.x - obj.getSizeshipx());
+                obj.setSpeedx(0);
             }
         } else
         {
-            posx = 0;
-            speedx = 0;
+            obj.setPosx(0);
+            obj.setSpeedx(0);
         }
 
 
-        if (Border.up((int) (posy + speedy)))//if not ganzoben
+        if (Border.up((int) (obj.getPosy() + obj.getSpeedy())))//if not ganzoben
         {
-            if (Border.down((int) (posy + speedy), Starscroller.gamesize.y, sizeshipy))//if not ganzunten
+            if (Border.down((int) (obj.getPosy() + obj.getSpeedy()), Starscroller.gamesize.y, obj.getSizeshipy()))//if not ganzunten
             {
-                posy += speedy;
-                if (speedy != 0) ;
+                obj.setPosy(obj.getPosy() + obj.getSpeedy());
+                if (obj.getSpeedy() != 0) ;
 //                    System.out.println("processing movement " + speedy + "  " + posy);
             } else
             {
-                posy = Starscroller.gamesize.y - sizeshipy;
-                speedy = 0;
+                obj.setPosy(Starscroller.gamesize.y - obj.getSizeshipy());
+                obj.setSpeedy(0);
             }
         } else
         {
-            posy = 0;
-            speedy = 0;
+            obj.setPosy(0);
+            obj.setSpeedy(0);
         }
 
 

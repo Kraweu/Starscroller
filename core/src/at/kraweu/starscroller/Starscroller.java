@@ -6,6 +6,7 @@ import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.PerspectiveCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 
@@ -39,8 +40,8 @@ public class Starscroller extends ApplicationAdapter {
     @Override
     public void create () {
         camera = new PerspectiveCamera();
+        camera.rotate(new Vector3(1, 2, 3), 5);
         viewport = new FitViewport(gamewidth, gameheight, camera);
-
         batch = new SpriteBatch();
 
         input = new Input(this);
@@ -56,7 +57,7 @@ public class Starscroller extends ApplicationAdapter {
         Gdx.input.setInputProcessor(input);
         player = new Player();
         player.setShip(ships[0].clone(), assets);
-
+        enemies = new Enemies();
     }
 
     @Override
@@ -76,7 +77,6 @@ public class Starscroller extends ApplicationAdapter {
         player.movement(delta);
         player.shoot(delta);
         enemies.update(delta);
-
     }
     @Override
     public void resize(int width, int height) {
