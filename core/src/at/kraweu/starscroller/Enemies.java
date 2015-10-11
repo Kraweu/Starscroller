@@ -43,13 +43,13 @@ public class Enemies
         }
     }
 
-    void update(float delta)
+    void update(float delta, Assets assets)
     {
         Iterator iter = getIterator();
         while (iter.hasNext())
         {
             Enemy enem = (Enemy) iter.next();
-            enem.update(delta);
+            enem.update(delta, assets);
         }
     }
 

@@ -39,8 +39,8 @@ public class Projectile
             return;
         if (Border.inside(new Point((int) posx, (int) posy), Starscroller.gamesize, assets.getRegion(asset).packedWidth, assets.getRegion(asset).packedHeight))
         {
-            posx += speedx;
-            posy += speedy;
+            posx += speedx * delta;
+            posy += speedy * delta;
         }
         else
         {

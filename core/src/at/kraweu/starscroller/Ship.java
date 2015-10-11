@@ -3,9 +3,9 @@ package at.kraweu.starscroller;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 
+import java.util.HashSet;
 import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.Set;
 
 /**
  * Created by Kraweu on 13.09.2015.
@@ -18,7 +18,7 @@ public class Ship
     private String asset = null;
     private MovementInterface owner = null;
     private WeaponSlot[] weaponSlots = null;
-    private List<Projectile> projectiles = new LinkedList<Projectile>();
+    private Set<Projectile> projectiles = new HashSet<Projectile>();
 
     @Override
     public Ship clone()//whithout Projectiles
@@ -82,12 +82,12 @@ public class Ship
         this.weaponSlots = weaponSlots;
     }
 
-    public List<Projectile> getProjectiles()
+    public Set<Projectile> getProjectiles()
     {
         return projectiles;
     }
 
-    public void setProjectiles(List projectiles)
+    public void setProjectiles(Set projectiles)
     {
         this.projectiles = projectiles;
     }
@@ -112,16 +112,6 @@ public class Ship
         this.owner = owner;
     }
 
-    public void updateProjectiles()
-    {
-        //TODO
-        Iterator iter = getProjectilesit();
-        while (iter.hasNext())
-        {
-            Projectile proj = (Projectile) iter.next();
-
-        }
-    }
 
     /**
      * Renders Ship and all Projectiles
@@ -137,8 +127,8 @@ public class Ship
         {
             Projectile proj = (Projectile) iter.next();
             TextureRegion textureRegion = assets.getRegion(proj.getAsset());
-            batch.draw(textureRegion, (float) proj.getPosx(), (float) proj.getPosy(),
-                    (float) proj.getPosx(), (float) proj.getPosy(),
+            batch.draw(textureRegion, (float) proj.getPosx() - (textureRegion.getRegionWidth() / 2), (float) proj.getPosy() - (textureRegion.getRegionHeight() / 2),
+                    (float) proj.getPosx() - (textureRegion.getRegionWidth() / 2), (float) proj.getPosy() - (textureRegion.getRegionHeight() / 2),
                     textureRegion.getRegionWidth(), textureRegion.getRegionHeight(),
                     1, 1, (float) proj.getRotation());
         }
@@ -150,10 +140,27 @@ public class Ship
         {
             if (weaponSlots[i].getWeapon().nextshot == 0)
             {
-                projectiles.add(weaponSlots[i].getWeapon().shoot(owner.getPosx(), owner.getPosy()));
-                weaponSlots[i].getWeapon().reload(delta);
+                projectiles.add(weaponSlots[i].getWeapon().shoot(owner.getPosx(), owner.getPosy(), owner.getSizeshipx(), owner.getSizeshipy()));
             }
 
         }
     }
+
+    public void updateProjectiles(float delta, Assets assets)
+    {
+        //TODO
+        Iterator iter = getProjectilesit();
+        while (iter.hasNext())
+        {
+            Projectile proj = (Projectile) iter.next();
+            proj.movement(delta, assets);
+            if (proj.deleted)
+                iter.remove();
+        }
+        for (int i = 0; i < weaponSlots.length; i++)
+        {
+            weaponSlots[i].getWeapon().reload(delta);
+        }
+    }
+
 }

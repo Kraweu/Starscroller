@@ -316,13 +316,13 @@ public class Player implements MovementInterface
         Movement.movement(this, delta);
     }
 
-    public void shoot(float delta)
+    public void shoot(float delta, Assets assets)
     {
         if (shoot)
         {
             ship.shoot(delta);
         }
-        ship.updateProjectiles();
+        ship.updateProjectiles(delta, assets);
     }
 
     public void render(SpriteBatch batch, Assets assets)

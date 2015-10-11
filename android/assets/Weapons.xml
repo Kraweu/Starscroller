@@ -1,11 +1,11 @@
 <weapontypes>
     <weapontype Name="Laser">
-        <reloadtime>0.01</reloadtime>
+        <reloadtime>0.4</reloadtime>
         <shotpos x="1" y="1"/>
         <asset>Guns_and_engines/weapon2</asset>
         <projectile>
             <damage>1</damage>
-            <speed x="0" y="-3"/>
+            <speed x="0" y="500"/>
             <size x="3" y="12"/>
             <accelleration>1</accelleration>
             <asset>Lasers/laserBlue01</asset>

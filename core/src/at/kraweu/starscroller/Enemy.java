@@ -236,8 +236,9 @@ public class Enemy implements MovementInterface
     }
 
 
-    public void update(float delta)
+    public void update(float delta, Assets assets)
     {
         Movement.movement(this, delta);
+        ship.updateProjectiles(delta, assets);
     }
 }

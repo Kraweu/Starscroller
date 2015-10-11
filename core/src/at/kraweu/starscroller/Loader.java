@@ -252,7 +252,7 @@ public class Loader
                 {
                     try
                     {
-                        weaponTypes[i].setReloadtime(Integer.parseInt(tempnode.getFirstChild().getNodeValue()));
+                        weaponTypes[i].setReloadtime(Double.parseDouble(tempnode.getFirstChild().getNodeValue()));
                     } catch (NumberFormatException e)
                     {
 

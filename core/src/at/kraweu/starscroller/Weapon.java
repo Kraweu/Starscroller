@@ -22,7 +22,7 @@ public class Weapon
         this.name = name;
     }
 
-    public Projectile shoot(double shipposx, double shipposy)
+    public Projectile shoot(double shipposx, double shipposy, int sizeShipx, int sizeShipy)
     {
         if (nextshot == 0)
         {
