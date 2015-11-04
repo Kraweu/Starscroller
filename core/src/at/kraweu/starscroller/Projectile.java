@@ -23,13 +23,14 @@ public class Projectile
     double swaying = 0;
     double rotation = 0;
 
-    public Projectile(double damage, double posx, double posy, double speedx, double speedy, String asset)
+    public Projectile(double damage, double posx, double posy, double speedx, double speedy, double rotation, String asset)
     {
         this.damage = damage;
         this.posx = posx;
         this.posy = posy;
         this.speedx = speedx;
         this.speedy = speedy;
+        this.rotation = rotation;
         this.asset = asset;
     }
 
@@ -37,7 +38,7 @@ public class Projectile
     {
         if (deleted)
             return;
-        if (Border.inside(new Point((int) posx, (int) posy), Starscroller.gamesize, assets.getRegion(asset).packedWidth, assets.getRegion(asset).packedHeight))
+        if (Border.inside(new Point((int) posx - assets.getRegion(asset).packedWidth, (int) posy - assets.getRegion(asset).packedHeight), Starscroller.gamesize, assets.getRegion(asset).packedWidth, assets.getRegion(asset).packedHeight))
         {
             posx += speedx * delta;
             posy += speedy * delta;

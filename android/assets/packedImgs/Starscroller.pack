@@ -3,6 +3,18 @@ Starscroller.png
 format: RGBA8888
 filter: Nearest,Nearest
 repeat: none
+Backgrounds/SpaceBackground3cut
+  rotate: false
+  xy: 1, 1
+  size: 480, 854
+  orig: 480, 854
+  offset: 0, 0
+  index: -1
+
+Starscroller2.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
 Damage/playerShip2_damage2
   rotate: false
   xy: 1, 1
@@ -67,7 +79,7 @@ Damage/playerShip3_damage3
   offset: 0, 0
   index: -1
 
-Starscroller2.png
+Starscroller3.png
 format: RGBA8888
 filter: Nearest,Nearest
 repeat: none
@@ -261,7 +273,7 @@ Effects/fire17
   offset: 0, 0
   index: -1
 
-Starscroller3.png
+Starscroller4.png
 format: RGBA8888
 filter: Nearest,Nearest
 repeat: none
@@ -406,7 +418,7 @@ Enemies/enemyRed4
   offset: 0, 0
   index: -1
 
-Starscroller4.png
+Starscroller5.png
 format: RGBA8888
 filter: Nearest,Nearest
 repeat: none
@@ -509,7 +521,7 @@ Guns_and_engines/jetFlame1
   offset: 0, 0
   index: -1
 
-Starscroller5.png
+Starscroller6.png
 format: RGBA8888
 filter: Nearest,Nearest
 repeat: none
@@ -850,7 +862,7 @@ Lasers/laserRed07
   offset: 0, 0
   index: -1
 
-Starscroller6.png
+Starscroller7.png
 format: RGBA8888
 filter: Nearest,Nearest
 repeat: none
@@ -995,7 +1007,7 @@ Meteors/meteorGrey_tiny2
   offset: 0, 0
   index: -1
 
-Starscroller7.png
+Starscroller8.png
 format: RGBA8888
 filter: Nearest,Nearest
 repeat: none
@@ -1658,7 +1670,7 @@ Parts/scratch2
   offset: 0, 0
   index: -1
 
-Starscroller8.png
+Starscroller9.png
 format: RGBA8888
 filter: Nearest,Nearest
 repeat: none
@@ -1775,7 +1787,7 @@ playerShip3_red
   offset: 0, 0
   index: -1
 
-Starscroller9.png
+Starscroller10.png
 format: RGBA8888
 filter: Nearest,Nearest
 repeat: none
@@ -2004,7 +2016,7 @@ Power-ups/pill_yellow
   offset: 0, 0
   index: -1
 
-Starscroller10.png
+Starscroller11.png
 format: RGBA8888
 filter: Nearest,Nearest
 repeat: none

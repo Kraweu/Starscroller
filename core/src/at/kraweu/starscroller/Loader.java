@@ -81,6 +81,92 @@ public class Loader
         }
     }
 
+    public Level[] loadLevels(Ship[] ships)
+    {
+        Level[] levels = null;
+        for (MyDocument mydocument : documents)
+        {
+            Document document = mydocument.getDocument();
+
+            NodeList wrapperlist = document.getElementsByTagName("levels");
+//            wrapperlist.item(0).getNodeValue();
+            NodeList levelList = document.getElementsByTagName("level");
+            if (wrapperlist.getLength() == 0)
+                break;
+            levels = new Level[levelList.getLength()];
+            for (int i = 0; i < levels.length; i++)
+            {
+                levels[i] = new Level();
+
+                Node tempnode = null;
+
+                Element elementparent = (Element) levelList.item(i);
+
+                Wave[] waves = null;
+                NodeList levelchildren = null;
+
+                if (levelList.item(i).hasChildNodes())
+                    levelchildren = levelList.item(i).getChildNodes();
+                else
+                    continue;
+
+                /**Number of Enemies found in Level*/
+                int enemienr = 0;
+                for (int j = 0; j < levelchildren.getLength(); j++)
+                {
+                    if (levelchildren.item(j).getNodeName().equals("enemy"))
+                        enemienr++;
+                }
+                Node[] enemyNodes = new Node[enemienr];
+                Enemy[] enemies = new Enemy[enemienr];
+                enemienr = 0;
+                for (int j = 0; enemienr < enemyNodes.length; j++)
+                {
+                    if (levelchildren.item(j).getNodeName().equals("enemy"))
+                    {
+                        enemyNodes[enemienr] = levelchildren.item(j);
+                        enemienr++;
+                    }
+
+                }
+                for (int j = 0; j < enemyNodes.length; j++)
+                {
+                    enemies[j] = new Enemy();
+                    tempnode = getChild(enemyNodes[j], "shiptype");
+                    if (tempnode != null)
+                    {
+                        try
+                        {
+                            enemies[j].setShip(Ship.getShip(ships, tempnode.getAttributes().getNamedItem("Name").getNodeValue()).clone(), assets);
+                        } catch (NullPointerException e)
+                        {
+                            System.out.println("Nullpointer Exception while loading enemies");
+                        }
+                    }
+                    tempnode = getChild(enemyNodes[j], "position");
+                    if (tempnode != null)
+                    {
+                        try
+                        {
+                            Element element = (Element) tempnode;
+                            enemies[j].setPosx(Double.parseDouble(element.getAttribute("x")));
+                            enemies[j].setPosy(Double.parseDouble(element.getAttribute("y")));
+                        } catch (NumberFormatException e)
+                        {
+
+                        }
+                    }
+                }
+                levels[i].waves = new Wave[1];
+                levels[i].waves[0] = new Wave();
+                for (int j = 0; j < enemies.length; j++)
+                {
+                    levels[i].waves[0].enemies.addEnemy(enemies[j]);
+                }
+            }
+        }
+        return levels;
+    }
     public Ship[] loadShips(WeaponType[] weapontypes)
     {
         Ship[] ships = null;
@@ -91,8 +177,8 @@ public class Loader
             NodeList wrapperlist = document.getElementsByTagName("ships");
 
             NodeList shipList = document.getElementsByTagName("ship");
-            if (wrapperlist.getLength() == 0 && shipList.getLength() == 0)
-                break;
+            if (wrapperlist.getLength() == 0 || shipList.getLength() == 0)
+                continue;
             ships = new Ship[shipList.getLength()];
             for (int i = 0; i < ships.length; i++)
             {
@@ -188,13 +274,14 @@ public class Loader
                             }
                             weaponSlots = tempslot;
                             weaponSlots[weaponSlots.length - 1] = weaponSlots[j].clone();
-                            int height, width;
+                            int height, width, widthship;
                             if (assets.getRegion(weaponSlots[j].getWeapon().getType().getAsset()) != null)
                             {
                                 height = assets.getRegion(weaponSlots[j].getWeapon().getType().getAsset()).packedHeight;
                                 width = assets.getRegion(weaponSlots[j].getWeapon().getType().getAsset()).packedWidth;
-                                weaponSlots[weaponSlots.length - 1].posx = weaponSlots[j].posx;//Stays the same because of Horizontal Mirroing
-                                weaponSlots[weaponSlots.length - 1].posy = width - weaponSlots[j].posy;
+                                widthship = assets.getRegion(ships[i].getAsset()).packedWidth;
+                                weaponSlots[weaponSlots.length - 1].posx = widthship - weaponSlots[j].posx - width;
+                                weaponSlots[weaponSlots.length - 1].posy = weaponSlots[j].posy;//Stays the same because of Horizontal Mirroing
                             } else
                                 System.out.println("Region for duplication not found on Ship: " + ships[i].getName() + " for " + j + 1 + ". Weapon");
                         }
@@ -211,7 +298,10 @@ public class Loader
         if (ships != null)
             return ships;
         else
+        {
+            System.out.println("No Ships loaded!");
             return new Ship[0];
+        }
     }
 
     private WeaponType findWeaponType(WeaponType[] weapontypes, String name)
@@ -235,8 +325,8 @@ public class Loader
             NodeList wrapperlist = document.getElementsByTagName("weapontypes");
 
             NodeList weaponTypeList = document.getElementsByTagName("weapontype");
-            if (wrapperlist.getLength() == 0 && weaponTypeList.getLength() == 0)
-                break;
+            if (wrapperlist.getLength() == 0 || weaponTypeList.getLength() == 0)
+                continue;
             weaponTypes = new WeaponType[weaponTypeList.getLength()];
             for (int i = 0; i < weaponTypes.length; i++)
             {
@@ -310,7 +400,10 @@ public class Loader
         if (weaponTypes != null)
             return weaponTypes;
         else
+        {
+            System.out.println("No Weapons loaded!");
             return new WeaponType[0];
+        }
     }
 
     /**

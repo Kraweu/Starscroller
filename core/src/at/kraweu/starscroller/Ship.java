@@ -121,17 +121,26 @@ public class Ship
      */
     public void render(SpriteBatch batch, Assets assets)
     {
-        batch.draw(assets.getRegion(getAsset()), (float) owner.getPosx(), (float) owner.getPosy());
+        //Projectiles
         Iterator iter = projectiles.iterator();
         while (iter.hasNext())
         {
             Projectile proj = (Projectile) iter.next();
             TextureRegion textureRegion = assets.getRegion(proj.getAsset());
             batch.draw(textureRegion, (float) proj.getPosx() - (textureRegion.getRegionWidth() / 2), (float) proj.getPosy() - (textureRegion.getRegionHeight() / 2),
-                    (float) proj.getPosx() - (textureRegion.getRegionWidth() / 2), (float) proj.getPosy() - (textureRegion.getRegionHeight() / 2),
+                    (float) (textureRegion.getRegionWidth() / 2), (float) (textureRegion.getRegionHeight() / 2),
                     textureRegion.getRegionWidth(), textureRegion.getRegionHeight(),
                     1, 1, (float) proj.getRotation());
         }
+        //Weapons
+        for (int i = 0; i < weaponSlots.length; i++)
+        {
+            TextureRegion textureRegion = assets.getRegion(weaponSlots[i].getWeapon().getType().getAsset());
+            batch.draw(textureRegion, (float) (weaponSlots[i].posx + owner.getPosx()), (float) (weaponSlots[i].posy + owner.getPosy()));
+        }
+        //Ship
+        batch.draw(assets.getRegion(getAsset()), (float) owner.getPosx(), (float) owner.getPosy());
+
     }
 
     public void shoot(float delta)
@@ -154,8 +163,10 @@ public class Ship
         {
             Projectile proj = (Projectile) iter.next();
             proj.movement(delta, assets);
+            Starscroller.getGame().getScreen();//Auf die Enemies im Aktuellen Level zugreifen wegen Collisiondetection
             if (proj.deleted)
                 iter.remove();
+
         }
         for (int i = 0; i < weaponSlots.length; i++)
         {
@@ -163,4 +174,14 @@ public class Ship
         }
     }
 
+    public static Ship getShip(Ship[] ships, String name)
+    {
+        for (int i = 0; i < ships.length; i++)
+        {
+            if (ships[i].name.equals(name))
+                return ships[i];
+        }
+        System.out.println("Ship not found: " + name);
+        return null;
+    }
 }

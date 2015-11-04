@@ -1,0 +1,14 @@
+<levels>
+    <level Name="TestLevel">
+        <enemy>
+            <shiptype Name="Player01"/>
+            <position x="100" y="500"/>
+            <wave>1</wave>
+        </enemy>
+        <enemy>
+            <shiptype Name="Player01"/>
+            <position x="250" y="500"/>
+            <wave>2</wave>
+        </enemy>
+    </level>
+</levels>

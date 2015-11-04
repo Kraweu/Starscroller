@@ -11,13 +11,12 @@ import java.util.List;
  */
 public class Enemies
 {
-    private int ammount;
 
     private List<Enemy> enemies = new LinkedList<Enemy>();
 
     Enemy getEnemiebyId(int id)
     {
-        Iterator iter = enemies.iterator();
+        Iterator iter = getIterator();
         while (iter.hasNext())
         {
             Enemy enem = (Enemy) iter.next();
@@ -31,6 +30,11 @@ public class Enemies
     Iterator getIterator()
     {
         return enemies.iterator();
+    }
+
+    List<Enemy> getList()
+    {
+        return enemies;
     }
 
     void render(SpriteBatch batch, Assets assets)
@@ -53,4 +57,20 @@ public class Enemies
         }
     }
 
+    void addEnemy(Enemy enemy)
+    {
+        enemies.add(enemy);
+    }
+
+    void deleteEnemy(Enemy enemy)
+    {
+        enemies.remove(enemy);
+    }
+
+    public void addEnemies(Enemies enemies)
+    {
+        Iterator iter = enemies.getIterator();
+        while (iter.hasNext())
+            this.addEnemy((Enemy) iter.next());
+    }
 }

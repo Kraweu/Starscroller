@@ -1,11 +1,10 @@
 package at.kraweu.starscroller;
 
-import com.badlogic.gdx.ApplicationAdapter;
+import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Preferences;
 import com.badlogic.gdx.graphics.Camera;
-import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.PerspectiveCamera;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
@@ -13,9 +12,9 @@ import com.badlogic.gdx.utils.viewport.Viewport;
 import java.awt.*;
 
 
-public class Starscroller extends ApplicationAdapter {
-
-    SpriteBatch batch;
+public class Starscroller extends Game
+{
+    private static Starscroller game;
 
     public Assets assets;
 
@@ -23,11 +22,14 @@ public class Starscroller extends ApplicationAdapter {
 
     public Ship[] ships;
 
+    public Level[] levels;
+
     public Input input;
+
+    public Preferences preferences;
 
     public Player player;
 
-    public Enemies enemies;
 
     //Aimed native Resolution 854x480
     public static final int gamewidth = 480;
@@ -39,10 +41,10 @@ public class Starscroller extends ApplicationAdapter {
 
     @Override
     public void create () {
+        game = this;
         camera = new PerspectiveCamera();
         camera.rotate(new Vector3(1, 2, 3), 5);
         viewport = new FitViewport(gamewidth, gameheight, camera);
-        batch = new SpriteBatch();
 
         input = new Input(this);
         assets = new Assets();
@@ -52,34 +54,22 @@ public class Starscroller extends ApplicationAdapter {
         loader.setAssets(assets);
         weaponTypes = loader.loadWeaponTypes();
         ships = loader.loadShips(weaponTypes);
+        levels = loader.loadLevels(ships);
         System.out.println();
         System.out.println();
         Gdx.input.setInputProcessor(input);
+
+        preferences = Gdx.app.getPreferences("at.kraweu.starscroller.preferences");
+
         player = new Player();
         player.setShip(ships[0].clone(), assets);
-        enemies = new Enemies();
+
+//        setScreen(new StartMenuScreen(this));
+        setScreen(new GameScreen(this, player, levels[0]));//skip menu for debugging
     }
 
-    @Override
-    public void render () {
-        updateGame();
-        Gdx.gl.glClearColor(0, 0, 0, 0);
-        Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT | GL20.GL_DEPTH_BUFFER_BIT);
-        batch.begin();
-        player.render(batch, assets);
-        enemies.render(batch, assets);
-        batch.end();
-    }
-    public void updateGame()//called when Game is running
+    public static Starscroller getGame()
     {
-        float delta = 0;
-        delta = Gdx.graphics.getRawDeltaTime();
-        player.movement(delta);
-        player.shoot(delta, assets);
-        enemies.update(delta, assets);
-    }
-    @Override
-    public void resize(int width, int height) {
-        viewport.update(width, height);
+        return game;
     }
 }
