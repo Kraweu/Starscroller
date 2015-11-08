@@ -137,7 +137,15 @@ public class Loader
                     {
                         try
                         {
-                            enemies[j].setShip(Ship.getShip(ships, tempnode.getAttributes().getNamedItem("Name").getNodeValue()).clone(), assets);
+                            String name = tempnode.getAttributes().getNamedItem("Name").getNodeValue();
+                            Ship ship = Ship.getShipFromArray(ships, name);
+                            if (ship != null)
+                                enemies[j].setShip(ship.clone(), assets);
+                            else
+                            {
+                                System.out.println("Enemy Asset not found, Enemy not loaded");
+                                enemies[j].loadingError();
+                            }
                         } catch (NullPointerException e)
                         {
                             System.out.println("Nullpointer Exception while loading enemies");
@@ -153,7 +161,7 @@ public class Loader
                             enemies[j].setPosy(Double.parseDouble(element.getAttribute("y")));
                         } catch (NumberFormatException e)
                         {
-
+                            enemies[j].loadingError();
                         }
                     }
                 }
@@ -218,7 +226,8 @@ public class Loader
                 {
                     try
                     {
-                        ships[i].setAsset(tempnode.getFirstChild().getNodeValue());
+                        String asset = tempnode.getFirstChild().getNodeValue();
+                        ships[i].setAsset(asset, assets.getRegion(asset).packedWidth, assets.getRegion(asset).packedHeight);
                     } catch (NumberFormatException e)
                     {
 

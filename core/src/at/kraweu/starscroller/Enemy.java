@@ -34,6 +34,7 @@ public class Enemy implements MovementInterface
     private double breakspeed = 1;
 
     private Ship ship;
+    private boolean destroyed;
 
     public Enemy()
     {
@@ -235,9 +236,20 @@ public class Enemy implements MovementInterface
         return this;
     }
 
-
-    public void update(float delta, Assets assets)
+    /**
+     * Called if there is an Error while loading
+     * Sets the Enemy to Destroyed
+     */
+    public void loadingError()
     {
+        System.out.println("Error while loading an Enemy, set to destroyed");
+        destroyed = true;
+    }
+
+    public void update(float delta, Assets assets, Enemies enemies)
+    {
+        if (destroyed)
+            enemies.deleteEnemy(this);
         Movement.movement(this, delta);
         ship.updateProjectiles(delta, assets);
     }

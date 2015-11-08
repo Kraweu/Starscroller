@@ -19,7 +19,8 @@ public class Ship
     private MovementInterface owner = null;
     private WeaponSlot[] weaponSlots = null;
     private Set<Projectile> projectiles = new HashSet<Projectile>();
-
+    private int sizex;
+    private int sizey;
     @Override
     public Ship clone()//whithout Projectiles
     {
@@ -67,9 +68,11 @@ public class Ship
         return asset;
     }
 
-    public void setAsset(String asset)
+    public void setAsset(String asset, int sizex, int sizey)
     {
         this.asset = asset;
+        this.sizex = sizex;
+        this.sizey = sizey;
     }
 
     public WeaponSlot[] getWeaponSlots()
@@ -95,6 +98,26 @@ public class Ship
     public Iterator getProjectilesit()
     {
         return projectiles.iterator();
+    }
+
+    public int getSizex()
+    {
+        return sizex;
+    }
+
+    public void setSizex(int sizex)
+    {
+        this.sizex = sizex;
+    }
+
+    public int getSizey()
+    {
+        return sizey;
+    }
+
+    public void setSizey(int sizey)
+    {
+        this.sizey = sizey;
     }
 
     public MovementInterface getOwner()
@@ -157,13 +180,14 @@ public class Ship
 
     public void updateProjectiles(float delta, Assets assets)
     {
-        //TODO
         Iterator iter = getProjectilesit();
         while (iter.hasNext())
         {
             Projectile proj = (Projectile) iter.next();
             proj.movement(delta, assets);
-            Starscroller.getGame().getScreen();//Auf die Enemies im Aktuellen Level zugreifen wegen Collisiondetection
+            //TODO facilitate level selection
+            Enemies enemies = Starscroller.getGame().levels[0].spawnedenemies;
+
             if (proj.deleted)
                 iter.remove();
 
@@ -174,7 +198,7 @@ public class Ship
         }
     }
 
-    public static Ship getShip(Ship[] ships, String name)
+    public static Ship getShipFromArray(Ship[] ships, String name)
     {
         for (int i = 0; i < ships.length; i++)
         {

@@ -53,7 +53,7 @@ public class Enemies
         while (iter.hasNext())
         {
             Enemy enem = (Enemy) iter.next();
-            enem.update(delta, assets);
+            enem.update(delta, assets, this);
         }
     }
 
