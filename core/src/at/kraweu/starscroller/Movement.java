@@ -55,7 +55,7 @@ public class Movement
 //            obj.setSpeedx(0);
 //        else
 //        {
-//            obj.setSpeedx((obj.getSpeedx()/(obj.getSpeedx()*)) * delta);//Bremsgeschwindigkeit Abhängig von delta und speedx);
+//            obj.setSpeedx((obj.getSpeedx()/(obj.getSpeedx()*)) * delta);//Bremsgeschwindigkeit Abhï¿½ngig von delta und speedx);
 //        }
 //        if (obj.getSpeedy() < 0.2 && obj.getSpeedy() > -0.2)
 //            obj.setSpeedy(0);
@@ -63,40 +63,40 @@ public class Movement
 //            obj.setSpeedy((obj.getSpeedy()/(obj.getSpeedy()/speedmult)) * delta);
 
         //Bewegung + Randkontrolle
-        if (Border.left((int) (obj.getPosx() + obj.getSpeedx())))//ganzlinks
+        if (Border.left((int) (obj.getShip().getPosx() + obj.getSpeedx())))//ganzlinks
         {
-            if (Border.right((int) (obj.getPosx() + obj.getSpeedx()), Starscroller.gamesize.x, obj.getSizeshipx()))//ganzrechts
+            if (Border.right((int) (obj.getShip().getPosx() + obj.getSpeedx()), Starscroller.gamesize.x, obj.getShip().getSizex()))//ganzrechts
             {
-                obj.setPosx(obj.getPosx() + obj.getSpeedx());
+                obj.getShip().setPosx(obj.getShip().getPosx() + obj.getSpeedx());
                 if (obj.getSpeedx() != 0) ;
 //                    System.out.println("processing movement " + speedx + "  " + posx);
             } else
             {
-                obj.setPosx(Starscroller.gamesize.x - obj.getSizeshipx());
+                obj.getShip().setPosx(Starscroller.gamesize.x - obj.getShip().getSizex());
                 obj.setSpeedx(0);
             }
         } else
         {
-            obj.setPosx(0);
+            obj.getShip().setPosx(0);
             obj.setSpeedx(0);
         }
 
 
-        if (Border.up((int) (obj.getPosy() + obj.getSpeedy())))//if not ganzoben
+        if (Border.up((int) (obj.getShip().getPosy() + obj.getSpeedy())))//if not ganzoben
         {
-            if (Border.down((int) (obj.getPosy() + obj.getSpeedy()), Starscroller.gamesize.y, obj.getSizeshipy()))//if not ganzunten
+            if (Border.down((int) (obj.getShip().getPosy() + obj.getSpeedy()), Starscroller.gamesize.y, obj.getShip().getSizey()))//if not ganzunten
             {
-                obj.setPosy(obj.getPosy() + obj.getSpeedy());
+                obj.getShip().setPosy(obj.getShip().getPosy() + obj.getSpeedy());
                 if (obj.getSpeedy() != 0) ;
 //                    System.out.println("processing movement " + speedy + "  " + posy);
             } else
             {
-                obj.setPosy(Starscroller.gamesize.y - obj.getSizeshipy());
+                obj.getShip().setPosy(Starscroller.gamesize.y - obj.getShip().getSizey());
                 obj.setSpeedy(0);
             }
         } else
         {
-            obj.setPosy(0);
+            obj.getShip().setPosy(0);
             obj.setSpeedy(0);
         }
 

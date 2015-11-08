@@ -29,6 +29,8 @@ public class Player implements MovementInterface
     private double breakspeed = 2f;
 
     private Ship ship;
+    private boolean beingdestroyed;
+    private boolean destroyed;
 
 
     public Player()
@@ -47,8 +49,8 @@ public class Player implements MovementInterface
     {
         this.ship = ship;
         this.ship.setOwner(this);
-        setSizeshipx(assets.getRegion(getShip().getAsset()).packedWidth);
-        setSizeshipy(assets.getRegion(getShip().getAsset()).packedHeight);
+        ship.setSizex(assets.getRegion(getShip().getAsset()).packedWidth);
+        ship.setSizey(assets.getRegion(getShip().getAsset()).packedHeight);
     }
 
     public Ship getShip()
@@ -258,51 +260,15 @@ public class Player implements MovementInterface
     }
 
     @Override
-    public double getPosx()
+    public boolean isBeingdestroyed()
     {
-        return posx;
+        return beingdestroyed;
     }
 
     @Override
-    public double getPosy()
+    public boolean isDestroyed()
     {
-        return posy;
-    }
-
-    @Override
-    public void setPosx(double posx)
-    {
-        this.posx = posx;
-    }
-
-    @Override
-    public void setPosy(double posy)
-    {
-        this.posy = posy;
-    }
-
-    @Override
-    public int getSizeshipx()
-    {
-        return sizeshipx;
-    }
-
-    @Override
-    public void setSizeshipx(int size)
-    {
-        this.sizeshipx = size;
-    }
-
-    @Override
-    public int getSizeshipy()
-    {
-        return sizeshipy;
-    }
-
-    @Override
-    public void setSizeshipy(int size)
-    {
-        this.sizeshipy = size;
+        return destroyed;
     }
 
     @Override
@@ -316,6 +282,11 @@ public class Player implements MovementInterface
         Movement.movement(this, delta);
     }
 
+    @Override
+    public void hit(Projectile proj)
+    {
+        return;//TODO
+    }
     public void shoot(float delta, Assets assets)
     {
         if (shoot)

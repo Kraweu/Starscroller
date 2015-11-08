@@ -20,12 +20,6 @@ public class Enemy implements MovementInterface
      */
     private boolean shoot;
 
-    private int sizeshipx = 0;
-    private int sizeshipy = 0;
-
-    private double posx = (Starscroller.gamewidth / 2) - 100; //Zentriert
-    private double posy = 100;
-
     private double speed = 1;
 
     private double speedx = 0;//HorizontalSpeed
@@ -35,6 +29,8 @@ public class Enemy implements MovementInterface
 
     private Ship ship;
     private boolean destroyed;
+    private boolean beingdestroyed;
+    private float destroytime;
 
     public Enemy()
     {
@@ -56,8 +52,8 @@ public class Enemy implements MovementInterface
     {
         this.ship = ship;
         this.ship.setOwner(this);
-        setSizeshipx(assets.getRegion(getShip().getAsset()).packedWidth);
-        setSizeshipy(assets.getRegion(getShip().getAsset()).packedHeight);
+        ship.setSizex(assets.getRegion(getShip().getAsset()).packedWidth);
+        ship.setSizey(assets.getRegion(getShip().getAsset()).packedHeight);
     }
 
     public boolean getShoot()
@@ -183,57 +179,21 @@ public class Enemy implements MovementInterface
     }
 
     @Override
-    public double getPosx()
-    {
-        return posx;
-    }
-
-    @Override
-    public double getPosy()
-    {
-        return posy;
-    }
-
-    @Override
-    public void setPosx(double posx)
-    {
-        this.posx = posx;
-    }
-
-    @Override
-    public void setPosy(double posy)
-    {
-        this.posy = posy;
-    }
-
-    @Override
-    public int getSizeshipx()
-    {
-        return sizeshipx;
-    }
-
-    @Override
-    public void setSizeshipx(int size)
-    {
-        this.sizeshipx = size;
-    }
-
-    @Override
-    public int getSizeshipy()
-    {
-        return sizeshipy;
-    }
-
-    @Override
-    public void setSizeshipy(int size)
-    {
-        this.sizeshipy = size;
-    }
-
-    @Override
     public MovementInterface getInterface(MovementInterface interf)
     {
         return this;
+    }
+
+    @Override
+    public boolean isBeingdestroyed()
+    {
+        return beingdestroyed;
+    }
+
+    @Override
+    public boolean isDestroyed()
+    {
+        return destroyed;
     }
 
     /**
@@ -246,10 +206,39 @@ public class Enemy implements MovementInterface
         destroyed = true;
     }
 
+    public void hit(Projectile proj)
+    {
+        ship.setHealth(ship.getHealth() - proj.damage);
+        if (ship.getHealth() < 0)
+        {
+            destroyed();
+        }
+    }
+
+    /**
+     * Starts destruction
+     */
+    private void destroyed()
+    {
+        System.out.println("beingDestroyed");
+        beingdestroyed = true;
+    }
+
     public void update(float delta, Assets assets, Enemies enemies)
     {
         if (destroyed)
+        {
             enemies.deleteEnemy(this);
+            return;
+        }
+        if (beingdestroyed)
+        {
+            if (destroytime < 0.2)
+            {
+                destroytime += delta;
+            } else
+                destroyed = true;
+        }
         Movement.movement(this, delta);
         ship.updateProjectiles(delta, assets);
     }

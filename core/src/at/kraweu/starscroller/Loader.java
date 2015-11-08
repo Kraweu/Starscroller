@@ -145,6 +145,7 @@ public class Loader
                             {
                                 System.out.println("Enemy Asset not found, Enemy not loaded");
                                 enemies[j].loadingError();
+                                continue;
                             }
                         } catch (NullPointerException e)
                         {
@@ -157,8 +158,8 @@ public class Loader
                         try
                         {
                             Element element = (Element) tempnode;
-                            enemies[j].setPosx(Double.parseDouble(element.getAttribute("x")));
-                            enemies[j].setPosy(Double.parseDouble(element.getAttribute("y")));
+                            enemies[j].getShip().setPosx(Double.parseDouble(element.getAttribute("x")));
+                            enemies[j].getShip().setPosy(Double.parseDouble(element.getAttribute("y")));
                         } catch (NumberFormatException e)
                         {
                             enemies[j].loadingError();

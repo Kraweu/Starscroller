@@ -27,7 +27,7 @@ public class Enemies
         return null;
     }
 
-    Iterator getIterator()
+    Iterator<Enemy> getIterator()
     {
         return enemies.iterator();
     }
@@ -53,7 +53,11 @@ public class Enemies
         while (iter.hasNext())
         {
             Enemy enem = (Enemy) iter.next();
-            enem.update(delta, assets, this);
+            if (enem.isDestroyed())
+            {
+                iter.remove();
+            } else
+                enem.update(delta, assets, this);
         }
     }
 

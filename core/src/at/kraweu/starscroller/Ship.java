@@ -19,8 +19,16 @@ public class Ship
     private MovementInterface owner = null;
     private WeaponSlot[] weaponSlots = null;
     private Set<Projectile> projectiles = new HashSet<Projectile>();
-    private int sizex;
-    private int sizey;
+    /**
+     * Width
+     */
+    private int sizex = 1;
+    /**
+     * Height
+     */
+    private int sizey = 1;
+    private double posx = 50;
+    private double posy = 50;
     @Override
     public Ship clone()//whithout Projectiles
     {
@@ -120,6 +128,36 @@ public class Ship
         this.sizey = sizey;
     }
 
+    public double getPosx()
+    {
+        return posx;
+    }
+
+    public int getPosxint()
+    {
+        return (int) posx;
+    }
+
+    public void setPosx(double posx)
+    {
+        this.posx = posx;
+    }
+
+    public double getPosy()
+    {
+        return posy;
+    }
+
+    public int getPosyint()
+    {
+        return (int) posy;
+    }
+
+    public void setPosy(double posy)
+    {
+        this.posy = posy;
+    }
+
     public MovementInterface getOwner()
     {
         return owner;
@@ -159,10 +197,10 @@ public class Ship
         for (int i = 0; i < weaponSlots.length; i++)
         {
             TextureRegion textureRegion = assets.getRegion(weaponSlots[i].getWeapon().getType().getAsset());
-            batch.draw(textureRegion, (float) (weaponSlots[i].posx + owner.getPosx()), (float) (weaponSlots[i].posy + owner.getPosy()));
+            batch.draw(textureRegion, (float) (weaponSlots[i].posx + getPosx()), (float) (weaponSlots[i].posy + getPosy()));
         }
         //Ship
-        batch.draw(assets.getRegion(getAsset()), (float) owner.getPosx(), (float) owner.getPosy());
+        batch.draw(assets.getRegion(getAsset()), (float) getPosx(), (float) getPosy());
 
     }
 
@@ -172,7 +210,7 @@ public class Ship
         {
             if (weaponSlots[i].getWeapon().nextshot == 0)
             {
-                projectiles.add(weaponSlots[i].getWeapon().shoot(owner.getPosx(), owner.getPosy(), owner.getSizeshipx(), owner.getSizeshipy()));
+                projectiles.add(weaponSlots[i].getWeapon().shoot(getPosx(), getPosy(), getSizex(), getSizey()));
             }
 
         }
@@ -186,11 +224,18 @@ public class Ship
             Projectile proj = (Projectile) iter.next();
             proj.movement(delta, assets);
             //TODO facilitate level selection
-            Enemies enemies = Starscroller.getGame().levels[0].spawnedenemies;
-
+            Iterator<Enemy> enemiesiter = Starscroller.getGame().levels[0].spawnedenemies.getIterator();
+            boolean hit = false;
+            while (enemiesiter.hasNext() && !hit)
+            {
+                if (proj.detectCollision(enemiesiter.next().getShip()))
+                {
+                    hit = true;
+                    proj.setDeleted(true);
+                }
+            }
             if (proj.deleted)
                 iter.remove();
-
         }
         for (int i = 0; i < weaponSlots.length; i++)
         {
@@ -208,4 +253,6 @@ public class Ship
         System.out.println("Ship not found: " + name);
         return null;
     }
+
+
 }

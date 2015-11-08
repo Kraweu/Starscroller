@@ -1,8 +1,11 @@
 package at.kraweu.starscroller;
 
 import at.kraweu.collisionDetection.Border;
+import com.badlogic.gdx.math.Intersector;
+import com.badlogic.gdx.math.Rectangle;
 
 import java.awt.*;
+
 
 /**
  * Created by Alex on 19.05.2015.
@@ -147,5 +150,20 @@ public class Projectile
     public void setRotation(double rotation)
     {
         this.rotation = rotation;
+    }
+
+    public boolean detectCollision(Ship enemy)
+    {
+        if (enemy.getOwner().isBeingdestroyed())
+            return false;
+        Rectangle projrect = new Rectangle((int) posx, (int) posy, 1, 1);
+        Rectangle enemyrect = new Rectangle(enemy.getPosxint(), enemy.getPosyint(), enemy.getSizex(), enemy.getSizey());
+        if (Intersector.overlaps(projrect, enemyrect))
+        {
+            enemy.getOwner().hit(this);
+            System.out.println("Hit");
+            return true;
+        } else
+            return false;
     }
 }

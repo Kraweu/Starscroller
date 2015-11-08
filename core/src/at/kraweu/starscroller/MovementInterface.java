@@ -33,26 +33,17 @@ public interface MovementInterface
 
     double getBreakspeed();
 
-    double getPosx();
-
-    double getPosy();
-
     void setSpeedx(double speedx);
 
     void setSpeedy(double speedy);
 
-    void setPosx(double posx);
+    void hit(Projectile proj);
 
-    void setPosy(double posy);
-
-    int getSizeshipx();
-
-    void setSizeshipx(int size);
-
-    int getSizeshipy();
-
-    void setSizeshipy(int size);
-
+    Ship getShip();
+    
     MovementInterface getInterface(MovementInterface interf);
 
+    boolean isBeingdestroyed();
+
+    boolean isDestroyed();
 }
