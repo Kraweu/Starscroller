@@ -30,4 +30,16 @@
             </weapon>
         </weaponslot>
     </ship>
+    <ship Name="Enemy01">
+        <speed>1.2</speed>
+        <health>10</health>
+        <asset>Enemies/enemyRed1</asset>
+        <weaponslot>
+            <position x="3" y="3"/>
+            <weapon Name="Laser1">
+                <weapontype Name="Laser"/>
+                <mirrorhoriz Mirror="true"/>
+            </weapon>
+        </weaponslot>
+    </ship>
 </ships>

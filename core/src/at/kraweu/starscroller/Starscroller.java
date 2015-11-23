@@ -6,6 +6,7 @@ import com.badlogic.gdx.Preferences;
 import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.graphics.PerspectiveCamera;
 import com.badlogic.gdx.math.Vector3;
+import com.badlogic.gdx.scenes.scene2d.ui.TooltipManager;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 
@@ -30,6 +31,8 @@ public class Starscroller extends Game
 
     public Player player;
 
+    public TooltipManager tooltipManager;
+
 
     //Aimed native Resolution 854x480
     public static final int gamewidth = 480;
@@ -50,16 +53,23 @@ public class Starscroller extends Game
         assets = new Assets();
         System.out.println();
         System.out.println();
+
         Loader loader = new Loader();
         loader.setAssets(assets);
         weaponTypes = loader.loadWeaponTypes();
         ships = loader.loadShips(weaponTypes);
         levels = loader.loadLevels(ships);
+
         System.out.println();
         System.out.println();
         Gdx.input.setInputProcessor(input);
 
         preferences = Gdx.app.getPreferences("at.kraweu.starscroller.preferences");
+
+        //Setup tooltipManager values
+        tooltipManager = TooltipManager.getInstance();
+        tooltipManager.initialTime = 1.5f;
+        tooltipManager.subsequentTime = 0.5f;
 
         player = new Player();
         player.setShip(ships[0].clone(), assets);

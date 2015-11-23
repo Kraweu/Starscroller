@@ -27,13 +27,22 @@ public class Enemy implements MovementInterface
 
     private double breakspeed = 1;
 
+    private Enemies enemies;
     private Ship ship;
+    public MoveAI moveAI = new MoveAI(this);
+
     private boolean destroyed;
     private boolean beingdestroyed;
     private float destroytime;
 
     public Enemy()
     {
+        this(null);
+    }
+
+    public Enemy(Enemies enemies)
+    {
+        this.enemies = enemies;
         id = idPosition;
         if (idPosition < Integer.MAX_VALUE)
             idPosition++;

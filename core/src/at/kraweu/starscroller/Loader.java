@@ -110,67 +110,128 @@ public class Loader
                 else
                     continue;
 
-                /**Number of Enemies found in Level*/
-                int enemienr = 0;
+
+                tempnode = levelList.item(i);
+                if (tempnode != null)
+                {
+                    try
+                    {
+                        Element element = (Element) tempnode;
+                        if (element.getAttribute("Name").isEmpty())
+                            levels[i].name = "NameNotFound";
+                        else
+                            levels[i].name = element.getAttribute("Name");
+                    } catch (Exception e)
+                    {
+                        System.out.println("Error loading level name in Level: " + i);
+                    }
+                }
+
+
+                /**Number of Waves found in Level*/
+                int wavenr = 0;
                 for (int j = 0; j < levelchildren.getLength(); j++)
                 {
-                    if (levelchildren.item(j).getNodeName().equals("enemy"))
-                        enemienr++;
+                    if (levelchildren.item(j).getNodeName().equals("wave"))
+                        wavenr++;
                 }
-                Node[] enemyNodes = new Node[enemienr];
-                Enemy[] enemies = new Enemy[enemienr];
-                enemienr = 0;
-                for (int j = 0; enemienr < enemyNodes.length; j++)
+                Node[] waveNodes = new Node[wavenr];
+                wavenr = 0;
+                for (int j = 0; wavenr < waveNodes.length; j++)
                 {
-                    if (levelchildren.item(j).getNodeName().equals("enemy"))
+                    if (levelchildren.item(j).getNodeName().equals("wave"))
                     {
-                        enemyNodes[enemienr] = levelchildren.item(j);
-                        enemienr++;
+                        waveNodes[wavenr] = levelchildren.item(j);
+                        wavenr++;
                     }
 
                 }
-                for (int j = 0; j < enemyNodes.length; j++)
+
+
+                levels[i].waves = new Wave[wavenr];
+                for (int currentwave = 0; currentwave < waveNodes.length; currentwave++)
                 {
-                    enemies[j] = new Enemy();
-                    tempnode = getChild(enemyNodes[j], "shiptype");
-                    if (tempnode != null)
-                    {
-                        try
-                        {
-                            String name = tempnode.getAttributes().getNamedItem("Name").getNodeValue();
-                            Ship ship = Ship.getShipFromArray(ships, name);
-                            if (ship != null)
-                                enemies[j].setShip(ship.clone(), assets);
-                            else
-                            {
-                                System.out.println("Enemy Asset not found, Enemy not loaded");
-                                enemies[j].loadingError();
-                                continue;
-                            }
-                        } catch (NullPointerException e)
-                        {
-                            System.out.println("Nullpointer Exception while loading enemies");
-                        }
-                    }
-                    tempnode = getChild(enemyNodes[j], "position");
+                    NodeList wavechildren = null;
+                    if (waveNodes[currentwave].hasChildNodes())
+                        wavechildren = waveNodes[currentwave].getChildNodes();
+                    else
+                        continue;
+                    levels[i].waves[currentwave] = new Wave(levels[i], 0);
+                    tempnode = waveNodes[currentwave];
                     if (tempnode != null)
                     {
                         try
                         {
                             Element element = (Element) tempnode;
-                            enemies[j].getShip().setPosx(Double.parseDouble(element.getAttribute("x")));
-                            enemies[j].getShip().setPosy(Double.parseDouble(element.getAttribute("y")));
+                            levels[i].waves[currentwave].Nr = (int) Double.parseDouble(element.getAttribute("Nr"));
+                            levels[i].waves[currentwave].timeToStart = ((int) Double.parseDouble(element.getAttribute("timeToStart")));
                         } catch (NumberFormatException e)
                         {
-                            enemies[j].loadingError();
+                            System.out.println("Format error in Level: " + levels[i].name);
                         }
                     }
-                }
-                levels[i].waves = new Wave[1];
-                levels[i].waves[0] = new Wave();
-                for (int j = 0; j < enemies.length; j++)
-                {
-                    levels[i].waves[0].enemies.addEnemy(enemies[j]);
+                    /**Number of Enemies found in Wave*/
+                    int enemienr = 0;
+                    for (int j = 0; j < wavechildren.getLength(); j++)
+                    {
+                        if (wavechildren.item(j).getNodeName().equals("enemy"))
+                            enemienr++;
+                    }
+                    Node[] enemyNodes = new Node[enemienr];
+                    Enemy[] enemies = new Enemy[enemienr];
+                    enemienr = 0;
+                    for (int j = 0; enemienr < enemyNodes.length; j++)
+                    {
+                        if (wavechildren.item(j).getNodeName().equals("enemy"))
+                        {
+                            enemyNodes[enemienr] = wavechildren.item(j);
+                            enemienr++;
+                        }
+
+                    }
+                    for (int currentenemy = 0; currentenemy < enemyNodes.length; currentenemy++)
+                    {
+                        enemies[currentenemy] = new Enemy();
+                        tempnode = getChild(enemyNodes[currentenemy], "shiptype");
+                        if (tempnode != null)
+                        {
+                            try
+                            {
+                                String name = tempnode.getAttributes().getNamedItem("Name").getNodeValue();
+                                Ship ship = Ship.getShipFromArray(ships, name);
+                                if (ship != null)
+                                    enemies[currentenemy].setShip(ship.clone(), assets);
+                                else
+                                {
+                                    System.out.println("Enemy Asset not found, Enemy not loaded");
+                                    enemies[currentenemy].loadingError();
+                                    continue;
+                                }
+                            } catch (NullPointerException e)
+                            {
+                                System.out.println("Nullpointer Exception while loading enemies");
+                            }
+                        }
+                        tempnode = getChild(enemyNodes[currentenemy], "position");
+                        if (tempnode != null)
+                        {
+                            try
+                            {
+                                Element element = (Element) tempnode;
+                                enemies[currentenemy].getShip().setPosx(Double.parseDouble(element.getAttribute("x")));
+                                enemies[currentenemy].getShip().setPosy(Double.parseDouble(element.getAttribute("y")));
+                            } catch (NumberFormatException e)
+                            {
+                                enemies[currentenemy].loadingError();
+                            }
+                        }
+                    }
+
+
+                    for (int j = 0; j < enemies.length; j++)
+                    {
+                        levels[i].waves[currentwave].enemies.addEnemy(enemies[j]);
+                    }
                 }
             }
         }

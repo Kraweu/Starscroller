@@ -12,7 +12,13 @@ import java.util.List;
 public class Enemies
 {
 
+    private Level level;
     private List<Enemy> enemies = new LinkedList<Enemy>();
+
+    public Enemies(Level level)
+    {
+        this.level = level;
+    }
 
     Enemy getEnemiebyId(int id)
     {
@@ -76,5 +82,17 @@ public class Enemies
         Iterator iter = enemies.getIterator();
         while (iter.hasNext())
             this.addEnemy((Enemy) iter.next());
+    }
+
+    public void started()
+    {
+        Iterator iter = this.getIterator();
+        while (iter.hasNext())
+            ((Enemy) iter.next()).moveAI.started();
+    }
+
+    public boolean isEmpty()
+    {
+        return enemies.isEmpty();
     }
 }

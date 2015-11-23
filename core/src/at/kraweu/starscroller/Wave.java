@@ -7,9 +7,19 @@ package at.kraweu.starscroller;
 public class Wave
 {
     public Enemies enemies;
+    public Level level;
+    public int Nr;
+    public int timeToStart = 0;
 
-    public Wave()
+    public Wave(Level level, int timeToStart)
     {
-        enemies = new Enemies();
+        this.level = level;
+        this.timeToStart = timeToStart;
+        enemies = new Enemies(level);
+    }
+
+    public void started()
+    {
+        enemies.started();
     }
 }

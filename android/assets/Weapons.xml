@@ -4,7 +4,7 @@
         <shotpos x="5" y="20"/>
         <asset>Guns_and_engines/weapon2</asset>
         <projectile>
-            <damage>1</damage>
+            <damage>2</damage>
             <speed x="0" y="1000"/>
             <size x="3" y="12"/>
             <accelleration>1</accelleration>
