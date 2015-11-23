@@ -7,10 +7,7 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Group;
 import com.badlogic.gdx.scenes.scene2d.Stage;
-import com.badlogic.gdx.scenes.scene2d.ui.Label;
-import com.badlogic.gdx.scenes.scene2d.ui.Skin;
-import com.badlogic.gdx.scenes.scene2d.ui.Table;
-import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
+import com.badlogic.gdx.scenes.scene2d.ui.*;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 import com.badlogic.gdx.utils.Align;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
@@ -20,6 +17,7 @@ import com.badlogic.gdx.utils.viewport.ScreenViewport;
  */
 public class StartMenuScreen implements Screen
 {
+    private Background background;
     private Stage stage;
     private Skin skin;
     private Group ui;
@@ -38,11 +36,12 @@ public class StartMenuScreen implements Screen
         skin = new Skin(Gdx.files.internal("uiskin.json"));
         ui = new Group();
         Table mainTable = new Table();
-        mainTable.defaults().pad(10);
+        mainTable.defaults().pad(30);
         mainTable.center();
+        mainTable.top().padTop(50);
         mainTable.setFillParent(true);
-        mainTable.setDebug(true);
-        mainTable.add(label("Starscroller", Color.NAVY));
+//        mainTable.setDebug(true);
+        mainTable.add(label("Starscroller", Color.NAVY)).pad(120);
         mainTable.row();
         ButtonStart buttonStart = new ButtonStart();
         mainTable.add(buttonStart.getbutton());
@@ -69,6 +68,10 @@ public class StartMenuScreen implements Screen
                     System.out.println("Starting");
                     game.setScreen(new GameScreen(game, game.player, game.levels[0]));//TODO levels
                 }
+            });
+            buttonStart.addListener(new TextTooltip("Start new Game", skin)
+            {
+
             });
         }
 
