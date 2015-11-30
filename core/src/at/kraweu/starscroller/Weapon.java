@@ -5,7 +5,7 @@ package at.kraweu.starscroller;
  */
 public class Weapon
 {
-    float nextshot = 0;
+    private float nextShot = 0;
 
     String name = null;
 
@@ -24,18 +24,22 @@ public class Weapon
 
     public Projectile shoot(float shipposx, float shipposy, int sizeShipx, int sizeShipy)
     {
-        if (nextshot == 0)
+        if (nextShot == 0)
         {
-            nextshot = type.getReloadtime();
-            System.out.println("dmg " + type.getDamage() + " shippos " + shipposx + "+" + slot.posx + "+" + type.shotposx + " " + shipposy + "+" + slot.posy + "+" + type.shotposy + " " + type.getSpeedx() + type.getSpeedy() + type.projectileasset);
+            nextShot = type.getReloadtime();
+            System.out.println(type.getReloadtime());
+//            System.out.println("dmg " + type.getDamage() + " shippos " + shipposx + "+" + slot.posx + "+" + type.shotposx + " " + shipposy + "+" + slot.posy + "+" + type.shotposy + " " + type.getSpeedx() + type.getSpeedy() + type.projectileasset);
             return new Projectile(type.getDamage(), shipposx + slot.posx + type.shotposx, shipposy + slot.posy + type.shotposy, type.getSpeedx(), type.getSpeedy(), type.getRotation(), type.projectileasset);
         }
         return null;
     }
     public void reload(float delta)
     {
-        if (nextshot != 0)
-            nextshot = nextshot - delta < 0 ? 0 : nextshot - delta;
+        if (nextShot != 0)
+        {
+            nextShot = nextShot - delta < 0 ? 0 : nextShot - delta;
+            System.out.println(nextShot + " " + delta);
+        }
     }
 
     public String getName()
@@ -95,5 +99,11 @@ public class Weapon
         copy.setLevel(this.getLevel());
         copy.setSlot(newslot);
         return copy;
+    }
+
+
+    public float getNextShot()
+    {
+        return nextShot;
     }
 }

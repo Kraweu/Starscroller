@@ -1,6 +1,6 @@
 <weapontypes>
     <weapontype Name="Laser">
-        <reloadtime>0.4</reloadtime>
+        <reloadtime>0.1</reloadtime>
         <shotpos x="5" y="20"/>
         <asset>Guns_and_engines/weapon2</asset>
         <projectile>

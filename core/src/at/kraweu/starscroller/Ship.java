@@ -35,7 +35,11 @@ public class Ship
         Ship copy = new Ship();
         copy.speed = this.speed;
         copy.health = this.health;
-        copy.weaponSlots = this.weaponSlots;
+        copy.weaponSlots = new WeaponSlot[this.weaponSlots.length];
+        for (int i = 0; i < weaponSlots.length; i++)
+        {
+            copy.weaponSlots[i] = this.weaponSlots[i].clone();
+        }
         copy.asset = this.asset;
 
         return copy;
@@ -208,7 +212,7 @@ public class Ship
     {
         for (int i = 0; i < weaponSlots.length; i++)
         {
-            if (weaponSlots[i].getWeapon().nextshot == 0)
+            if (weaponSlots[i].getWeapon().getNextShot() == 0)
             {
                 projectiles.add(weaponSlots[i].getWeapon().shoot(getPosx(), getPosy(), getSizex(), getSizey()));
             }
