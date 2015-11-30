@@ -13,8 +13,8 @@ import java.util.Set;
 public class Ship
 {
     private String name = null;
-    private double speed = 1;
-    private double health = 100;
+    private float speed = 1;
+    private float health = 100;
     private String asset = null;
     private MovementInterface owner = null;
     private WeaponSlot[] weaponSlots = null;
@@ -27,8 +27,8 @@ public class Ship
      * Height
      */
     private int sizey = 1;
-    private double posx = 50;
-    private double posy = 50;
+    private float posx = 50;
+    private float posy = 50;
     @Override
     public Ship clone()//whithout Projectiles
     {
@@ -51,22 +51,22 @@ public class Ship
         this.name = name;
     }
 
-    public double getSpeed()
+    public float getSpeed()
     {
         return speed;
     }
 
-    public void setSpeed(double speed)
+    public void setSpeed(float speed)
     {
         this.speed = speed;
     }
 
-    public double getHealth()
+    public float getHealth()
     {
         return health;
     }
 
-    public void setHealth(double health)
+    public void setHealth(float health)
     {
         this.health = health;
     }
@@ -128,7 +128,7 @@ public class Ship
         this.sizey = sizey;
     }
 
-    public double getPosx()
+    public float getPosx()
     {
         return posx;
     }
@@ -138,12 +138,12 @@ public class Ship
         return (int) posx;
     }
 
-    public void setPosx(double posx)
+    public void setPosx(float posx)
     {
         this.posx = posx;
     }
 
-    public double getPosy()
+    public float getPosy()
     {
         return posy;
     }
@@ -153,7 +153,7 @@ public class Ship
         return (int) posy;
     }
 
-    public void setPosy(double posy)
+    public void setPosy(float posy)
     {
         this.posy = posy;
     }

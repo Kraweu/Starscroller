@@ -5,7 +5,7 @@ package at.kraweu.starscroller;
  */
 public class Weapon
 {
-    double nextshot = 0;
+    float nextshot = 0;
 
     String name = null;
 
@@ -14,7 +14,7 @@ public class Weapon
 
     //todo Implement level and Damagemultiplier into damage calculation
     int level = 0;
-    double damagemultiplier = 1;
+    float damagemultiplier = 1;
 
     public Weapon(WeaponType type, String name)
     {
@@ -22,12 +22,12 @@ public class Weapon
         this.name = name;
     }
 
-    public Projectile shoot(double shipposx, double shipposy, int sizeShipx, int sizeShipy)
+    public Projectile shoot(float shipposx, float shipposy, int sizeShipx, int sizeShipy)
     {
         if (nextshot == 0)
         {
             nextshot = type.getReloadtime();
-            System.out.println("dmg " + type.getDamage() + " shippos " + new Double(shipposx).floatValue() + "+" + slot.posx + "+" + type.shotposx + " " + new Double(shipposy).floatValue() + "+" + slot.posy + "+" + type.shotposy + " " + type.getSpeedx() + type.getSpeedy() + type.projectileasset);
+            System.out.println("dmg " + type.getDamage() + " shippos " + shipposx + "+" + slot.posx + "+" + type.shotposx + " " + shipposy + "+" + slot.posy + "+" + type.shotposy + " " + type.getSpeedx() + type.getSpeedy() + type.projectileasset);
             return new Projectile(type.getDamage(), shipposx + slot.posx + type.shotposx, shipposy + slot.posy + type.shotposy, type.getSpeedx(), type.getSpeedy(), type.getRotation(), type.projectileasset);
         }
         return null;
@@ -78,12 +78,12 @@ public class Weapon
         this.level = level;
     }
 
-    public double getDamagemultiplier()
+    public float getDamagemultiplier()
     {
         return damagemultiplier;
     }
 
-    public void setDamagemultiplier(double damagemultiplier)
+    public void setDamagemultiplier(float damagemultiplier)
     {
         this.damagemultiplier = damagemultiplier;
     }

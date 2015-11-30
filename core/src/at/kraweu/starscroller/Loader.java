@@ -163,8 +163,8 @@ public class Loader
                         try
                         {
                             Element element = (Element) tempnode;
-                            levels[i].waves[currentwave].Nr = (int) Double.parseDouble(element.getAttribute("Nr"));
-                            levels[i].waves[currentwave].timeToStart = ((int) Double.parseDouble(element.getAttribute("timeToStart")));
+                            levels[i].waves[currentwave].Nr = (int) Float.parseFloat(element.getAttribute("Nr"));
+                            levels[i].waves[currentwave].timeToStart = ((int) Float.parseFloat(element.getAttribute("timeToStart")));
                         } catch (NumberFormatException e)
                         {
                             System.out.println("Format error in Level: " + levels[i].name);
@@ -218,8 +218,8 @@ public class Loader
                             try
                             {
                                 Element element = (Element) tempnode;
-                                enemies[currentenemy].getShip().setPosx(Double.parseDouble(element.getAttribute("x")));
-                                enemies[currentenemy].getShip().setPosy(Double.parseDouble(element.getAttribute("y")));
+                                enemies[currentenemy].getShip().setPosx(Float.parseFloat(element.getAttribute("x")));
+                                enemies[currentenemy].getShip().setPosy(Float.parseFloat(element.getAttribute("y")));
                             } catch (NumberFormatException e)
                             {
                                 enemies[currentenemy].loadingError();
@@ -264,7 +264,7 @@ public class Loader
                 {
                     try
                     {
-                        ships[i].setSpeed(Double.parseDouble(tempnode.getFirstChild().getNodeValue()));
+                        ships[i].setSpeed(Float.parseFloat(tempnode.getFirstChild().getNodeValue()));
                     } catch (NumberFormatException e)
                     {
 
@@ -276,7 +276,7 @@ public class Loader
                 {
                     try
                     {
-                        ships[i].setHealth(Double.parseDouble(tempnode.getFirstChild().getNodeValue()));
+                        ships[i].setHealth(Float.parseFloat(tempnode.getFirstChild().getNodeValue()));
                     } catch (NumberFormatException e)
                     {
 
@@ -407,13 +407,13 @@ public class Loader
 
                 Element elementparent = (Element) weaponTypeList.item(i);
                 weaponTypes[i].setName(elementparent.getAttribute("Name"));
-                //ToDO Sort out where double instead of int needs to be parsed
+                //ToDO Sort out where Float instead of int needs to be parsed
                 tempnode = getChild(weaponTypeList.item(i), "reloadtime");
                 if (tempnode != null)
                 {
                     try
                     {
-                        weaponTypes[i].setReloadtime(Double.parseDouble(tempnode.getFirstChild().getNodeValue()));
+                        weaponTypes[i].setReloadtime(Float.parseFloat(tempnode.getFirstChild().getNodeValue()));
                     } catch (NumberFormatException e)
                     {
 

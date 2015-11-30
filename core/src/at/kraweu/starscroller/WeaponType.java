@@ -11,19 +11,19 @@ public class WeaponType
     String name = "unnamed";
 
 
-    double reloadtime = 1;
+    float reloadtime = 1;
     int shotposx; //Position relative to the Weapons left upper corner
     int shotposy;
     String asset = null;
 
     //Projectile properties
 
-    private double damage = 1;
-    private double speedx;
-    private double speedy;
-    private double acceleration = 0;
-    private double swaying = 0;
-    private double rotation = 0;
+    private float damage = 1;
+    private float speedx;
+    private float speedy;
+    private float acceleration = 0;
+    private float swaying = 0;
+    private float rotation = 0;
     String projectileasset = null;
 
 
@@ -50,7 +50,7 @@ public class WeaponType
         this.asset = asset;
     }
 
-    public double getShotposx()
+    public float getShotposx()
     {
         return shotposx;
     }
@@ -60,7 +60,7 @@ public class WeaponType
         this.shotposx = shotposx;
     }
 
-    public double getShotposy()
+    public float getShotposy()
     {
         return shotposy;
     }
@@ -70,12 +70,12 @@ public class WeaponType
         this.shotposy = shotposy;
     }
 
-    public double getReloadtime()
+    public float getReloadtime()
     {
         return reloadtime;
     }
 
-    public void setReloadtime(double reloadtime)
+    public void setReloadtime(float reloadtime)
     {
         this.reloadtime = reloadtime;
     }
@@ -90,62 +90,62 @@ public class WeaponType
         this.projectileasset = projectileasset;
     }
 
-    public double getRotation()
+    public float getRotation()
     {
         return rotation;
     }
 
-    public void setRotation(double rotation)
+    public void setRotation(float rotation)
     {
         this.rotation = rotation;
     }
 
-    public double getSwaying()
+    public float getSwaying()
     {
         return swaying;
     }
 
-    public void setSwaying(double swaying)
+    public void setSwaying(float swaying)
     {
         this.swaying = swaying;
     }
 
-    public double getAcceleration()
+    public float getAcceleration()
     {
         return acceleration;
     }
 
-    public void setAcceleration(double acceleration)
+    public void setAcceleration(float acceleration)
     {
         this.acceleration = acceleration;
     }
 
-    public double getDamage()
+    public float getDamage()
     {
         return damage;
     }
 
-    public void setDamage(double damage)
+    public void setDamage(float damage)
     {
         this.damage = damage;
     }
 
-    public double getSpeedx()
+    public float getSpeedx()
     {
         return speedx;
     }
 
-    public void setSpeedx(double speedx)
+    public void setSpeedx(float speedx)
     {
         this.speedx = speedx;
     }
 
-    public double getSpeedy()
+    public float getSpeedy()
     {
         return speedy;
     }
 
-    public void setSpeedy(double speedy)
+    public void setSpeedy(float speedy)
     {
         this.speedy = speedy;
     }

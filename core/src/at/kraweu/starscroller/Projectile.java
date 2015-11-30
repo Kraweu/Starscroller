@@ -14,19 +14,19 @@ public class Projectile
 {
     boolean deleted = false;
 
-    double damage = 1;
-    double posx;
-    double posy;
-    double speedx;
-    double speedy;
+    float damage = 1;
+    float posx;
+    float posy;
+    float speedx;
+    float speedy;
 
     String asset = null;
 
-    double acceleration = 0;
-    double swaying = 0;
-    double rotation = 0;
+    float acceleration = 0;
+    float swaying = 0;
+    float rotation = 0;
 
-    public Projectile(double damage, double posx, double posy, double speedx, double speedy, double rotation, String asset)
+    public Projectile(float damage, float posx, float posy, float speedx, float speedy, float rotation, String asset)
     {
         this.damage = damage;
         this.posx = posx;
@@ -52,7 +52,7 @@ public class Projectile
         }
     }
 
-    public double getAcceleration()
+    public float getAcceleration()
     {
         return acceleration;
     }
@@ -67,52 +67,52 @@ public class Projectile
         this.deleted = deleted;
     }
 
-    public double getDamage()
+    public float getDamage()
     {
         return damage;
     }
 
-    public void setDamage(double damage)
+    public void setDamage(float damage)
     {
         this.damage = damage;
     }
 
-    public double getPosx()
+    public float getPosx()
     {
         return posx;
     }
 
-    public void setPosx(double posx)
+    public void setPosx(float posx)
     {
         this.posx = posx;
     }
 
-    public double getPosy()
+    public float getPosy()
     {
         return posy;
     }
 
-    public void setPosy(double posy)
+    public void setPosy(float posy)
     {
         this.posy = posy;
     }
 
-    public double getSpeedx()
+    public float getSpeedx()
     {
         return speedx;
     }
 
-    public void setSpeedx(double speedx)
+    public void setSpeedx(float speedx)
     {
         this.speedx = speedx;
     }
 
-    public double getSpeedy()
+    public float getSpeedy()
     {
         return speedy;
     }
 
-    public void setSpeedy(double speedy)
+    public void setSpeedy(float speedy)
     {
         this.speedy = speedy;
     }
@@ -128,26 +128,27 @@ public class Projectile
         this.asset = asset;
     }
 
-    public void setAcceleration(double acceleration)
+    public void setAcceleration(float acceleration)
     {
         this.acceleration = acceleration;
     }
 
-    public double getSwaying()
+    public float getSwaying()
     {
         return swaying;
     }
 
-    public void setSwaying(double swaying)
+    public void setSwaying(float swaying)
     {
         this.swaying = swaying;
     }
-    public double getRotation()
+
+    public float getRotation()
     {
         return rotation;
     }
 
-    public void setRotation(double rotation)
+    public void setRotation(float rotation)
     {
         this.rotation = rotation;
     }

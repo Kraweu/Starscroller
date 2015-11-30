@@ -21,21 +21,25 @@ public interface MovementInterface
 
     void setDownMove(boolean downMove);
 
-    double getSpeedx();
+    float getSpeedx();
 
-    double getSpeedy();
+    float getSpeedy();
 
-    double getSpeed();
+    float getSpeed();
 
-    void setSpeed(double speed);
+    void setSpeed(float speed);
 
-    double setBreakspeed();
+    float setBreakspeed();
 
-    double getBreakspeed();
+    float getBreakspeed();
 
-    void setSpeedx(double speedx);
+    void setSpeedx(float speedx);
 
-    void setSpeedy(double speedy);
+    void setSpeedy(float speedy);
+
+    float getPosx();
+
+    float getPosy();
 
     void hit(Projectile proj);
 

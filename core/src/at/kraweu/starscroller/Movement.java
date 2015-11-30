@@ -41,12 +41,12 @@ public class Movement
             obj.setSpeedx(0);
         else
         {
-            obj.setSpeedx((obj.getSpeedx() * (0.8 + (0.2 * (1 - delta * 50)))));
+            obj.setSpeedx((obj.getSpeedx() * (0.8f + (0.2f * (1 - delta * 50)))));
         }
         if (obj.getSpeedy() < 0.2 && obj.getSpeedy() > -0.2)
             obj.setSpeedy(0);
         else
-            obj.setSpeedy((obj.getSpeedy() * (0.8 + (0.2 * (1 - delta * 50)))));
+            obj.setSpeedy((obj.getSpeedy() * (0.8f + (0.2f * (1 - delta * 50)))));
 
 
 //        //Breaking

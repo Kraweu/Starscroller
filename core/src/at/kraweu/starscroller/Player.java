@@ -15,18 +15,12 @@ public class Player implements MovementInterface
 
     private boolean shoot;
 
-    private int sizeshipx = 0;
-    private int sizeshipy = 0;
+    private float speed = 1;
 
-    private double posx = (Starscroller.gamewidth / 2) - 100; //Zentriert
-    private double posy = 100;
+    private float speedx = 0;//HorizontalSpeed
+    private float speedy = 0;//VerticalSpeed
 
-    private double speed = 1;
-
-    private double speedx = 0;//HorizontalSpeed
-    private double speedy = 0;//VerticalSpeed
-
-    private double breakspeed = 2f;
+    private float breakspeed = 2f;
 
     private Ship ship;
     private boolean beingdestroyed;
@@ -212,49 +206,49 @@ public class Player implements MovementInterface
     }
 
     @Override
-    public double getSpeedx()
+    public float getSpeedx()
     {
         return speedx;
     }
 
     @Override
-    public double getSpeedy()
+    public float getSpeedy()
     {
         return speedy;
     }
 
     @Override
-    public void setSpeedx(double speedx)
+    public void setSpeedx(float speedx)
     {
         this.speedx = speedx;
     }
 
     @Override
-    public void setSpeedy(double speedy)
+    public void setSpeedy(float speedy)
     {
         this.speedy = speedy;
     }
 
     @Override
-    public double getSpeed()
+    public float getSpeed()
     {
         return speed;
     }
 
     @Override
-    public void setSpeed(double speed)
+    public void setSpeed(float speed)
     {
         this.speed = speed;
     }
 
     @Override
-    public double setBreakspeed()
+    public float setBreakspeed()
     {
         return 0;
     }
 
     @Override
-    public double getBreakspeed()
+    public float getBreakspeed()
     {
         return breakspeed;
     }
@@ -269,6 +263,18 @@ public class Player implements MovementInterface
     public boolean isDestroyed()
     {
         return destroyed;
+    }
+
+    @Override
+    public float getPosx()
+    {
+        return ship.getPosx();
+    }
+
+    @Override
+    public float getPosy()
+    {
+        return ship.getPosy();
     }
 
     @Override
