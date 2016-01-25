@@ -242,9 +242,9 @@ public class Player implements MovementInterface
     }
 
     @Override
-    public float setBreakspeed()
+    public void setBreakspeed(float breakspeed)
     {
-        return 0;
+        ship.setBreakspeed(breakspeed);
     }
 
     @Override

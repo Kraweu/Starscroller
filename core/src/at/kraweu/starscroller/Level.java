@@ -26,7 +26,7 @@ public class Level
     public void prepare()
     {
         background.setAsset("Backgrounds/SpaceBackground3cut");
-        spawnedenemies.addEnemies(waves[0].enemies);
+//        spawnedenemies.addEnemies(waves[0].enemies);
         started=true;
     }
 
@@ -42,7 +42,7 @@ public class Level
         //Wave Spawning
         if (time >= waves[nextWave].timeToStart && !allspawned)
         {
-            waves[nextWave].started();
+            waves[nextWave].start();
             spawnedenemies.addEnemies(waves[nextWave].enemies);
             if (!allspawned && nextWave + 1 < waves.length)
                 nextWave++;

@@ -1,6 +1,7 @@
 package at.kraweu.starscroller;
 
 import at.kraweu.xmlParser.MyDocument;
+import com.badlogic.gdx.math.Vector2;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
@@ -105,11 +106,11 @@ public class Loader
                 Wave[] waves = null;
                 NodeList levelchildren = null;
 
+                //Get childnodes if available
                 if (levelList.item(i).hasChildNodes())
                     levelchildren = levelList.item(i).getChildNodes();
                 else
                     continue;
-
 
                 tempnode = levelList.item(i);
                 if (tempnode != null)
@@ -200,7 +201,7 @@ public class Loader
                                 String name = tempnode.getAttributes().getNamedItem("Name").getNodeValue();
                                 Ship ship = Ship.getShipFromArray(ships, name);
                                 if (ship != null)
-                                    enemies[currentenemy].setShip(ship.clone(), assets);
+                                    enemies[currentenemy].setShip(ship.myClone(), assets);
                                 else
                                 {
                                     System.out.println("Enemy Asset not found, Enemy not loaded");
@@ -212,19 +213,22 @@ public class Loader
                                 System.out.println("Nullpointer Exception while loading enemies");
                             }
                         }
-                        tempnode = getChild(enemyNodes[currentenemy], "position");
-                        if (tempnode != null)
+
+                        NodeList positions = getChild(enemyNodes[currentenemy], "positions").getChildNodes();
+
+                        for (int j = 0; j < positions.getLength(); j++)
                         {
-                            try
+                            if (positions.item(j) instanceof Element)
                             {
-                                Element element = (Element) tempnode;
-                                enemies[currentenemy].getShip().setPosx(Float.parseFloat(element.getAttribute("x")));
-                                enemies[currentenemy].getShip().setPosy(Float.parseFloat(element.getAttribute("y")));
-                            } catch (NumberFormatException e)
-                            {
-                                enemies[currentenemy].loadingError();
+                                int x = getIntAttribute(positions.item(j), "position", "x");
+                                int y = getIntAttribute(positions.item(j), "position", "y");
+                                if (x != Integer.MAX_VALUE && y != Integer.MAX_VALUE)
+                                    enemies[currentenemy].moveAI.waypoints.add(new Vector2(x, y));
                             }
                         }
+                        enemies[currentenemy].getShip().setPosx(enemies[currentenemy].moveAI.waypoints.peekFirst().x);
+                        enemies[currentenemy].getShip().setPosy(enemies[currentenemy].moveAI.waypoints.peekFirst().y);
+                        enemies[currentenemy].getShip().setRotation(180);
                     }
 
 
@@ -259,42 +263,15 @@ public class Loader
                 Element elementparent = (Element) shipList.item(i);
                 ships[i].setName(elementparent.getAttribute("Name"));
 
-                tempnode = getChild(shipList.item(i), "speed");
-                if (tempnode != null)
-                {
-                    try
-                    {
-                        ships[i].setSpeed(Float.parseFloat(tempnode.getFirstChild().getNodeValue()));
-                    } catch (NumberFormatException e)
-                    {
+                ships[i].setSpeed((float) getdoubleValueofChild(shipList.item(i), "speed"));
 
-                    }
-                }
+                ships[i].setHealth((float) getdoubleValueofChild(shipList.item(i), "health"));
 
-                tempnode = getChild(shipList.item(i), "health");
-                if (tempnode != null)
-                {
-                    try
-                    {
-                        ships[i].setHealth(Float.parseFloat(tempnode.getFirstChild().getNodeValue()));
-                    } catch (NumberFormatException e)
-                    {
+                String asset = getValueofChild(shipList.item(i), "asset");
 
-                    }
-                }
+                ships[i].setAsset(asset, assets.getRegion(asset).packedWidth, assets.getRegion(asset).packedHeight);
 
-                tempnode = getChild(shipList.item(i), "asset");
-                if (tempnode != null)
-                {
-                    try
-                    {
-                        String asset = tempnode.getFirstChild().getNodeValue();
-                        ships[i].setAsset(asset, assets.getRegion(asset).packedWidth, assets.getRegion(asset).packedHeight);
-                    } catch (NumberFormatException e)
-                    {
 
-                    }
-                }
                 int weaponslotcount = 0;
                 for (Node child = shipList.item(i).getFirstChild(); child != null; child = child.getNextSibling())
                 {
@@ -310,21 +287,7 @@ public class Loader
                 {
                     if (child.getNodeName().equals("weaponslot"))
                     {
-                        tempnode = getChild(child, "position");
-                        if (tempnode != null)
-                        {
-                            try
-                            {
-                                Element element = (Element) tempnode;
-                                int x = 0, y = 0;
-                                x = Integer.parseInt(element.getAttribute("x"));
-                                y = Integer.parseInt(element.getAttribute("y"));
-                                weaponSlots[j] = new WeaponSlot(x, y);
-                            } catch (NumberFormatException e)
-                            {
-
-                            }
-                        }
+                        weaponSlots[j] = new WeaponSlot(getIntAttributeofChild(child, "position", "x"), getIntAttributeofChild(child, "position", "y"));
 
                         String name = (((Element) getChild(child, "weapon")).getAttribute("Name"));
 
@@ -407,65 +370,29 @@ public class Loader
 
                 Element elementparent = (Element) weaponTypeList.item(i);
                 weaponTypes[i].setName(elementparent.getAttribute("Name"));
-                //ToDO Sort out where Float instead of int needs to be parsed
-                tempnode = getChild(weaponTypeList.item(i), "reloadtime");
-                if (tempnode != null)
-                {
-                    try
-                    {
-                        weaponTypes[i].setReloadtime(Float.parseFloat(tempnode.getFirstChild().getNodeValue()));
-                    } catch (NumberFormatException e)
-                    {
 
-                    }
+                weaponTypes[i].setReloadtime((float) getdoubleValueofChild(weaponTypeList.item(i), "reloadtime"));
 
-                }
+                weaponTypes[i].setShotposx(getIntAttributeofChild(weaponTypeList.item(i), "shotpos", "x"));
+                weaponTypes[i].setShotposy(getIntAttributeofChild(weaponTypeList.item(i), "shotpos", "y"));
 
-                tempnode = getChild(weaponTypeList.item(i), "shotpos");
-                if (tempnode != null)
-                {
-                    Element element = (Element) tempnode;
-                    weaponTypes[i].setShotposx(Integer.parseInt(element.getAttribute("x")));
-                    weaponTypes[i].setShotposy(Integer.parseInt(element.getAttribute("y")));
-                }
-
-                tempnode = getChild(weaponTypeList.item(i), "asset");
-                if (tempnode != null)
-                    weaponTypes[i].setAsset(tempnode.getFirstChild().getNodeValue());
-
-
+                weaponTypes[i].setAsset(getValueofChild(weaponTypeList.item(i), "asset"));
 
 
                 //Projectile
                 Node projectile = getChild(weaponTypeList.item(i), "projectile");
-                tempnode = getChild(projectile, "damage");
-                if (tempnode != null)
-                    weaponTypes[i].setDamage(Integer.parseInt(tempnode.getFirstChild().getNodeValue()));
 
-                tempnode = getChild(projectile, "speed");
-                if (tempnode != null)
-                {
-                    Element element = (Element) tempnode;
-                    weaponTypes[i].setSpeedx(Integer.parseInt(element.getAttribute("x")));
-                    weaponTypes[i].setSpeedy(Integer.parseInt(element.getAttribute("y")));
+                weaponTypes[i].setDamage((float) getdoubleValueofChild(projectile, "damage"));
 
-                }
+                //ToDO Float instead of int
+                weaponTypes[i].setSpeedx(getIntAttributeofChild(projectile, "speed", "x"));
+                weaponTypes[i].setSpeedy(getIntAttributeofChild(projectile, "speed", "y"));
 
-                tempnode = getChild(projectile, "accelleration");
-                if (tempnode != null)
-                    weaponTypes[i].setAcceleration(Integer.parseInt(tempnode.getFirstChild().getNodeValue()));
+                weaponTypes[i].setAcceleration((float) getdoubleValueofChild(projectile, "accelleration"));
+                weaponTypes[i].setSwaying((float) getdoubleValueofChild(projectile, "swaying"));
+                weaponTypes[i].setRotation((float) getdoubleValueofChild(projectile, "rotation"));
 
-                tempnode = getChild(projectile, "swaying");
-                if (tempnode != null)
-                    weaponTypes[i].setSwaying(Integer.parseInt(tempnode.getFirstChild().getNodeValue()));
-
-                tempnode = getChild(projectile, "rotation");
-                if (tempnode != null)
-                    weaponTypes[i].setRotation(Integer.parseInt(tempnode.getFirstChild().getNodeValue()));
-                tempnode = getChild(projectile, "asset");
-
-                if (tempnode != null)
-                    weaponTypes[i].setProjectileasset(tempnode.getFirstChild().getNodeValue());
+                weaponTypes[i].setProjectileasset(getValueofChild(projectile, "asset"));
             }
         }
         if (weaponTypes != null)
@@ -477,11 +404,157 @@ public class Loader
         }
     }
 
+    public static String getValueofChild(Node node, String name)
+    {
+        Node child = getChild(node, name);
+        if (child != null)
+            return child.getFirstChild().getNodeValue();
+        else
+            return null;
+    }
+
+    public static int getintValueofChild(Node node, String name)
+    {
+        String text = getValueofChild(node, name);
+        if (text == null)
+        {
+            System.out.println("Loading error: Node " + name + " Integer value is missing");
+            return -1;
+        }
+        if (isValidInt(text))
+        {
+            return Integer.parseInt(text);
+        } else
+        {
+            System.out.println("Loading error: Node " + name + " not an Integer value");
+            return -1;
+        }
+    }
+
+    public static double getdoubleValueofChild(Node node, String name)
+    {
+        String text = getValueofChild(node, name);
+        if (text == null)
+        {
+            System.out.println("Loading error: Node " + name + " double value is missing");
+            return -1;
+        }
+        try
+        {
+            return Double.parseDouble(text);
+        } catch (NumberFormatException e)
+        {
+            System.out.println("Loading error: Node " + name + " not an Double value");
+            return -1;
+        }
+    }
+
+    public static String getAttribute(Node node, String attribute)
+    {
+        Element elem = (Element) node;
+        String text = null;
+        if (elem != null)
+            text = elem.getAttribute(attribute);
+        else
+        {
+            System.out.println("Node for Attribute " + attribute + " not found");
+            return null;
+        }
+        if (text == null)
+        {
+            System.out.println("Loading error: Node " + elem.getTagName() + " attribute " + attribute + " Value is missing");
+            return null;
+        }
+        return text;
+    }
+
+    public static String getAttribute(Node node, String nodename, String attribute)
+    {
+        Element elem = (Element) node;
+        if (elem != null)
+        {
+            if (elem.getTagName().equals(nodename))
+            {
+                return getAttribute(node, attribute);
+            }
+        }
+        return null;
+    }
+
+    public static int getIntAttribute(Node node, String nodename, String attribute)
+    {
+        String text = getAttribute(node, nodename, attribute);
+        if (text == null)
+        {
+            System.out.println("Int Value missing");
+            return Integer.MAX_VALUE;
+        }
+        if (isValidInt(text))
+        {
+            return Integer.parseInt(text);
+        } else
+        {
+            System.out.println("Loading error: Node " + nodename + " Attribute " + attribute + " not an Integer value");
+            return Integer.MAX_VALUE;
+        }
+    }
+
+    public static String getAttributeofChild(Node node, String child, String attribute)
+    {
+        Element childelem = (Element) getChild(node, child);
+        String text = null;
+        if (childelem != null)
+            text = childelem.getAttribute(attribute);
+        else
+            System.out.println("Node " + child + " for Attribute " + attribute + " not found");
+        if (text == null)
+        {
+            System.out.println("Loading error: Node " + child + " attribute " + attribute + " Value is missing");
+            return null;
+        }
+        return text;
+    }
+
+    public static int getIntAttributeofChild(Node node, String child, String attribute)
+    {
+        String text = getAttributeofChild(node, child, attribute);
+        if (text == null)
+        {
+            System.out.println("Int Value missing");
+            return -1;
+        }
+        if (isValidInt(text))
+        {
+            return Integer.parseInt(text);
+        } else
+        {
+            System.out.println("Loading error: Node " + child + " Attribute " + attribute + " not an Integer value");
+            return -1;
+        }
+    }
+
+    static boolean isValidInt(String text)
+    {
+        for (int i = 0; i < text.length(); i++)
+        {
+            if (i == 0 && text.charAt(i) == '-')
+                continue;
+            if (!Character.isDigit(text.charAt(i)))
+            {
+                return false;
+            }
+
+        }
+        return true;
+    }
+
     /**
      * Returns First Child with given name
      */
     public static Node getChild(Node parent, String name)
     {
+        if (name == null)
+            return null;
         if (parent != null)
         {
             for (Node child = parent.getFirstChild(); child != null; child = child.getNextSibling())
@@ -494,5 +567,24 @@ public class Loader
         }
         return null;
     }
+//    /**
+//     * Returns First Sibling with given name
+//     */
+//    public static Node getSibling(Node first, String siblingName)
+//    {
+//        if (siblingName==null)
+//            return null;
+//        if (first != null)
+//        {
+//            for (Node sibling = first; sibling != null; sibling = sibling.getNextSibling())
+//            {
+//                if (siblingName.equals(sibling.getNodeName()))
+//                {
+//                    return sibling;
+//                }
+//            }
+//        }
+//        return null;
+//    }
 
 }

@@ -18,8 +18,8 @@ public class Wave
         enemies = new Enemies(level);
     }
 
-    public void started()
+    public void start()
     {
-        enemies.started();
+        enemies.start();
     }
 }

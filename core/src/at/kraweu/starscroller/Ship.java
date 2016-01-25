@@ -14,6 +14,7 @@ public class Ship
 {
     private String name = null;
     private float speed = 1;
+    private float breakspeed = 1;
     private float health = 100;
     private String asset = null;
     private MovementInterface owner = null;
@@ -29,8 +30,10 @@ public class Ship
     private int sizey = 1;
     private float posx = 50;
     private float posy = 50;
-    @Override
-    public Ship clone()//whithout Projectiles
+
+    private int rotation = 0;
+
+    public Ship myClone()//whithout Projectiles
     {
         Ship copy = new Ship();
         copy.speed = this.speed;
@@ -63,6 +66,16 @@ public class Ship
     public void setSpeed(float speed)
     {
         this.speed = speed;
+    }
+
+    public float getBreakspeed()
+    {
+        return breakspeed;
+    }
+
+    public void setBreakspeed(float breakspeed)
+    {
+        this.breakspeed = breakspeed;
     }
 
     public float getHealth()
@@ -204,7 +217,7 @@ public class Ship
             batch.draw(textureRegion, (float) (weaponSlots[i].posx + getPosx()), (float) (weaponSlots[i].posy + getPosy()));
         }
         //Ship
-        batch.draw(assets.getRegion(getAsset()), (float) getPosx(), (float) getPosy());
+        batch.draw(assets.getRegion(getAsset()), (float) getPosx(), (float) getPosy(), getSizex() / 2, getSizey() / 2, getSizex(), getSizey(), 1, 1, getRotation());
 
     }
 
@@ -258,5 +271,13 @@ public class Ship
         return null;
     }
 
+    public int getRotation()
+    {
+        return rotation;
+    }
 
+    public void setRotation(int rotation)
+    {
+        this.rotation = rotation;
+    }
 }

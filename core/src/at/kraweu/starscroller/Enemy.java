@@ -20,14 +20,14 @@ public class Enemy implements MovementInterface
      */
     private boolean shoot;
 
-    private float speed = 1;
-
     private float speedx = 0;//HorizontalSpeed
     private float speedy = 0;//VerticalSpeed
 
-    private float breakspeed = 1;
 
     private Enemies enemies;
+    /**
+     * Ship designated to this Enemy
+     */
     private Ship ship;
     public MoveAI moveAI = new MoveAI(this);
 
@@ -166,25 +166,25 @@ public class Enemy implements MovementInterface
     @Override
     public float getSpeed()
     {
-        return speed;
+        return ship.getSpeed();
     }
 
     @Override
     public void setSpeed(float speed)
     {
-        this.speed = speed;
+        ship.setSpeed(speed);
     }
 
     @Override
-    public float setBreakspeed()
+    public void setBreakspeed(float breakspeed)
     {
-        return 0;
+        ship.setBreakspeed(breakspeed);
     }
 
     @Override
     public float getBreakspeed()
     {
-        return breakspeed;
+        return ship.getBreakspeed();
     }
 
     @Override
@@ -260,7 +260,10 @@ public class Enemy implements MovementInterface
             } else
                 destroyed = true;
         }
-        Movement.movement(this, delta);
+//        Movement.movement(this, delta);
+        if (!moveAI.atPosition)
+            moveAI.update(delta);
+        Movement.movementNoCollision(this,delta);
         ship.updateProjectiles(delta, assets);
     }
 }

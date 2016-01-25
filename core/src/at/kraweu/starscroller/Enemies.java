@@ -84,11 +84,11 @@ public class Enemies
             this.addEnemy((Enemy) iter.next());
     }
 
-    public void started()
+    public void start()
     {
         Iterator iter = this.getIterator();
         while (iter.hasNext())
-            ((Enemy) iter.next()).moveAI.started();
+            ((Enemy) iter.next()).moveAI.start();
     }
 
     public boolean isEmpty()

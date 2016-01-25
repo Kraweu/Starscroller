@@ -29,7 +29,7 @@ public interface MovementInterface
 
     void setSpeed(float speed);
 
-    float setBreakspeed();
+    void setBreakspeed(float breakspeed);
 
     float getBreakspeed();
 
@@ -50,4 +50,5 @@ public interface MovementInterface
     boolean isBeingdestroyed();
 
     boolean isDestroyed();
+
 }
