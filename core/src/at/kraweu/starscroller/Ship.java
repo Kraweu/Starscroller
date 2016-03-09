@@ -15,7 +15,12 @@ public class Ship
     private String name = null;
     private float speed = 1;
     private float breakspeed = 1;
+
     private float health = 100;
+    private boolean beingdestroyed;
+    private boolean destroyed;
+    private float destroytime;
+
     private String asset = null;
     private MovementInterface owner = null;
     private WeaponSlot[] weaponSlots = null;
@@ -32,8 +37,10 @@ public class Ship
     private float posy = 50;
 
     private int rotation = 0;
+    private float timetodelete = 2f;
 
-    public Ship myClone()//whithout Projectiles
+
+    public Ship myClone()//without Projectiles
     {
         Ship copy = new Ship();
         copy.speed = this.speed;
@@ -41,7 +48,7 @@ public class Ship
         copy.weaponSlots = new WeaponSlot[this.weaponSlots.length];
         for (int i = 0; i < weaponSlots.length; i++)
         {
-            copy.weaponSlots[i] = this.weaponSlots[i].clone();
+            copy.weaponSlots[i] = this.weaponSlots[i].myClone(copy);
         }
         copy.asset = this.asset;
 
@@ -190,6 +197,35 @@ public class Ship
         this.owner = owner;
     }
 
+    public boolean isBeingdestroyed()
+    {
+        return beingdestroyed;
+    }
+
+    public void setBeingdestroyed(boolean beingdestroyed)
+    {
+        this.beingdestroyed = beingdestroyed;
+    }
+
+    public boolean isDestroyed()
+    {
+        return destroyed;
+    }
+
+    public void setDestroyed(boolean destroyed)
+    {
+        this.destroyed = destroyed;
+    }
+
+    public float getDestroytime()
+    {
+        return destroytime;
+    }
+
+    public void setDestroytime(float destroytime)
+    {
+        this.destroytime = destroytime;
+    }
 
     /**
      * Renders Ship and all Projectiles
@@ -205,19 +241,31 @@ public class Ship
         {
             Projectile proj = (Projectile) iter.next();
             TextureRegion textureRegion = assets.getRegion(proj.getAsset());
-            batch.draw(textureRegion, (float) proj.getPosx() - (textureRegion.getRegionWidth() / 2), (float) proj.getPosy() - (textureRegion.getRegionHeight() / 2),
+            batch.draw(textureRegion,
+                    (float) proj.getPosx() - (textureRegion.getRegionWidth() / 2), (float) proj.getPosy() - (textureRegion.getRegionHeight() / 2),
                     (float) (textureRegion.getRegionWidth() / 2), (float) (textureRegion.getRegionHeight() / 2),
                     textureRegion.getRegionWidth(), textureRegion.getRegionHeight(),
                     1, 1, (float) proj.getRotation());
         }
-        //Weapons
-        for (int i = 0; i < weaponSlots.length; i++)
+
+        if (!beingdestroyed)
         {
-            TextureRegion textureRegion = assets.getRegion(weaponSlots[i].getWeapon().getType().getAsset());
-            batch.draw(textureRegion, (float) (weaponSlots[i].posx + getPosx()), (float) (weaponSlots[i].posy + getPosy()));
+            //Weapons
+            for (int i = 0; i < weaponSlots.length; i++)
+            {
+                TextureRegion textureRegion = assets.getRegion(weaponSlots[i].getWeapon().getType().getAsset());
+                batch.draw(textureRegion, (float) (weaponSlots[i].posx + getPosx()), (float) (weaponSlots[i].posy + getPosy()));
+            }
+            //Ship
+            batch.draw(assets.getRegion(getAsset()),
+                    getPosx(), getPosy(),
+                    (float) getSizex() / 2, (float) getSizex() / 2,
+                    getSizex(), getSizey(), 1, 1, getRotation());
+            //        batch.draw(backgroundlayers.getRegion(getAsset()),
+            //                (float) getPosx()-(getSizex() / 2), (float) getPosy()-(getSizey() / 2),
+            //                getSizex() / 2, getSizey() / 2,
+            //                getSizex(), getSizey(), 1, 1, getRotation());
         }
-        //Ship
-        batch.draw(assets.getRegion(getAsset()), (float) getPosx(), (float) getPosy(), getSizex() / 2, getSizey() / 2, getSizex(), getSizey(), 1, 1, getRotation());
 
     }
 
@@ -233,6 +281,27 @@ public class Ship
         }
     }
 
+    /**
+     * This Ship gets hit by proj
+     */
+    public void hit(Projectile proj)
+    {
+        setHealth(getHealth() - proj.damage);
+        if (getHealth() < 0)
+        {
+            destroyed();
+        }
+    }
+
+    /**
+     * Starts destruction
+     */
+    public void destroyed()
+    {
+        System.out.println("beingDestroyed");
+        beingdestroyed = true;
+    }
+
     public void updateProjectiles(float delta, Assets assets)
     {
         Iterator iter = getProjectilesit();
@@ -243,14 +312,28 @@ public class Ship
             //TODO facilitate level selection
             Iterator<Enemy> enemiesiter = Starscroller.getGame().levels[0].spawnedenemies.getIterator();
             boolean hit = false;
-            while (enemiesiter.hasNext() && !hit)
+            if (this.owner instanceof Player)//Player projectiles
             {
-                if (proj.detectCollision(enemiesiter.next().getShip()))
+                while (enemiesiter.hasNext() && !hit)
                 {
-                    hit = true;
+                    Ship ship = enemiesiter.next().getShip();
+                    if (ship == this)
+                        continue;
+                    if (proj.detectCollision(ship, this))
+                    {
+                        hit = true;
+                        proj.setDeleted(true);
+                    }
+                }
+            } else
+            {
+                if (proj.detectCollision(Starscroller.getGame().player.getShip(), this))
+                {
+//                    hit=true;
                     proj.setDeleted(true);
                 }
             }
+
             if (proj.deleted)
                 iter.remove();
         }
@@ -279,5 +362,17 @@ public class Ship
     public void setRotation(int rotation)
     {
         this.rotation = rotation;
+    }
+
+    public void update(float delta)
+    {
+        if (beingdestroyed)
+        {
+            if (destroytime < timetodelete)
+            {
+                destroytime += delta;
+            } else
+                destroyed = true;
+        }
     }
 }

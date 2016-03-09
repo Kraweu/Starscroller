@@ -2,32 +2,38 @@
     <level Name="TestLevel">
 		<wave Nr="1" timeToStart="3">
 			<enemy>
-				<shiptype Name="Player01"/>
+				<shiptype Name="Enemy01"/>
 				<positions>
-					<position x="-150" y="500"/>
-					<position x="100" y="500"/>
+					<position x="-050" y="700" time="0.5"/>
+					<position x="100" y="500" time="0.5"/>
+					<position x="50" y="500" time="0.5"/>
+					<position x="0" y="500" time="0.5"/>
 				</positions>
 			</enemy>
 			<enemy>
-				<shiptype Name="Player01"/>
+				<shiptype Name="Enemy01"/>
 				<positions>
-					<position x="530" y="500"/>
-					<position x="250" y="500"/>
+					<position x="435" y="700" time="0.5"/>
+					<position x="286" y="500" time="0.5"/>
+					<position x="336" y="500" time="0.5"/>
+					<position x="386" y="500" time="0.5"/>
 				</positions>
 			</enemy>
 		</wave>
-		<wave Nr="1" timeToStart="15">
+		<wave Nr="1" timeToStart="10">
 			<enemy>
-				<shiptype Name="Enemy01"/>
+				<shiptype Name="Enemy02"/>
 
 				<positions>
-					<position x="120" y="500"/>
+					<position x="-80" y="500"/>
+					<position x="0" y="650"/>
 				</positions>
 			</enemy>
 			<enemy>
-				<shiptype Name="Enemy01"/>
+				<shiptype Name="Enemy02"/>
 				<positions>
-					<position x="230" y="500"/>
+					<position x="530" y="500"/>
+					<position x="376" y="650"/>
 				</positions>
 			</enemy>
 		</wave>

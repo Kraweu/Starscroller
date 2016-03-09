@@ -8,11 +8,13 @@ public class WeaponSlot
     private Weapon weapon = null;
     int posx;    //Center Position relative to the ship
     int posy;
+    Ship ship;
 
-    public WeaponSlot(int posx, int posy)
+    public WeaponSlot(int posx, int posy, Ship ship)
     {
         this.posx = posx;
         this.posy = posy;
+        this.ship = ship;
     }
 
     public Weapon getWeapon()
@@ -26,21 +28,21 @@ public class WeaponSlot
         this.weapon.setSlot(this);
     }
 
-    @Override
-    public WeaponSlot clone()
+    public WeaponSlot myClone(Ship ship)
     {
-        WeaponSlot copy = new WeaponSlot(this.posx, this.posy);
+        WeaponSlot copy = new WeaponSlot(this.posx, this.posy, ship);
         copy.weapon = this.weapon.clone(copy);
         return copy;
     }
 
-    public static WeaponSlot[] clone(WeaponSlot[] slots)
-    {
-        WeaponSlot[] newslots = new WeaponSlot[slots.length];
-        for (int i = 0; i < slots.length; i++)
-        {
-            newslots[i] = slots[i].clone();
-        }
-        return newslots;
-    }
+//    Not Used
+//    public static WeaponSlot[] myClone(WeaponSlot[] slots)
+//    {
+//        WeaponSlot[] newslots = new WeaponSlot[slots.length];
+//        for (int i = 0; i < slots.length; i++)
+//        {
+//            newslots[i] = slots[i].myClone();
+//        }
+//        return newslots;
+//    }
 }

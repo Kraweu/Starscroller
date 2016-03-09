@@ -3,9 +3,23 @@ Starscroller.png
 format: RGBA8888
 filter: Nearest,Nearest
 repeat: none
-Backgrounds/SpaceBackground3cut
+Backgrounds/spr_stars_far_cropped
   rotate: false
   xy: 1, 1
+  size: 480, 2040
+  orig: 480, 2040
+  offset: 0, 0
+  index: -1
+Backgrounds/spr_stars_near_cropped
+  rotate: false
+  xy: 483, 1
+  size: 480, 2040
+  orig: 480, 2040
+  offset: 0, 0
+  index: -1
+Backgrounds/SpaceBackground3cut
+  rotate: false
+  xy: 965, 1187
   size: 480, 854
   orig: 480, 854
   offset: 0, 0
@@ -279,140 +293,140 @@ filter: Nearest,Nearest
 repeat: none
 Enemies/enemyBlack2
   rotate: false
-  xy: 1, 87
+  xy: 1, 1
   size: 104, 84
   orig: 104, 84
   offset: 0, 0
   index: -1
 Enemies/enemyBlue2
   rotate: false
-  xy: 1, 1
+  xy: 107, 1
   size: 104, 84
   orig: 104, 84
   offset: 0, 0
   index: -1
 Enemies/enemyGreen2
   rotate: false
-  xy: 107, 87
+  xy: 213, 1
   size: 104, 84
   orig: 104, 84
   offset: 0, 0
   index: -1
 Enemies/enemyRed2
   rotate: false
-  xy: 107, 1
+  xy: 319, 1
   size: 104, 84
   orig: 104, 84
   offset: 0, 0
   index: -1
 Enemies/enemyBlack3
   rotate: false
-  xy: 213, 87
+  xy: 425, 1
   size: 103, 84
   orig: 103, 84
   offset: 0, 0
   index: -1
 Enemies/enemyBlue3
   rotate: false
-  xy: 213, 1
+  xy: 530, 1
   size: 103, 84
   orig: 103, 84
   offset: 0, 0
   index: -1
 Enemies/enemyGreen3
   rotate: false
-  xy: 318, 87
+  xy: 635, 1
   size: 103, 84
   orig: 103, 84
   offset: 0, 0
   index: -1
 Enemies/enemyRed3
   rotate: false
-  xy: 318, 1
+  xy: 740, 1
   size: 103, 84
   orig: 103, 84
   offset: 0, 0
   index: -1
 Enemies/enemyBlack5
   rotate: false
-  xy: 423, 87
+  xy: 845, 1
   size: 97, 84
   orig: 97, 84
   offset: 0, 0
   index: -1
 Enemies/enemyBlue5
   rotate: false
-  xy: 423, 1
+  xy: 944, 1
   size: 97, 84
   orig: 97, 84
   offset: 0, 0
   index: -1
 Enemies/enemyGreen5
   rotate: false
-  xy: 522, 87
+  xy: 1043, 1
   size: 97, 84
   orig: 97, 84
   offset: 0, 0
   index: -1
 Enemies/enemyRed5
   rotate: false
-  xy: 522, 1
+  xy: 1142, 1
   size: 97, 84
   orig: 97, 84
   offset: 0, 0
   index: -1
 Enemies/enemyBlack1
   rotate: false
-  xy: 621, 87
+  xy: 1241, 1
   size: 93, 84
   orig: 93, 84
   offset: 0, 0
   index: -1
 Enemies/enemyBlue1
   rotate: false
-  xy: 621, 1
+  xy: 1336, 1
   size: 93, 84
   orig: 93, 84
   offset: 0, 0
   index: -1
 Enemies/enemyGreen1
   rotate: false
-  xy: 716, 87
+  xy: 1431, 1
   size: 93, 84
   orig: 93, 84
   offset: 0, 0
   index: -1
 Enemies/enemyRed1
   rotate: false
-  xy: 716, 1
+  xy: 1526, 1
   size: 93, 84
   orig: 93, 84
   offset: 0, 0
   index: -1
 Enemies/enemyBlack4
   rotate: false
-  xy: 811, 87
+  xy: 1621, 1
   size: 82, 84
   orig: 82, 84
   offset: 0, 0
   index: -1
 Enemies/enemyBlue4
   rotate: false
-  xy: 811, 1
+  xy: 1705, 1
   size: 82, 84
   orig: 82, 84
   offset: 0, 0
   index: -1
 Enemies/enemyGreen4
   rotate: false
-  xy: 895, 87
+  xy: 1789, 1
   size: 82, 84
   orig: 82, 84
   offset: 0, 0
   index: -1
 Enemies/enemyRed4
   rotate: false
-  xy: 895, 1
+  xy: 1873, 1
   size: 82, 84
   orig: 82, 84
   offset: 0, 0
@@ -1676,114 +1690,114 @@ filter: Nearest,Nearest
 repeat: none
 playerShip2_blue
   rotate: false
-  xy: 1, 155
+  xy: 1, 17
   size: 112, 75
   orig: 112, 75
   offset: 0, 0
   index: -1
 playerShip2_green
   rotate: false
-  xy: 1, 78
+  xy: 115, 17
   size: 112, 75
   orig: 112, 75
   offset: 0, 0
   index: -1
 playerShip2_orange
   rotate: false
-  xy: 115, 155
+  xy: 229, 17
   size: 112, 75
   orig: 112, 75
   offset: 0, 0
   index: -1
 playerShip2_red
   rotate: false
-  xy: 1, 1
+  xy: 343, 17
   size: 112, 75
   orig: 112, 75
   offset: 0, 0
   index: -1
-ufoBlue
-  rotate: false
-  xy: 115, 62
-  size: 91, 91
-  orig: 91, 91
-  offset: 0, 0
-  index: -1
 playerShip1_blue
   rotate: false
-  xy: 229, 155
+  xy: 457, 17
   size: 99, 75
   orig: 99, 75
-  offset: 0, 0
-  index: -1
-ufoGreen
-  rotate: false
-  xy: 208, 62
-  size: 91, 91
-  orig: 91, 91
   offset: 0, 0
   index: -1
 playerShip1_green
   rotate: false
-  xy: 330, 155
+  xy: 558, 17
   size: 99, 75
   orig: 99, 75
-  offset: 0, 0
-  index: -1
-ufoRed
-  rotate: false
-  xy: 301, 62
-  size: 91, 91
-  orig: 91, 91
   offset: 0, 0
   index: -1
 playerShip1_orange
   rotate: false
-  xy: 431, 155
+  xy: 659, 17
   size: 99, 75
   orig: 99, 75
   offset: 0, 0
   index: -1
-ufoYellow
-  rotate: false
-  xy: 394, 62
-  size: 91, 91
-  orig: 91, 91
-  offset: 0, 0
-  index: -1
 playerShip1_red
   rotate: false
-  xy: 532, 155
+  xy: 760, 17
   size: 99, 75
   orig: 99, 75
   offset: 0, 0
   index: -1
 playerShip3_blue
   rotate: false
-  xy: 487, 78
+  xy: 861, 17
   size: 98, 75
   orig: 98, 75
   offset: 0, 0
   index: -1
 playerShip3_green
   rotate: false
-  xy: 633, 155
+  xy: 961, 17
   size: 98, 75
   orig: 98, 75
   offset: 0, 0
   index: -1
 playerShip3_orange
   rotate: false
-  xy: 587, 78
+  xy: 1061, 17
   size: 98, 75
   orig: 98, 75
   offset: 0, 0
   index: -1
 playerShip3_red
   rotate: false
-  xy: 733, 155
+  xy: 1161, 17
   size: 98, 75
   orig: 98, 75
+  offset: 0, 0
+  index: -1
+ufoBlue
+  rotate: false
+  xy: 1261, 1
+  size: 91, 91
+  orig: 91, 91
+  offset: 0, 0
+  index: -1
+ufoGreen
+  rotate: false
+  xy: 1354, 1
+  size: 91, 91
+  orig: 91, 91
+  offset: 0, 0
+  index: -1
+ufoRed
+  rotate: false
+  xy: 1447, 1
+  size: 91, 91
+  orig: 91, 91
+  offset: 0, 0
+  index: -1
+ufoYellow
+  rotate: false
+  xy: 1540, 1
+  size: 91, 91
+  orig: 91, 91
   offset: 0, 0
   index: -1
 
@@ -2022,196 +2036,196 @@ filter: Nearest,Nearest
 repeat: none
 UI/buttonBlue
   rotate: false
-  xy: 1, 85
+  xy: 1, 208
   size: 222, 39
   orig: 222, 39
   offset: 0, 0
   index: -1
 UI/buttonGreen
   rotate: false
-  xy: 1, 44
+  xy: 1, 167
   size: 222, 39
   orig: 222, 39
   offset: 0, 0
   index: -1
 UI/buttonRed
   rotate: false
-  xy: 225, 85
+  xy: 1, 126
   size: 222, 39
   orig: 222, 39
   offset: 0, 0
   index: -1
 UI/buttonYellow
   rotate: false
-  xy: 1, 3
+  xy: 1, 85
   size: 222, 39
   orig: 222, 39
   offset: 0, 0
   index: -1
 UI/cursor
   rotate: false
-  xy: 225, 50
+  xy: 225, 214
   size: 30, 33
   orig: 30, 33
   offset: 0, 0
   index: -1
 UI/playerLife2_blue
   rotate: false
-  xy: 449, 98
+  xy: 1, 57
   size: 37, 26
   orig: 37, 26
   offset: 0, 0
   index: -1
 UI/playerLife2_green
   rotate: false
-  xy: 257, 57
+  xy: 1, 29
   size: 37, 26
   orig: 37, 26
   offset: 0, 0
   index: -1
 UI/playerLife2_orange
   rotate: false
-  xy: 296, 57
+  xy: 40, 57
   size: 37, 26
   orig: 37, 26
   offset: 0, 0
   index: -1
 UI/playerLife2_red
   rotate: false
-  xy: 335, 57
+  xy: 1, 1
   size: 37, 26
   orig: 37, 26
   offset: 0, 0
   index: -1
 UI/playerLife1_blue
   rotate: false
-  xy: 374, 57
+  xy: 40, 29
   size: 33, 26
   orig: 33, 26
   offset: 0, 0
   index: -1
 UI/playerLife1_green
   rotate: false
-  xy: 409, 57
+  xy: 79, 57
   size: 33, 26
   orig: 33, 26
   offset: 0, 0
   index: -1
 UI/playerLife1_orange
   rotate: false
-  xy: 225, 22
+  xy: 40, 1
   size: 33, 26
   orig: 33, 26
   offset: 0, 0
   index: -1
 UI/playerLife1_red
   rotate: false
-  xy: 260, 29
+  xy: 75, 29
   size: 33, 26
   orig: 33, 26
   offset: 0, 0
   index: -1
 UI/playerLife3_blue
   rotate: false
-  xy: 295, 29
+  xy: 114, 57
   size: 32, 26
   orig: 32, 26
   offset: 0, 0
   index: -1
 UI/playerLife3_green
   rotate: false
-  xy: 329, 29
+  xy: 75, 1
   size: 32, 26
   orig: 32, 26
   offset: 0, 0
   index: -1
 UI/playerLife3_orange
   rotate: false
-  xy: 363, 29
+  xy: 110, 29
   size: 32, 26
   orig: 32, 26
   offset: 0, 0
   index: -1
 UI/playerLife3_red
   rotate: false
-  xy: 397, 29
+  xy: 148, 57
   size: 32, 26
   orig: 32, 26
   offset: 0, 0
   index: -1
 UI/numeral0
   rotate: false
-  xy: 488, 105
+  xy: 225, 193
   size: 19, 19
   orig: 19, 19
   offset: 0, 0
   index: -1
 UI/numeral1
   rotate: false
-  xy: 225, 1
+  xy: 109, 8
   size: 19, 19
   orig: 19, 19
   offset: 0, 0
   index: -1
 UI/numeral2
   rotate: false
-  xy: 246, 1
+  xy: 144, 36
   size: 19, 19
   orig: 19, 19
   offset: 0, 0
   index: -1
 UI/numeral3
   rotate: false
-  xy: 267, 8
+  xy: 182, 64
   size: 19, 19
   orig: 19, 19
   offset: 0, 0
   index: -1
 UI/numeral4
   rotate: false
-  xy: 288, 8
+  xy: 225, 172
   size: 19, 19
   orig: 19, 19
   offset: 0, 0
   index: -1
 UI/numeral5
   rotate: false
-  xy: 309, 8
+  xy: 203, 64
   size: 19, 19
   orig: 19, 19
   offset: 0, 0
   index: -1
 UI/numeral6
   rotate: false
-  xy: 330, 8
+  xy: 225, 151
   size: 19, 19
   orig: 19, 19
   offset: 0, 0
   index: -1
 UI/numeral7
   rotate: false
-  xy: 351, 8
+  xy: 225, 130
   size: 19, 19
   orig: 19, 19
   offset: 0, 0
   index: -1
 UI/numeral8
   rotate: false
-  xy: 372, 8
+  xy: 225, 109
   size: 19, 19
   orig: 19, 19
   offset: 0, 0
   index: -1
 UI/numeral9
   rotate: false
-  xy: 393, 8
+  xy: 225, 88
   size: 19, 19
   orig: 19, 19
   offset: 0, 0
   index: -1
 UI/numeralX
   rotate: false
-  xy: 414, 10
+  xy: 165, 38
   size: 17, 17
   orig: 17, 17
   offset: 0, 0

@@ -291,8 +291,21 @@ public class Player implements MovementInterface
     @Override
     public void hit(Projectile proj)
     {
-        return;//TODO
+        ship.setHealth(ship.getHealth() - proj.damage);
+        if (ship.getHealth() < 0)
+        {
+            ship.destroyed();
+            destroyed();
+        }
+        return;
     }
+
+    private void destroyed()
+    {
+        destroyed = true;
+        System.out.println("Defeated");
+    }
+
     public void shoot(float delta, Assets assets)
     {
         if (shoot)

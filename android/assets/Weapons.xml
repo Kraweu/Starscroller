@@ -12,4 +12,17 @@
             <asset>Lasers/laserBlue01</asset>
         </projectile>
     </weapontype>
+    <weapontype Name="AILaser">
+        <reloadtime>1.0</reloadtime>
+        <shotpos x="5" y="20"/>
+        <asset>Guns_and_engines/weapon2</asset>
+        <projectile>
+            <damage>1</damage>
+            <speed x="0" y="300"/>
+            <size x="3" y="12"/>
+            <accelleration>1</accelleration>
+            <rotation>0</rotation>
+            <asset>Lasers/laserRed01</asset>
+        </projectile>
+    </weapontype>
 </weapontypes>

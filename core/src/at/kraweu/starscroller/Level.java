@@ -25,7 +25,8 @@ public class Level
      */
     public void prepare()
     {
-        background.setAsset("Backgrounds/SpaceBackground3cut");
+        background.addLayer("Backgrounds/spr_stars_far_cropped", 7.1f);
+        background.addLayer("Backgrounds/spr_stars_near_cropped", 20.2f);
 //        spawnedenemies.addEnemies(waves[0].enemies);
         started=true;
     }

@@ -222,8 +222,18 @@ public class Loader
                             {
                                 int x = getIntAttribute(positions.item(j), "position", "x");
                                 int y = getIntAttribute(positions.item(j), "position", "y");
+                                double time = getDoubleAttribute(positions.item(j), "position", "time");
                                 if (x != Integer.MAX_VALUE && y != Integer.MAX_VALUE)
+                                {
                                     enemies[currentenemy].moveAI.waypoints.add(new Vector2(x, y));
+                                    if (time != Double.MAX_VALUE)
+                                        enemies[currentenemy].moveAI.time.add(time);
+                                    else
+                                    {
+                                        enemies[currentenemy].moveAI.time.add(2d);
+                                        System.out.println("Time not Found Set Standard Time of 2 Seconds in Wave " + levels[i].waves[currentwave].Nr);
+                                    }
+                                }
                             }
                         }
                         enemies[currentenemy].getShip().setPosx(enemies[currentenemy].moveAI.waypoints.peekFirst().x);
@@ -287,7 +297,7 @@ public class Loader
                 {
                     if (child.getNodeName().equals("weaponslot"))
                     {
-                        weaponSlots[j] = new WeaponSlot(getIntAttributeofChild(child, "position", "x"), getIntAttributeofChild(child, "position", "y"));
+                        weaponSlots[j] = new WeaponSlot(getIntAttributeofChild(child, "position", "x"), getIntAttributeofChild(child, "position", "y"), ships[i]);
 
                         String name = (((Element) getChild(child, "weapon")).getAttribute("Name"));
 
@@ -307,7 +317,7 @@ public class Loader
                                 tempslot[k] = weaponSlots[k];
                             }
                             weaponSlots = tempslot;
-                            weaponSlots[weaponSlots.length - 1] = weaponSlots[j].clone();
+                            weaponSlots[weaponSlots.length - 1] = weaponSlots[j].myClone(ships[i]);
                             int height, width, widthship;
                             if (assets.getRegion(weaponSlots[j].getWeapon().getType().getAsset()) != null)
                             {
@@ -496,6 +506,24 @@ public class Loader
         {
             System.out.println("Loading error: Node " + nodename + " Attribute " + attribute + " not an Integer value");
             return Integer.MAX_VALUE;
+        }
+    }
+
+    public static double getDoubleAttribute(Node node, String nodename, String attribute)
+    {
+        String text = getAttribute(node, nodename, attribute);
+        if (text == null)
+        {
+            System.out.println("Double Value missing");
+            return Double.MAX_VALUE;
+        }
+        try
+        {
+            return Double.parseDouble(text);
+        } catch (Exception e)
+        {
+            System.out.println("Loading error: Node " + nodename + " Attribute " + attribute + " not an Double value");
+            return Double.MAX_VALUE;
         }
     }
 

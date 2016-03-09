@@ -16,14 +16,17 @@ public class MoveAI
     private MovementInterface enemy;
     private boolean started = false;
     public boolean atPosition = false;
+    public double curTime = 0;
     private int movementrange = 5;
     public Deque<Vector2> waypoints;
+    public Deque<Double> time;
     private Vector2 targetpos;
 
     public MoveAI(MovementInterface enemy)
     {
         this.enemy = enemy;
         waypoints = new ArrayDeque<Vector2>();
+        time = new ArrayDeque<Double>();
     }
 
     public void start()
@@ -56,34 +59,37 @@ public class MoveAI
             return;
         }
         float distancex = enemy.getPosx() - waypoints.peek().x;
-        if (enemy.getSpeedx() < Math.abs(distancex) / 10)
+        float distancey = enemy.getPosy() - waypoints.peek().y;
+
+        double timeRemaining = time.peek() - curTime;
+//        System.out.println(distancex+"  "+ timeRemaining+"  "+timeRemaining/delta+"  "+(-distancex/(timeRemaining/delta)));
+        if (timeRemaining > delta)
         {
             if (distancex < 0)
-                enemy.setSpeedx(enemy.getSpeedx() + 0.8f);
+                enemy.setSpeedx((float) (-distancex / (timeRemaining / delta)));
             else
-                enemy.setSpeedx(enemy.getSpeedx() - 0.8f);
-        } else
-        {
+                enemy.setSpeedx((float) (-distancex / (timeRemaining / delta)));
 
-        }
+
 //        System.out.println("Movement " +enemy.getShip().getName()+" Left: "+enemy.getLeftMove()+ " Right: ");
-        float distancey = enemy.getPosy() - waypoints.peek().y;
-        if (enemy.getSpeedy() < Math.abs(distancey) / 10)
-        {
-            if (distancey < 0)
-                enemy.setSpeedy(enemy.getSpeedy() + 0.8f);
-            else
-                enemy.setSpeedy(enemy.getSpeedy() - 0.8f);
-        } else
-        {
 
+
+            if (distancey < 0)
+                enemy.setSpeedy((float) (-distancey / (timeRemaining / delta)));
+            else
+                enemy.setSpeedy((float) (-distancey / (timeRemaining / delta)));
         }
-        if (Math.abs(distancex) < 1 && Math.abs(distancey) < 1)
+        if ((Math.abs(distancex) < 1 && Math.abs(distancey) < 1) || timeRemaining < delta)
         {
+            enemy.setSpeedx(0);
+            enemy.setSpeedy(0);
+            curTime = 0;
             waypoints.poll();
+            time.poll();
             if (waypoints.isEmpty())
                 atPosition=true;
         }
+        curTime += delta;
     }
 
     public void setTarget(float targetposx, float targetposy)

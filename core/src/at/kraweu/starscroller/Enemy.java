@@ -18,7 +18,7 @@ public class Enemy implements MovementInterface
     /**
      * True if ship wants to shoot at the moment
      */
-    private boolean shoot;
+    private boolean shoot = true;
 
     private float speedx = 0;//HorizontalSpeed
     private float speedy = 0;//VerticalSpeed
@@ -31,9 +31,9 @@ public class Enemy implements MovementInterface
     private Ship ship;
     public MoveAI moveAI = new MoveAI(this);
 
-    private boolean destroyed;
-    private boolean beingdestroyed;
-    private float destroytime;
+//    private boolean destroyed;
+//    private boolean beingdestroyed;
+//    private float destroytime;
 
     public Enemy()
     {
@@ -196,13 +196,13 @@ public class Enemy implements MovementInterface
     @Override
     public boolean isBeingdestroyed()
     {
-        return beingdestroyed;
+        return ship.isBeingdestroyed();
     }
 
     @Override
     public boolean isDestroyed()
     {
-        return destroyed;
+        return ship.isDestroyed();
     }
 
     @Override
@@ -224,7 +224,9 @@ public class Enemy implements MovementInterface
     public void loadingError()
     {
         System.out.println("Error while loading an Enemy, set to destroyed");
-        destroyed = true;
+        if (ship != null)
+            ship.setDestroyed(true);
+        enemies.deleteEnemy(this);
     }
 
     public void hit(Projectile proj)
@@ -232,38 +234,40 @@ public class Enemy implements MovementInterface
         ship.setHealth(ship.getHealth() - proj.damage);
         if (ship.getHealth() < 0)
         {
-            destroyed();
+            ship.destroyed();
         }
     }
 
     /**
      * Starts destruction
      */
-    private void destroyed()
+//    private void destroyed()
+//    {
+//        System.out.println("beingDestroyed");
+//        beingdestroyed = true;
+//    }
+    public void shoot(float delta, Assets assets)
     {
-        System.out.println("beingDestroyed");
-        beingdestroyed = true;
+        if (shoot && !ship.isBeingdestroyed())
+        {
+            ship.shoot(delta);
+        }
+        ship.updateProjectiles(delta, assets);
     }
-
     public void update(float delta, Assets assets, Enemies enemies)
     {
-        if (destroyed)
+        if (ship.isDestroyed())
         {
             enemies.deleteEnemy(this);
             return;
         }
-        if (beingdestroyed)
-        {
-            if (destroytime < 0.2)
-            {
-                destroytime += delta;
-            } else
-                destroyed = true;
-        }
+
+        ship.update(delta);
+
 //        Movement.movement(this, delta);
         if (!moveAI.atPosition)
             moveAI.update(delta);
         Movement.movementNoCollision(this,delta);
-        ship.updateProjectiles(delta, assets);
+        shoot(delta, assets);
     }
 }

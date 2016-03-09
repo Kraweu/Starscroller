@@ -44,7 +44,7 @@ public class GameScreen implements Screen
         Gdx.gl.glClearColor(0, 0, 0, 0);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT | GL20.GL_DEPTH_BUFFER_BIT);
         batch.begin();
-        level.background.render(batch, game.assets);
+        level.background.render(batch, game.assets, delta);
         player.render(batch, game.assets);
         level.spawnedenemies.render(batch, game.assets);//TODO waves
         batch.end();

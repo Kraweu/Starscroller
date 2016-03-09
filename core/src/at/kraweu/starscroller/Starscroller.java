@@ -2,6 +2,7 @@ package at.kraweu.starscroller;
 
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.InputMultiplexer;
 import com.badlogic.gdx.Preferences;
 import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.graphics.PerspectiveCamera;
@@ -26,6 +27,8 @@ public class Starscroller extends Game
     public Level[] levels;
 
     public Input input;
+
+    public InputMultiplexer inputmult;
 
     public Preferences preferences;
 
@@ -62,7 +65,9 @@ public class Starscroller extends Game
 
         System.out.println();
         System.out.println();
-        Gdx.input.setInputProcessor(input);
+        inputmult = new InputMultiplexer();
+        inputmult.addProcessor(input);
+        Gdx.input.setInputProcessor(inputmult);
 
         preferences = Gdx.app.getPreferences("at.kraweu.starscroller.preferences");
 
@@ -74,8 +79,14 @@ public class Starscroller extends Game
         player = new Player();
         player.setShip(ships[0].myClone(), assets);
 
-//        setScreen(new StartMenuScreen(this));
-        setScreen(new GameScreen(this, player, levels[0]));//skip menu for debugging
+        setScreen(new StartMenuScreen(this));
+//        setScreen(new GameScreen(this, player, levels[0]));//skip menu for debugging
+
+//        /*Print Texture Buffersize of Device*/
+//        IntBuffer intBuffer = BufferUtils.newIntBuffer(16);
+//        Gdx.gl20.glGetIntegerv(GL20.GL_MAX_TEXTURE_SIZE, intBuffer);
+//        System.out.println(intBuffer.get());
+
     }
 
     public static Starscroller getGame()

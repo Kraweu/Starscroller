@@ -19,7 +19,7 @@ public class Assets
 
     public Assets()
     {
-        //Load all assets into regionlist
+        //Load all backgroundlayers into regionlist
         TextureAtlas assetatlas = new TextureAtlas("packedImgs/Starscroller.pack");
 
         regionlist = assetatlas.getRegions();

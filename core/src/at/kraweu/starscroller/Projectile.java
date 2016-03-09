@@ -31,10 +31,14 @@ public class Projectile
         this.damage = damage;
         this.posx = posx;
         this.posy = posy;
-        this.speedx = speedx;
-        this.speedy = speedy;
         this.rotation = rotation;
         this.asset = asset;
+
+        //Speed Vector Rotation
+        double radians = rotation * (Math.PI / 180);
+
+        this.speedx = (float) (Math.cos(radians) * speedx - Math.sin(radians) * speedy);
+        this.speedy = (float) (Math.sin(radians) * speedx + Math.cos(radians) * speedy);
     }
 
     public void movement(float delta, Assets assets)
@@ -153,15 +157,15 @@ public class Projectile
         this.rotation = rotation;
     }
 
-    public boolean detectCollision(Ship enemy)
+    public boolean detectCollision(Ship ship, Ship owner)
     {
-        if (enemy.getOwner().isBeingdestroyed())
+        if (ship.getOwner().isBeingdestroyed())
             return false;
         Rectangle projrect = new Rectangle((int) posx, (int) posy, 1, 1);
-        Rectangle enemyrect = new Rectangle(enemy.getPosxint(), enemy.getPosyint(), enemy.getSizex(), enemy.getSizey());
+        Rectangle enemyrect = new Rectangle(ship.getPosxint(), ship.getPosyint(), ship.getSizex(), ship.getSizey());
         if (Intersector.overlaps(projrect, enemyrect))
         {
-            enemy.getOwner().hit(this);
+            ship.hit(this);
             System.out.println("Hit");
             return true;
         } else

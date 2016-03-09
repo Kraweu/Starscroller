@@ -13,7 +13,7 @@
 	default
 	-
 	font: {
-	  file: KenPixel_Future
+	  file: default
 	  .
 	  fnt
 	}
@@ -534,7 +534,8 @@
 	  },
 	  background: default
 	  -
-	  pane
+	  pane,
+	  wrapWidth: 150
 	}
   },
 }
