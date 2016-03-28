@@ -2069,114 +2069,130 @@ UI/shadedLight22
   orig: 50, 48
   offset: 0, 0
   index: -1
-UI/flatDark21
+UI/flatDark11
   rotate: false
   xy: 949, 13
   size: 48, 48
+  split: 6, 6, 4, 4
   orig: 48, 48
   offset: 0, 0
   index: -1
-UI/shadedDark22
+UI/flatDark21
   rotate: false
   xy: 999, 13
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
-UI/transparentDark20
+UI/shadedDark12
   rotate: false
   xy: 1049, 13
+  size: 48, 48
+  split: 5, 6, 4, 4
+  orig: 48, 48
+  offset: 0, 0
+  index: -1
+UI/shadedDark22
+  rotate: false
+  xy: 1099, 13
+  size: 48, 48
+  orig: 48, 48
+  offset: 0, 0
+  index: -1
+UI/transparentDark20
+  rotate: false
+  xy: 1149, 13
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
 UI/cursor
   rotate: false
-  xy: 1099, 28
+  xy: 1199, 28
   size: 30, 33
   orig: 30, 33
   offset: 0, 0
   index: -1
 UI/playerLife2_blue
   rotate: false
-  xy: 1131, 35
+  xy: 1231, 35
   size: 37, 26
   orig: 37, 26
   offset: 0, 0
   index: -1
 UI/playerLife2_green
   rotate: false
-  xy: 1170, 35
+  xy: 1270, 35
   size: 37, 26
   orig: 37, 26
   offset: 0, 0
   index: -1
 UI/playerLife2_orange
   rotate: false
-  xy: 1209, 35
+  xy: 1309, 35
   size: 37, 26
   orig: 37, 26
   offset: 0, 0
   index: -1
 UI/playerLife2_red
   rotate: false
-  xy: 1248, 35
+  xy: 1348, 35
   size: 37, 26
   orig: 37, 26
   offset: 0, 0
   index: -1
 UI/playerLife1_blue
   rotate: false
-  xy: 1287, 35
+  xy: 1387, 35
   size: 33, 26
   orig: 33, 26
   offset: 0, 0
   index: -1
 UI/playerLife1_green
   rotate: false
-  xy: 1322, 35
+  xy: 1422, 35
   size: 33, 26
   orig: 33, 26
   offset: 0, 0
   index: -1
 UI/playerLife1_orange
   rotate: false
-  xy: 1357, 35
+  xy: 1457, 35
   size: 33, 26
   orig: 33, 26
   offset: 0, 0
   index: -1
 UI/playerLife1_red
   rotate: false
-  xy: 1392, 35
+  xy: 1492, 35
   size: 33, 26
   orig: 33, 26
   offset: 0, 0
   index: -1
 UI/playerLife3_blue
   rotate: false
-  xy: 1427, 35
+  xy: 1527, 35
   size: 32, 26
   orig: 32, 26
   offset: 0, 0
   index: -1
 UI/playerLife3_green
   rotate: false
-  xy: 1461, 35
+  xy: 1561, 35
   size: 32, 26
   orig: 32, 26
   offset: 0, 0
   index: -1
 UI/playerLife3_orange
   rotate: false
-  xy: 1495, 35
+  xy: 1595, 35
   size: 32, 26
   orig: 32, 26
   offset: 0, 0
   index: -1
 UI/playerLife3_red
   rotate: false
-  xy: 1529, 35
+  xy: 1629, 35
   size: 32, 26
   orig: 32, 26
   offset: 0, 0
@@ -2190,7 +2206,7 @@ UI/numeral0
   index: -1
 UI/numeral1
   rotate: false
-  xy: 1563, 42
+  xy: 1663, 42
   size: 19, 19
   orig: 19, 19
   offset: 0, 0
@@ -2204,7 +2220,7 @@ UI/numeral2
   index: -1
 UI/numeral3
   rotate: false
-  xy: 1584, 42
+  xy: 1684, 42
   size: 19, 19
   orig: 19, 19
   offset: 0, 0
@@ -2218,7 +2234,7 @@ UI/numeral4
   index: -1
 UI/numeral5
   rotate: false
-  xy: 1605, 42
+  xy: 1705, 42
   size: 19, 19
   orig: 19, 19
   offset: 0, 0
@@ -2232,7 +2248,7 @@ UI/numeral6
   index: -1
 UI/numeral7
   rotate: false
-  xy: 1626, 42
+  xy: 1726, 42
   size: 19, 19
   orig: 19, 19
   offset: 0, 0
@@ -2246,7 +2262,7 @@ UI/numeral8
   index: -1
 UI/numeral9
   rotate: false
-  xy: 1647, 42
+  xy: 1747, 42
   size: 19, 19
   orig: 19, 19
   offset: 0, 0

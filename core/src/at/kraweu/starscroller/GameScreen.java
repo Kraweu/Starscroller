@@ -69,6 +69,8 @@ public class GameScreen implements Screen
     @Override
     public void resize(int width, int height)
     {
+        //TODO Fix distortion when the window was resized and then setscreen Gamescreen is called
+        game.viewport.update(width, height, true);
         pause = true;
     }
 

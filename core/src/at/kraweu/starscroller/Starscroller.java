@@ -42,8 +42,8 @@ public class Starscroller extends Game
     public static final int gameheight = 854;
     public static final Point gamesize = new Point(gamewidth, gameheight);
 
-    private Viewport viewport;
-    private Camera camera;
+    public Viewport viewport;
+    public Camera camera;
 
     @Override
     public void create () {

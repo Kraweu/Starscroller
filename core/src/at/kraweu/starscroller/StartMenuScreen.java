@@ -4,6 +4,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
+import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Group;
 import com.badlogic.gdx.scenes.scene2d.Stage;
@@ -34,7 +35,10 @@ public class StartMenuScreen implements Screen
     public void show()
     {
         stage = new Stage(new ScreenViewport());
-        skin = new Skin(Gdx.files.internal("uiskin.json"));
+        skin = new Skin();
+        skin.addRegions(new TextureAtlas("packedImgs/Starscroller.pack"));
+        skin.addRegions(new TextureAtlas("uiskin.atlas"));
+        skin.load(Gdx.files.internal("uiskin.json"));
         ui = new Group();
         Table mainTable = new Table();
         mainTable.defaults().pad(30);
@@ -49,7 +53,11 @@ public class StartMenuScreen implements Screen
         mainTable.row();
         ButtonExit buttonExit = new ButtonExit();
         mainTable.add(buttonExit.getbutton());
-        mainTable.row();
+        mainTable.row().right().padRight(100);
+        ButtonOptions buttonOptions = new ButtonOptions();
+        buttonOptions.getbutton().pad(20);
+        mainTable.add(buttonOptions.getbutton());
+
         ui.addActor(mainTable);
         stage.addActor(ui);
         Gdx.input.setInputProcessor(stage);
@@ -72,8 +80,8 @@ public class StartMenuScreen implements Screen
             });
             buttonStart.addListener(new TextTooltip("Start new Game", skin)
             {
-
             });
+            buttonStart.pad(10).padLeft(15);
         }
 
         TextButton getbutton()
@@ -97,6 +105,7 @@ public class StartMenuScreen implements Screen
                     Gdx.app.exit();
                 }
             });
+            buttonExit.pad(10).padLeft(15);
         }
 
         TextButton getbutton()
@@ -111,20 +120,25 @@ public class StartMenuScreen implements Screen
 
         public ButtonOptions()
         {
-            buttonOptions = new ImageButton(new TextureRegionDrawable(game.assets.getRegion("UI/transparentDark20")), new TextureRegionDrawable(game.assets.getRegion("UI/shadedDark22")));
+            buttonOptions = new ImageButton(new TextureRegionDrawable(game.assets.getRegion("UI/flatDark21")), new TextureRegionDrawable(game.assets.getRegion("UI/shadedDark22")));
             buttonOptions.addListener(new ChangeListener()
             {
                 public void changed(ChangeEvent event, Actor actor)
                 {
                     System.out.println("Options");
-                    game.setScreen(new OptionsScreen());
+                    game.setScreen(new OptionsScreen(game));
                 }
             });
+        }
+
+        ImageButton getbutton()
+        {
+            return buttonOptions;
         }
     }
 
     /**
-     * used to tidy up the label adding a bit for the how to play description
+     * used to tidy up the label adding a bit
      */
     private Label label(String text, Color color)
     {
@@ -164,7 +178,7 @@ public class StartMenuScreen implements Screen
     @Override
     public void hide()
     {
-
+        dispose();
     }
 
     @Override
