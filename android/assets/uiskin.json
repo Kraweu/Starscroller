@@ -391,7 +391,7 @@
 	  font,
 	  fontColor: white
 	}
-  },
+	},
   com
   .
   badlogic
@@ -414,7 +414,7 @@
 	  fontColor: white,
 	  cursor: cursor
 	}
-  },
+	},
   com
   .
   badlogic
@@ -440,7 +440,7 @@
 	  font,
 	  fontColor: white
 	}
-  },
+	},
   com
   .
   badlogic
@@ -462,7 +462,7 @@
 	  -
 	  font
 	}
-  },
+	},
   com
   .
   badlogic
@@ -486,7 +486,7 @@
 	  -
 	  large
 	}
-  },
+	},
   com
   .
   badlogic
@@ -513,7 +513,7 @@
 	  -
 	  selection
 	}
-  },
+	},
   com
   .
   badlogic

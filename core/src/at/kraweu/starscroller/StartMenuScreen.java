@@ -9,6 +9,7 @@ import com.badlogic.gdx.scenes.scene2d.Group;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.*;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
+import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.badlogic.gdx.utils.Align;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
 
@@ -101,6 +102,24 @@ public class StartMenuScreen implements Screen
         TextButton getbutton()
         {
             return buttonExit;
+        }
+    }
+
+    private class ButtonOptions
+    {
+        ImageButton buttonOptions;
+
+        public ButtonOptions()
+        {
+            buttonOptions = new ImageButton(new TextureRegionDrawable(game.assets.getRegion("UI/transparentDark20")), new TextureRegionDrawable(game.assets.getRegion("UI/shadedDark22")));
+            buttonOptions.addListener(new ChangeListener()
+            {
+                public void changed(ChangeEvent event, Actor actor)
+                {
+                    System.out.println("Options");
+                    game.setScreen(new OptionsScreen());
+                }
+            });
         }
     }
 

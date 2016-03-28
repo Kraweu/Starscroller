@@ -2036,196 +2036,224 @@ filter: Nearest,Nearest
 repeat: none
 UI/buttonBlue
   rotate: false
-  xy: 1, 208
+  xy: 1, 22
   size: 222, 39
   orig: 222, 39
   offset: 0, 0
   index: -1
 UI/buttonGreen
   rotate: false
-  xy: 1, 167
+  xy: 225, 22
   size: 222, 39
   orig: 222, 39
   offset: 0, 0
   index: -1
 UI/buttonRed
   rotate: false
-  xy: 1, 126
+  xy: 449, 22
   size: 222, 39
   orig: 222, 39
   offset: 0, 0
   index: -1
 UI/buttonYellow
   rotate: false
-  xy: 1, 85
+  xy: 673, 22
   size: 222, 39
   orig: 222, 39
   offset: 0, 0
   index: -1
+UI/shadedLight22
+  rotate: false
+  xy: 897, 13
+  size: 50, 48
+  orig: 50, 48
+  offset: 0, 0
+  index: -1
+UI/flatDark21
+  rotate: false
+  xy: 949, 13
+  size: 48, 48
+  orig: 48, 48
+  offset: 0, 0
+  index: -1
+UI/shadedDark22
+  rotate: false
+  xy: 999, 13
+  size: 48, 48
+  orig: 48, 48
+  offset: 0, 0
+  index: -1
+UI/transparentDark20
+  rotate: false
+  xy: 1049, 13
+  size: 48, 48
+  orig: 48, 48
+  offset: 0, 0
+  index: -1
 UI/cursor
   rotate: false
-  xy: 225, 214
+  xy: 1099, 28
   size: 30, 33
   orig: 30, 33
   offset: 0, 0
   index: -1
 UI/playerLife2_blue
   rotate: false
-  xy: 1, 57
+  xy: 1131, 35
   size: 37, 26
   orig: 37, 26
   offset: 0, 0
   index: -1
 UI/playerLife2_green
   rotate: false
-  xy: 1, 29
+  xy: 1170, 35
   size: 37, 26
   orig: 37, 26
   offset: 0, 0
   index: -1
 UI/playerLife2_orange
   rotate: false
-  xy: 40, 57
+  xy: 1209, 35
   size: 37, 26
   orig: 37, 26
   offset: 0, 0
   index: -1
 UI/playerLife2_red
   rotate: false
-  xy: 1, 1
+  xy: 1248, 35
   size: 37, 26
   orig: 37, 26
   offset: 0, 0
   index: -1
 UI/playerLife1_blue
   rotate: false
-  xy: 40, 29
+  xy: 1287, 35
   size: 33, 26
   orig: 33, 26
   offset: 0, 0
   index: -1
 UI/playerLife1_green
   rotate: false
-  xy: 79, 57
+  xy: 1322, 35
   size: 33, 26
   orig: 33, 26
   offset: 0, 0
   index: -1
 UI/playerLife1_orange
   rotate: false
-  xy: 40, 1
+  xy: 1357, 35
   size: 33, 26
   orig: 33, 26
   offset: 0, 0
   index: -1
 UI/playerLife1_red
   rotate: false
-  xy: 75, 29
+  xy: 1392, 35
   size: 33, 26
   orig: 33, 26
   offset: 0, 0
   index: -1
 UI/playerLife3_blue
   rotate: false
-  xy: 114, 57
+  xy: 1427, 35
   size: 32, 26
   orig: 32, 26
   offset: 0, 0
   index: -1
 UI/playerLife3_green
   rotate: false
-  xy: 75, 1
+  xy: 1461, 35
   size: 32, 26
   orig: 32, 26
   offset: 0, 0
   index: -1
 UI/playerLife3_orange
   rotate: false
-  xy: 110, 29
+  xy: 1495, 35
   size: 32, 26
   orig: 32, 26
   offset: 0, 0
   index: -1
 UI/playerLife3_red
   rotate: false
-  xy: 148, 57
+  xy: 1529, 35
   size: 32, 26
   orig: 32, 26
   offset: 0, 0
   index: -1
 UI/numeral0
   rotate: false
-  xy: 225, 193
+  xy: 1, 1
   size: 19, 19
   orig: 19, 19
   offset: 0, 0
   index: -1
 UI/numeral1
   rotate: false
-  xy: 109, 8
+  xy: 1563, 42
   size: 19, 19
   orig: 19, 19
   offset: 0, 0
   index: -1
 UI/numeral2
   rotate: false
-  xy: 144, 36
+  xy: 22, 1
   size: 19, 19
   orig: 19, 19
   offset: 0, 0
   index: -1
 UI/numeral3
   rotate: false
-  xy: 182, 64
+  xy: 1584, 42
   size: 19, 19
   orig: 19, 19
   offset: 0, 0
   index: -1
 UI/numeral4
   rotate: false
-  xy: 225, 172
+  xy: 43, 1
   size: 19, 19
   orig: 19, 19
   offset: 0, 0
   index: -1
 UI/numeral5
   rotate: false
-  xy: 203, 64
+  xy: 1605, 42
   size: 19, 19
   orig: 19, 19
   offset: 0, 0
   index: -1
 UI/numeral6
   rotate: false
-  xy: 225, 151
+  xy: 64, 1
   size: 19, 19
   orig: 19, 19
   offset: 0, 0
   index: -1
 UI/numeral7
   rotate: false
-  xy: 225, 130
+  xy: 1626, 42
   size: 19, 19
   orig: 19, 19
   offset: 0, 0
   index: -1
 UI/numeral8
   rotate: false
-  xy: 225, 109
+  xy: 85, 1
   size: 19, 19
   orig: 19, 19
   offset: 0, 0
   index: -1
 UI/numeral9
   rotate: false
-  xy: 225, 88
+  xy: 1647, 42
   size: 19, 19
   orig: 19, 19
   offset: 0, 0
   index: -1
 UI/numeralX
   rotate: false
-  xy: 165, 38
+  xy: 106, 3
   size: 17, 17
   orig: 17, 17
   offset: 0, 0
