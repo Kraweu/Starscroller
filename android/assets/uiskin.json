@@ -13,11 +13,11 @@
 	default
 	-
 	font: {
-	  file: default
+	  file: KenPixel_Future
 	  .
 	  fnt
 	}
-  },
+	},
   com
   .
   badlogic
@@ -51,7 +51,8 @@
 	  g: 0,
 	  r: 0
 	},
-  },
+		
+	},
   com
   .
   badlogic
@@ -74,7 +75,8 @@
 		a: 0.45
 	  }
 	},
-  },
+		
+	},
   com
   .
   badlogic
@@ -113,7 +115,7 @@
 	  -
 	  round
 	}
-  },
+	},
   com
   .
   badlogic
@@ -161,7 +163,7 @@
 	  fontColor: white,
 	  downFontColor: red
 	}
-  },
+	},
   com
   .
   badlogic
@@ -196,7 +198,7 @@
 	  -
 	  large
 	}
-  },
+	},
   com
   .
   badlogic
@@ -230,7 +232,7 @@
 		selection
 	  }
 	}
-  },
+	},
   com
   .
   badlogic
@@ -260,7 +262,7 @@
 	  -
 	  splitpane
 	}
-  },
+	},
   com
   .
   badlogic
@@ -293,7 +295,7 @@
 	  titleFontColor: white,
 	  stageBackground: dialogDim
 	}
-  },
+	},
   com
   .
   badlogic
@@ -331,7 +333,7 @@
 	  -
 	  large
 	}
-  },
+	},
   com
   .
   badlogic
@@ -369,7 +371,7 @@
 	  -
 	  large
 	}
-  },
+	},
   com
   .
   badlogic
@@ -538,4 +540,5 @@
 	  wrapWidth: 150
 	}
   },
+	
 }
