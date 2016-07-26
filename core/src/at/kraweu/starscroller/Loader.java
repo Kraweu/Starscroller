@@ -119,7 +119,7 @@ public class Loader
                     {
                         Element element = (Element) tempnode;
                         if (element.getAttribute("Name").isEmpty())
-                            levels[i].name = "NameNotFound";
+                            levels[i].name = "No Name Found";
                         else
                             levels[i].name = element.getAttribute("Name");
                     } catch (Exception e)
@@ -454,7 +454,7 @@ public class Loader
             return Double.parseDouble(text);
         } catch (NumberFormatException e)
         {
-            System.out.println("Loading error: Node " + name + " not an Double value");
+            System.out.println("Loading error: Node " + name + " not a Double value");
             return -1;
         }
     }
@@ -522,7 +522,7 @@ public class Loader
             return Double.parseDouble(text);
         } catch (Exception e)
         {
-            System.out.println("Loading error: Node " + nodename + " Attribute " + attribute + " not an Double value");
+            System.out.println("Loading error: Node " + nodename + " Attribute " + attribute + " not a Double value");
             return Double.MAX_VALUE;
         }
     }
