@@ -8,9 +8,10 @@ import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Group;
 import com.badlogic.gdx.scenes.scene2d.Stage;
-import com.badlogic.gdx.scenes.scene2d.ui.*;
+import com.badlogic.gdx.scenes.scene2d.ui.Label;
+import com.badlogic.gdx.scenes.scene2d.ui.Skin;
+import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
-import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.badlogic.gdx.utils.Align;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
 
@@ -48,93 +49,50 @@ public class StartMenuScreen implements Screen
 //        mainTable.setDebug(true);
         mainTable.add(label("Starscroller", Color.NAVY)).pad(120);
         mainTable.row();
-        ButtonStart buttonStart = new ButtonStart();
+        MenuButton buttonStart = new MenuButton("Start", skin, "Start new Game")
+        {
+            @Override
+            public void mychanged(ChangeListener.ChangeEvent event, Actor actor)
+            {
+                game.setScreen(new GameScreen(game, game.player, game.levels[0]));/*TODO levels*/
+            }
+        };
         mainTable.add(buttonStart.getbutton());
         mainTable.row();
-        ButtonExit buttonExit = new ButtonExit();
+        MenuButton buttonLevels = new MenuButton("Levels", skin, "Select a Specific Level")
+        {
+            @Override
+            public void mychanged(ChangeListener.ChangeEvent event, Actor actor)
+            {
+                game.setScreen(new LevelSelectionScreen(game));/*TODO levels*/
+            }
+        };
+        mainTable.add(buttonLevels.getbutton());
+        mainTable.row();
+        MenuButton buttonExit = new MenuButton("Exit", skin, "Close the Game")
+        {
+            @Override
+            public void mychanged(ChangeListener.ChangeEvent event, Actor actor)
+            {
+                Gdx.app.exit();
+            }
+        };
         mainTable.add(buttonExit.getbutton());
         mainTable.row().right().padRight(100);
-        ButtonOptions buttonOptions = new ButtonOptions();
+        MenuButton buttonOptions = new MenuButton("Options", game.assets.getRegion("UI/flatDark21"), game.assets.getRegion("UI/shadedDark22"), skin, "Close the Game")
+        {
+            @Override
+            public void mychanged(ChangeListener.ChangeEvent event, Actor actor)
+            {
+                game.setScreen(new OptionsScreen(game));
+            }
+        };
         buttonOptions.getbutton().pad(20);
         mainTable.add(buttonOptions.getbutton());
 
         ui.addActor(mainTable);
         stage.addActor(ui);
         Gdx.input.setInputProcessor(stage);
-    }
-
-    private class ButtonStart
-    {
-        TextButton buttonStart;
-
-        public ButtonStart()
-        {
-            buttonStart = new TextButton("Start", skin);
-            buttonStart.addListener(new ChangeListener()
-            {
-                public void changed(ChangeEvent event, Actor actor)
-                {
-                    System.out.println("Starting");
-                    game.setScreen(new GameScreen(game, game.player, game.levels[0]));//TODO levels
-                }
-            });
-            buttonStart.addListener(new TextTooltip("Start new Game", skin)
-            {
-            });
-            buttonStart.pad(10).padLeft(15);
-        }
-
-        TextButton getbutton()
-        {
-            return buttonStart;
-        }
-    }
-
-    private class ButtonExit
-    {
-        TextButton buttonExit;
-
-        public ButtonExit()
-        {
-            buttonExit = new TextButton("Exit", skin);
-            buttonExit.addListener(new ChangeListener()
-            {
-                public void changed(ChangeEvent event, Actor actor)
-                {
-                    System.out.println("Exiting");
-                    Gdx.app.exit();
-                }
-            });
-            buttonExit.pad(10).padLeft(15);
-        }
-
-        TextButton getbutton()
-        {
-            return buttonExit;
-        }
-    }
-
-    private class ButtonOptions
-    {
-        ImageButton buttonOptions;
-
-        public ButtonOptions()
-        {
-            buttonOptions = new ImageButton(new TextureRegionDrawable(game.assets.getRegion("UI/flatDark21")), new TextureRegionDrawable(game.assets.getRegion("UI/shadedDark22")));
-            buttonOptions.addListener(new ChangeListener()
-            {
-                public void changed(ChangeEvent event, Actor actor)
-                {
-                    System.out.println("Options");
-                    game.setScreen(new OptionsScreen(game));
-                }
-            });
-        }
-
-        ImageButton getbutton()
-        {
-            return buttonOptions;
-        }
     }
 
     /**

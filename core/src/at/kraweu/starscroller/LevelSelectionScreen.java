@@ -9,6 +9,7 @@ import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Group;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
+import com.badlogic.gdx.scenes.scene2d.ui.ScrollPane;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
@@ -16,20 +17,20 @@ import com.badlogic.gdx.utils.Align;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
 
 /**
- * Created by Kraweu on 28.03.2016.
+ * Created by Kraweu on 30.03.2016.
  */
-public class OptionsScreen implements Screen
+public class LevelSelectionScreen implements Screen
 {
-
     private Background background;
     private Stage stage;
     private Skin skin;
     private Group ui;
+    private ScrollPane scrollPane;
     private Starscroller game;
 
-    public OptionsScreen(Starscroller starscroller)
+    public LevelSelectionScreen(Starscroller game)
     {
-        game = starscroller;
+        this.game = game;
     }
 
     @Override
@@ -40,26 +41,58 @@ public class OptionsScreen implements Screen
         skin.addRegions(new TextureAtlas("packedImgs/Starscroller.pack"));
         skin.addRegions(new TextureAtlas("uiskin.atlas"));
         skin.load(Gdx.files.internal("uiskin.json"));
-        ui = new Group();
+        Table levelTable = new Table();
+        scrollPane = new ScrollPane(levelTable);
         Table mainTable = new Table();
-        mainTable.defaults().pad(30);
-        mainTable.center();
-        mainTable.top().padTop(50);
         mainTable.setFillParent(true);
-        mainTable.add(label("Options", Color.NAVY)).pad(120);
+        mainTable.add(label("Levels", Color.NAVY)).pad(120).top();
         mainTable.row();
-        MenuButton buttonBack = new MenuButton("Back", skin, "Go Back to the Main Menu")
-        {
-            @Override
-            public void mychanged(ChangeListener.ChangeEvent event, Actor actor)
-            {
-                game.setScreen(new StartMenuScreen(game));
-            }
-        };
-        mainTable.add(buttonBack.getbutton());
+        mainTable.add(scrollPane);
+        ui = new Group();
         ui.addActor(mainTable);
         stage.addActor(ui);
         Gdx.input.setInputProcessor(stage);
+
+
+        levelTable.defaults().pad(30);
+        levelTable.center();
+        levelTable.top().padTop(50);
+        MenuButton[] levelbuttons = new MenuButton[game.levels.length];
+        for (int i = 0; i < game.levels.length; i++)
+        {
+            levelbuttons[i] = new MenuButton(game.levels[i].name, skin)
+            {
+                @Override
+                public void mychanged(ChangeListener.ChangeEvent event, Actor actor)
+                {
+                    try
+                    {
+                        game.setScreen(new GameScreen(game, game.player, game.levels[Integer.parseInt(actor.getName())]));
+                    } catch (NumberFormatException e)
+                    {
+                        System.out.println("LevelButton not named Properly: " + actor.getName());
+                        System.out.println("Level could not be Started");
+                    }
+                }
+            };
+            levelbuttons[i].getbutton().setName("" + i);
+            levelTable.add(levelbuttons[i].getbutton());
+            levelTable.row();
+        }
+        levelTable.add(label("Test", Color.GRAY)).pad(50);
+        levelTable.row();
+        levelTable.add(label("Test", Color.GRAY)).pad(50);
+        levelTable.row();
+        levelTable.add(label("Test", Color.GRAY)).pad(50);
+        levelTable.row();
+        levelTable.add(label("Test", Color.GRAY)).pad(50);
+        levelTable.row();
+        levelTable.add(label("Test", Color.GRAY)).pad(50);
+        levelTable.row();
+        levelTable.add(label("Test", Color.GRAY)).pad(50);
+        levelTable.row();
+        levelTable.add(label("Test", Color.GRAY)).pad(50);
+        levelTable.row();
     }
 
     @Override
@@ -92,7 +125,7 @@ public class OptionsScreen implements Screen
     @Override
     public void hide()
     {
-        dispose();
+
     }
 
     @Override
