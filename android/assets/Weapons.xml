@@ -2,12 +2,12 @@
     <weapontype Name="Laser">
         <reloadtime>0.1</reloadtime>
         <shotpos x="5" y="20"/>
-        <asset>Guns_and_engines/weapon2</asset>
+        <asset>Gunsandengines/weapon2</asset>
         <projectile>
             <damage>2</damage>
             <speed x="0" y="1000"/>
             <size x="3" y="12"/>
-            <accelleration>1</accelleration>
+            <accelleration>2</accelleration>
             <rotation>0</rotation>
             <asset>Lasers/laserBlue01</asset>
         </projectile>
@@ -15,12 +15,12 @@
     <weapontype Name="AILaser">
         <reloadtime>1.0</reloadtime>
         <shotpos x="5" y="20"/>
-        <asset>Guns_and_engines/weapon2</asset>
+        <asset>Gunsandengines/weapon2</asset>
         <projectile>
             <damage>1</damage>
             <speed x="0" y="300"/>
             <size x="3" y="12"/>
-            <accelleration>1</accelleration>
+            <accelleration>2</accelleration>
             <rotation>0</rotation>
             <asset>Lasers/laserRed01</asset>
         </projectile>

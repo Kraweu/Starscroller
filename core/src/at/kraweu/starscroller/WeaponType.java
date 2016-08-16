@@ -21,7 +21,7 @@ public class WeaponType
     private float damage = 1;
     private float speedx;
     private float speedy;
-    private float acceleration = 0;
+    private float acceleration = 1;
     private float swaying = 0;
     private float rotation = 0;
     String projectileasset = null;

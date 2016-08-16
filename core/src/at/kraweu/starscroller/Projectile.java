@@ -22,16 +22,17 @@ public class Projectile
 
     String asset = null;
 
-    float acceleration = 0;
+    float acceleration = 1;
     float swaying = 0;
     float rotation = 0;
 
-    public Projectile(float damage, float posx, float posy, float speedx, float speedy, float rotation, String asset)
+    public Projectile(float damage, float posx, float posy, float speedx, float speedy, float rotation, float acceleration, String asset)
     {
         this.damage = damage;
         this.posx = posx;
         this.posy = posy;
         this.rotation = rotation;
+        this.acceleration = acceleration;
         this.asset = asset;
 
         //Speed Vector Rotation
@@ -49,6 +50,8 @@ public class Projectile
         {
             posx += speedx * delta;
             posy += speedy * delta;
+            speedx *= Math.pow(acceleration, delta);
+            speedy *= Math.pow(acceleration, delta);
         }
         else
         {
@@ -166,7 +169,7 @@ public class Projectile
         if (Intersector.overlaps(projrect, enemyrect))
         {
             ship.hit(this);
-            System.out.println("Hit");
+//            System.out.println("Hit");
             return true;
         } else
             return false;

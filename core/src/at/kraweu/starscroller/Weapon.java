@@ -29,7 +29,7 @@ public class Weapon
             nextShot = type.getReloadtime();
 //            System.out.println(type.getReloadtime());
 //            System.out.println("dmg " + type.getDamage() + " shippos " + shipposx + "+" + slot.posx + "+" + type.shotposx + " " + shipposy + "+" + slot.posy + "+" + type.shotposy + " " + type.getSpeedx() + type.getSpeedy() + type.projectileasset);
-            return new Projectile(type.getDamage(), shipposx + slot.posx + type.shotposx, shipposy + slot.posy + type.shotposy, type.getSpeedx(), type.getSpeedy(), type.getRotation() + slot.ship.getRotation(), type.projectileasset);
+            return new Projectile(type.getDamage(), shipposx + slot.posx + type.shotposx, shipposy + slot.posy + type.shotposy, type.getSpeedx(), type.getSpeedy(), type.getRotation() + slot.ship.getRotation(), type.getAcceleration(), type.projectileasset);
         }
         return null;
     }

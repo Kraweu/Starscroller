@@ -79,7 +79,7 @@ public class Starscroller extends Game
         player = new Player();
         player.setShip(ships[0].myClone(), assets);
 
-        setScreen(new StartMenuScreenTest(this));
+        setScreen(new StartMenuScreen(this));
 //        setScreen(new GameScreen(this, player, levels[0]));//skip menu for debugging
 
 //        /*Print Texture Buffersize of Device*/

@@ -3,14 +3,14 @@ Starscroller.png
 format: RGBA8888
 filter: Nearest,Nearest
 repeat: none
-Backgrounds/spr_stars_far_cropped
+Backgrounds/sprstarsfarcropped
   rotate: false
   xy: 1, 1
   size: 480, 2040
   orig: 480, 2040
   offset: 0, 0
   index: -1
-Backgrounds/spr_stars_near_cropped
+Backgrounds/sprstarsnearcropped
   rotate: false
   xy: 483, 1
   size: 480, 2040
@@ -29,63 +29,63 @@ Starscroller2.png
 format: RGBA8888
 filter: Nearest,Nearest
 repeat: none
-Damage/playerShip2_damage2
+Damage/playerShip2damage2
   rotate: false
   xy: 1, 1
   size: 112, 76
   orig: 112, 76
   offset: 0, 0
   index: -1
-Damage/playerShip2_damage3
+Damage/playerShip2damage3
   rotate: false
   xy: 115, 1
   size: 112, 76
   orig: 112, 76
   offset: 0, 0
   index: -1
-Damage/playerShip2_damage1
+Damage/playerShip2damage1
   rotate: false
   xy: 229, 1
   size: 111, 76
   orig: 111, 76
   offset: 0, 0
   index: -1
-Damage/playerShip1_damage3
+Damage/playerShip1damage3
   rotate: false
   xy: 342, 1
   size: 100, 76
   orig: 100, 76
   offset: 0, 0
   index: -1
-Damage/playerShip1_damage1
+Damage/playerShip1damage1
   rotate: false
   xy: 444, 1
   size: 99, 76
   orig: 99, 76
   offset: 0, 0
   index: -1
-Damage/playerShip1_damage2
+Damage/playerShip1damage2
   rotate: false
   xy: 545, 1
   size: 99, 76
   orig: 99, 76
   offset: 0, 0
   index: -1
-Damage/playerShip3_damage1
+Damage/playerShip3damage1
   rotate: false
   xy: 646, 1
   size: 97, 76
   orig: 97, 76
   offset: 0, 0
   index: -1
-Damage/playerShip3_damage2
+Damage/playerShip3damage2
   rotate: false
   xy: 745, 1
   size: 97, 76
   orig: 97, 76
   offset: 0, 0
   index: -1
-Damage/playerShip3_damage3
+Damage/playerShip3damage3
   rotate: false
   xy: 844, 1
   size: 97, 76
@@ -436,98 +436,98 @@ Starscroller5.png
 format: RGBA8888
 filter: Nearest,Nearest
 repeat: none
-Guns_and_engines/jetEngine4
+Gunsandengines/jetEngine4
   rotate: false
   xy: 1, 84
   size: 47, 43
   orig: 47, 43
   offset: 0, 0
   index: -1
-Guns_and_engines/tube2
+Gunsandengines/tube2
   rotate: false
   xy: 1, 18
   size: 25, 64
   orig: 25, 64
   offset: 0, 0
   index: -1
-Guns_and_engines/tube1
+Gunsandengines/tube1
   rotate: false
   xy: 28, 15
   size: 15, 67
   orig: 15, 67
   offset: 0, 0
   index: -1
-Guns_and_engines/jetEngine2
+Gunsandengines/jetEngine2
   rotate: false
   xy: 50, 101
   size: 40, 26
   orig: 40, 26
   offset: 0, 0
   index: -1
-Guns_and_engines/weapon1
+Gunsandengines/weapon1
   rotate: false
   xy: 45, 31
   size: 18, 51
   orig: 18, 51
   offset: 0, 0
   index: -1
-Guns_and_engines/jetFlame3
+Gunsandengines/jetFlame3
   rotate: false
   xy: 50, 88
   size: 40, 11
   orig: 40, 11
   offset: 0, 0
   index: -1
-Guns_and_engines/weapon3
+Gunsandengines/weapon3
   rotate: false
   xy: 92, 85
   size: 21, 42
   orig: 21, 42
   offset: 0, 0
   index: -1
-Guns_and_engines/weapon2
+Gunsandengines/weapon2
   rotate: false
   xy: 65, 38
   size: 10, 48
   orig: 10, 48
   offset: 0, 0
   index: -1
-Guns_and_engines/jetEngine1
+Gunsandengines/jetEngine1
   rotate: false
   xy: 77, 62
   size: 36, 21
   orig: 36, 21
   offset: 0, 0
   index: -1
-Guns_and_engines/jetEngine3
+Gunsandengines/jetEngine3
   rotate: false
   xy: 77, 38
   size: 26, 22
   orig: 26, 22
   offset: 0, 0
   index: -1
-Guns_and_engines/jetFlame2
+Gunsandengines/jetFlame2
   rotate: false
   xy: 65, 1
   size: 14, 35
   orig: 14, 35
   offset: 0, 0
   index: -1
-Guns_and_engines/scratch2
+Gunsandengines/scratch2
   rotate: false
   xy: 81, 14
   size: 23, 22
   orig: 23, 22
   offset: 0, 0
   index: -1
-Guns_and_engines/scratch1
+Gunsandengines/scratch1
   rotate: false
   xy: 1, 3
   size: 16, 13
   orig: 16, 13
   offset: 0, 0
   index: -1
-Guns_and_engines/jetFlame1
+Gunsandengines/jetFlame1
   rotate: false
   xy: 106, 24
   size: 14, 36
@@ -880,140 +880,140 @@ Starscroller7.png
 format: RGBA8888
 filter: Nearest,Nearest
 repeat: none
-Meteors/meteorBrown_big2
+Meteors/meteorBrownbig2
   rotate: false
   xy: 1, 29
   size: 120, 98
   orig: 120, 98
   offset: 0, 0
   index: -1
-Meteors/meteorGrey_big2
+Meteors/meteorGreybig2
   rotate: false
   xy: 123, 29
   size: 120, 98
   orig: 120, 98
   offset: 0, 0
   index: -1
-Meteors/meteorBrown_big4
+Meteors/meteorBrownbig4
   rotate: false
   xy: 245, 31
   size: 98, 96
   orig: 98, 96
   offset: 0, 0
   index: -1
-Meteors/meteorGrey_big4
+Meteors/meteorGreybig4
   rotate: false
   xy: 345, 31
   size: 98, 96
   orig: 98, 96
   offset: 0, 0
   index: -1
-Meteors/meteorBrown_big1
+Meteors/meteorBrownbig1
   rotate: false
   xy: 445, 43
   size: 101, 84
   orig: 101, 84
   offset: 0, 0
   index: -1
-Meteors/meteorGrey_big1
+Meteors/meteorGreybig1
   rotate: false
   xy: 548, 43
   size: 101, 84
   orig: 101, 84
   offset: 0, 0
   index: -1
-Meteors/meteorBrown_big3
+Meteors/meteorBrownbig3
   rotate: false
   xy: 651, 45
   size: 89, 82
   orig: 89, 82
   offset: 0, 0
   index: -1
-Meteors/meteorGrey_big3
+Meteors/meteorGreybig3
   rotate: false
   xy: 742, 45
   size: 89, 82
   orig: 89, 82
   offset: 0, 0
   index: -1
-Meteors/meteorBrown_med3
+Meteors/meteorBrownmed3
   rotate: false
   xy: 445, 1
   size: 45, 40
   orig: 45, 40
   offset: 0, 0
   index: -1
-Meteors/meteorGrey_med2
+Meteors/meteorGreymed2
   rotate: false
   xy: 492, 1
   size: 45, 40
   orig: 45, 40
   offset: 0, 0
   index: -1
-Meteors/meteorBrown_med1
+Meteors/meteorBrownmed1
   rotate: false
   xy: 833, 84
   size: 43, 43
   orig: 43, 43
   offset: 0, 0
   index: -1
-Meteors/meteorBrown_small2
+Meteors/meteorBrownsmall2
   rotate: false
   xy: 1, 1
   size: 29, 26
   orig: 29, 26
   offset: 0, 0
   index: -1
-Meteors/meteorGrey_med1
+Meteors/meteorGreymed1
   rotate: false
   xy: 878, 84
   size: 43, 43
   orig: 43, 43
   offset: 0, 0
   index: -1
-Meteors/meteorGrey_small2
+Meteors/meteorGreysmall2
   rotate: false
   xy: 32, 1
   size: 29, 26
   orig: 29, 26
   offset: 0, 0
   index: -1
-Meteors/meteorBrown_small1
+Meteors/meteorBrownsmall1
   rotate: false
   xy: 245, 1
   size: 28, 28
   orig: 28, 28
   offset: 0, 0
   index: -1
-Meteors/meteorGrey_small1
+Meteors/meteorGreysmall1
   rotate: false
   xy: 275, 1
   size: 28, 28
   orig: 28, 28
   offset: 0, 0
   index: -1
-Meteors/meteorBrown_tiny1
+Meteors/meteorBrowntiny1
   rotate: false
   xy: 539, 23
   size: 18, 18
   orig: 18, 18
   offset: 0, 0
   index: -1
-Meteors/meteorGrey_tiny1
+Meteors/meteorGreytiny1
   rotate: false
   xy: 833, 64
   size: 18, 18
   orig: 18, 18
   offset: 0, 0
   index: -1
-Meteors/meteorBrown_tiny2
+Meteors/meteorBrowntiny2
   rotate: false
   xy: 923, 112
   size: 16, 15
   orig: 16, 15
   offset: 0, 0
   index: -1
-Meteors/meteorGrey_tiny2
+Meteors/meteorGreytiny2
   rotate: false
   xy: 63, 12
   size: 16, 15
@@ -1025,223 +1025,223 @@ Starscroller8.png
 format: RGBA8888
 filter: Nearest,Nearest
 repeat: none
-Parts/cockpitBlue
+Parts/cockpitBlue0
   rotate: false
   xy: 1, 180
   size: 51, 75
   orig: 51, 75
   offset: 0, 0
-  index: 0
-Parts/cockpitGreen
+  index: -1
+Parts/cockpitGreen0
   rotate: false
   xy: 1, 103
   size: 51, 75
   orig: 51, 75
   offset: 0, 0
-  index: 0
-Parts/cockpitRed
+  index: -1
+Parts/cockpitRed0
   rotate: false
   xy: 54, 180
   size: 51, 75
   orig: 51, 75
   offset: 0, 0
-  index: 0
-Parts/cockpitYellow
+  index: -1
+Parts/cockpitYellow7
   rotate: false
   xy: 1, 26
   size: 51, 75
   orig: 51, 75
   offset: 0, 0
-  index: 7
-Parts/wingBlue
+  index: -1
+Parts/wingBlue3
   rotate: false
   xy: 54, 103
   size: 51, 75
   orig: 51, 75
   offset: 0, 0
-  index: 3
-Parts/wingBlue
+  index: -1
+Parts/wingBlue7
   rotate: false
   xy: 107, 172
   size: 43, 83
   orig: 43, 83
   offset: 0, 0
-  index: 7
-Parts/wingGreen
+  index: -1
+Parts/wingGreen3
   rotate: false
   xy: 54, 26
   size: 51, 75
   orig: 51, 75
   offset: 0, 0
-  index: 3
-Parts/wingGreen
+  index: -1
+Parts/wingGreen7
   rotate: false
   xy: 107, 87
   size: 43, 83
   orig: 43, 83
   offset: 0, 0
-  index: 7
-Parts/wingRed
+  index: -1
+Parts/wingRed2
   rotate: false
   xy: 152, 180
   size: 51, 75
   orig: 51, 75
   offset: 0, 0
-  index: 2
-Parts/wingRed
+  index: -1
+Parts/wingRed6
   rotate: false
   xy: 152, 95
   size: 43, 83
   orig: 43, 83
   offset: 0, 0
-  index: 6
-Parts/wingYellow
+  index: -1
+Parts/wingYellow3
   rotate: false
   xy: 205, 180
   size: 51, 75
   orig: 51, 75
   offset: 0, 0
-  index: 3
-Parts/wingYellow
+  index: -1
+Parts/wingYellow7
   rotate: false
   xy: 197, 95
   size: 43, 83
   orig: 43, 83
   offset: 0, 0
-  index: 7
-Parts/cockpitBlue
+  index: -1
+Parts/cockpitBlue5
   rotate: false
   xy: 258, 180
   size: 48, 75
   orig: 48, 75
   offset: 0, 0
-  index: 5
-Parts/cockpitGreen
+  index: -1
+Parts/cockpitGreen7
   rotate: false
   xy: 242, 103
   size: 48, 75
   orig: 48, 75
   offset: 0, 0
-  index: 7
-Parts/cockpitRed
+  index: -1
+Parts/cockpitRed5
   rotate: false
   xy: 308, 180
   size: 48, 75
   orig: 48, 75
   offset: 0, 0
-  index: 5
-Parts/cockpitYellow
+  index: -1
+Parts/cockpitYellow3
   rotate: false
   xy: 292, 103
   size: 48, 75
   orig: 48, 75
   offset: 0, 0
-  index: 3
-Parts/cockpitBlue
+  index: -1
+Parts/cockpitBlue3
   rotate: false
   xy: 358, 194
   size: 60, 61
   orig: 60, 61
   offset: 0, 0
-  index: 3
-Parts/cockpitGreen
+  index: -1
+Parts/cockpitGreen3
   rotate: false
   xy: 420, 194
   size: 60, 61
   orig: 60, 61
   offset: 0, 0
-  index: 3
-Parts/cockpitRed
+  index: -1
+Parts/cockpitRed3
   rotate: false
   xy: 482, 194
   size: 60, 61
   orig: 60, 61
   offset: 0, 0
-  index: 3
-Parts/cockpitYellow
+  index: -1
+Parts/cockpitYellow1
   rotate: false
   xy: 544, 194
   size: 60, 61
   orig: 60, 61
   offset: 0, 0
-  index: 1
-Parts/wingBlue
+  index: -1
+Parts/wingBlue2
   rotate: false
   xy: 107, 1
   size: 26, 84
   orig: 26, 84
   offset: 0, 0
-  index: 2
-Parts/wingGreen
+  index: -1
+Parts/wingGreen2
   rotate: false
   xy: 135, 1
   size: 26, 84
   orig: 26, 84
   offset: 0, 0
-  index: 2
-Parts/wingBlue
+  index: -1
+Parts/wingBlue0
   rotate: false
   xy: 163, 15
   size: 45, 78
   orig: 45, 78
   offset: 0, 0
-  index: 0
-Parts/wingBlue
+  index: -1
+Parts/wingBlue5
   rotate: false
   xy: 606, 186
   size: 51, 69
   orig: 51, 69
   offset: 0, 0
-  index: 5
-Parts/wingGreen
+  index: -1
+Parts/wingGreen5
   rotate: false
   xy: 659, 186
   size: 51, 69
   orig: 51, 69
   offset: 0, 0
-  index: 5
-Parts/wingRed
+  index: -1
+Parts/wingRed4
   rotate: false
   xy: 712, 186
   size: 51, 69
   orig: 51, 69
   offset: 0, 0
-  index: 4
-Parts/wingYellow
+  index: -1
+Parts/wingYellow5
   rotate: false
   xy: 765, 186
   size: 51, 69
   orig: 51, 69
   offset: 0, 0
-  index: 5
-Parts/cockpitBlue
+  index: -1
+Parts/cockpitBlue4
   rotate: false
   xy: 818, 188
   size: 47, 67
   orig: 47, 67
   offset: 0, 0
-  index: 4
-Parts/cockpitGreen
+  index: -1
+Parts/cockpitGreen4
   rotate: false
   xy: 867, 188
   size: 47, 67
   orig: 47, 67
   offset: 0, 0
-  index: 4
-Parts/cockpitRed
+  index: -1
+Parts/cockpitRed4
   rotate: false
   xy: 916, 188
   size: 47, 67
   orig: 47, 67
   offset: 0, 0
-  index: 4
-Parts/cockpitYellow
+  index: -1
+Parts/cockpitYellow2
   rotate: false
   xy: 965, 188
   size: 47, 67
   orig: 47, 67
   offset: 0, 0
-  index: 2
+  index: -1
 Parts/beam6
   rotate: false
   xy: 1, 1
@@ -1249,27 +1249,27 @@ Parts/beam6
   orig: 43, 23
   offset: 0, 0
   index: -1
-Parts/wingBlue
+Parts/wingBlue4
   rotate: false
   xy: 210, 13
   size: 42, 80
   orig: 42, 80
   offset: 0, 0
-  index: 4
-Parts/wingGreen
+  index: -1
+Parts/wingGreen0
   rotate: false
   xy: 254, 23
   size: 45, 78
   orig: 45, 78
   offset: 0, 0
-  index: 0
-Parts/wingGreen
+  index: -1
+Parts/wingGreen4
   rotate: false
   xy: 301, 21
   size: 42, 80
   orig: 42, 80
   offset: 0, 0
-  index: 4
+  index: -1
 Parts/engine1
   rotate: false
   xy: 46, 1
@@ -1284,181 +1284,181 @@ Parts/beam1
   orig: 40, 20
   offset: 0, 0
   index: -1
-Parts/wingBlue
+Parts/wingBlue6
   rotate: false
   xy: 342, 104
   size: 42, 74
   orig: 42, 74
   offset: 0, 0
-  index: 6
-Parts/wingRed
+  index: -1
+Parts/wingRed3
   rotate: false
   xy: 345, 22
   size: 42, 80
   orig: 42, 80
   offset: 0, 0
-  index: 3
-Parts/wingRed
+  index: -1
+Parts/wingRed7
   rotate: false
   xy: 386, 114
   size: 45, 78
   orig: 45, 78
   offset: 0, 0
-  index: 7
-Parts/wingYellow
+  index: -1
+Parts/wingYellow0
   rotate: false
   xy: 433, 114
   size: 45, 78
   orig: 45, 78
   offset: 0, 0
-  index: 0
-Parts/wingYellow
+  index: -1
+Parts/wingYellow4
   rotate: false
   xy: 480, 112
   size: 42, 80
   orig: 42, 80
   offset: 0, 0
-  index: 4
-Parts/wingGreen
+  index: -1
+Parts/wingGreen6
   rotate: false
   xy: 524, 118
   size: 42, 74
   orig: 42, 74
   offset: 0, 0
-  index: 6
-Parts/wingRed
+  index: -1
+Parts/wingRed5
   rotate: false
   xy: 389, 38
   size: 42, 74
   orig: 42, 74
   offset: 0, 0
-  index: 5
-Parts/wingYellow
+  index: -1
+Parts/wingYellow6
   rotate: false
   xy: 433, 38
   size: 42, 74
   orig: 42, 74
   offset: 0, 0
-  index: 6
-Parts/cockpitBlue
+  index: -1
+Parts/cockpitBlue7
   rotate: false
   xy: 477, 39
   size: 41, 71
   orig: 41, 71
   offset: 0, 0
-  index: 7
-Parts/wingRed
+  index: -1
+Parts/wingRed0
   rotate: false
   xy: 568, 108
   size: 26, 84
   orig: 26, 84
   offset: 0, 0
-  index: 0
-Parts/cockpitGreen
+  index: -1
+Parts/cockpitGreen6
   rotate: false
   xy: 596, 113
   size: 41, 71
   orig: 41, 71
   offset: 0, 0
-  index: 6
-Parts/cockpitRed
+  index: -1
+Parts/cockpitRed7
   rotate: false
   xy: 639, 113
   size: 41, 71
   orig: 41, 71
   offset: 0, 0
-  index: 7
-Parts/cockpitYellow
+  index: -1
+Parts/cockpitYellow5
   rotate: false
   xy: 682, 113
   size: 41, 71
   orig: 41, 71
   offset: 0, 0
-  index: 5
-Parts/cockpitBlue
+  index: -1
+Parts/cockpitBlue6
   rotate: false
   xy: 725, 117
   size: 42, 67
   orig: 42, 67
   offset: 0, 0
-  index: 6
-Parts/cockpitGreen
+  index: -1
+Parts/cockpitGreen5
   rotate: false
   xy: 769, 117
   size: 42, 67
   orig: 42, 67
   offset: 0, 0
-  index: 5
-Parts/wingBlue
+  index: -1
+Parts/wingBlue1
   rotate: false
   xy: 520, 38
   size: 37, 72
   orig: 37, 72
   offset: 0, 0
-  index: 1
-Parts/wingGreen
+  index: -1
+Parts/wingGreen1
   rotate: false
   xy: 559, 34
   size: 37, 72
   orig: 37, 72
   offset: 0, 0
-  index: 1
-Parts/cockpitRed
+  index: -1
+Parts/cockpitRed6
   rotate: false
   xy: 598, 44
   size: 42, 67
   orig: 42, 67
   offset: 0, 0
-  index: 6
-Parts/cockpitYellow
+  index: -1
+Parts/cockpitYellow4
   rotate: false
   xy: 642, 44
   size: 42, 67
   orig: 42, 67
   offset: 0, 0
-  index: 4
-Parts/wingRed
+  index: -1
+Parts/wingRed1
   rotate: false
   xy: 686, 39
   size: 37, 72
   orig: 37, 72
   offset: 0, 0
-  index: 1
-Parts/wingYellow
+  index: -1
+Parts/wingYellow1
   rotate: false
   xy: 725, 43
   size: 37, 72
   orig: 37, 72
   offset: 0, 0
-  index: 1
-Parts/cockpitBlue
+  index: -1
+Parts/cockpitBlue2
   rotate: false
   xy: 764, 59
   size: 42, 56
   orig: 42, 56
   offset: 0, 0
-  index: 2
-Parts/cockpitGreen
+  index: -1
+Parts/cockpitGreen2
   rotate: false
   xy: 764, 1
   size: 42, 56
   orig: 42, 56
   offset: 0, 0
-  index: 2
-Parts/turretBase_big
+  index: -1
+Parts/turretBasebig
   rotate: false
   xy: 598, 1
   size: 41, 41
   orig: 41, 41
   offset: 0, 0
   index: -1
-Parts/wingYellow
+Parts/wingYellow2
   rotate: false
   xy: 808, 31
   size: 26, 84
   orig: 26, 84
   offset: 0, 0
-  index: 2
+  index: -1
 Parts/engine2
   rotate: false
   xy: 808, 1
@@ -1473,20 +1473,20 @@ Parts/beamLong1
   orig: 15, 67
   offset: 0, 0
   index: -1
-Parts/cockpitRed
+Parts/cockpitRed2
   rotate: false
   xy: 830, 130
   size: 42, 56
   orig: 42, 56
   offset: 0, 0
-  index: 2
-Parts/cockpitYellow
+  index: -1
+Parts/cockpitYellow6
   rotate: false
   xy: 874, 130
   size: 42, 56
   orig: 42, 56
   offset: 0, 0
-  index: 6
+  index: -1
 Parts/engine4
   rotate: false
   xy: 918, 141
@@ -1508,13 +1508,13 @@ Parts/gun03
   orig: 20, 41
   offset: 0, 0
   index: -1
-Parts/cockpitBlue
+Parts/cockpitBlue1
   rotate: false
   xy: 969, 146
   size: 40, 40
   orig: 40, 40
   offset: 0, 0
-  index: 1
+  index: -1
 Parts/beamLong2
   rotate: false
   xy: 836, 64
@@ -1522,13 +1522,13 @@ Parts/beamLong2
   orig: 25, 64
   offset: 0, 0
   index: -1
-Parts/cockpitGreen
+Parts/cockpitGreen1
   rotate: false
   xy: 863, 88
   size: 40, 40
   orig: 40, 40
   offset: 0, 0
-  index: 1
+  index: -1
 Parts/beam0
   rotate: false
   xy: 836, 31
@@ -1592,27 +1592,27 @@ Parts/beam4
   orig: 41, 17
   offset: 0, 0
   index: -1
-Parts/turretBase_small
+Parts/turretBasesmall
   rotate: false
   xy: 852, 3
   size: 26, 26
   orig: 26, 26
   offset: 0, 0
   index: -1
-Parts/cockpitRed
+Parts/cockpitRed1
   rotate: false
   xy: 905, 88
   size: 40, 40
   orig: 40, 40
   offset: 0, 0
-  index: 1
-Parts/cockpitYellow
+  index: -1
+Parts/cockpitYellow0
   rotate: false
   xy: 892, 46
   size: 40, 40
   orig: 40, 40
   offset: 0, 0
-  index: 0
+  index: -1
 Parts/gun09
   rotate: false
   xy: 947, 87
@@ -1688,84 +1688,84 @@ Starscroller9.png
 format: RGBA8888
 filter: Nearest,Nearest
 repeat: none
-playerShip2_blue
+playerShip2blue
   rotate: false
   xy: 1, 17
   size: 112, 75
   orig: 112, 75
   offset: 0, 0
   index: -1
-playerShip2_green
+playerShip2green
   rotate: false
   xy: 115, 17
   size: 112, 75
   orig: 112, 75
   offset: 0, 0
   index: -1
-playerShip2_orange
+playerShip2orange
   rotate: false
   xy: 229, 17
   size: 112, 75
   orig: 112, 75
   offset: 0, 0
   index: -1
-playerShip2_red
+playerShip2red
   rotate: false
   xy: 343, 17
   size: 112, 75
   orig: 112, 75
   offset: 0, 0
   index: -1
-playerShip1_blue
+playerShip1blue
   rotate: false
   xy: 457, 17
   size: 99, 75
   orig: 99, 75
   offset: 0, 0
   index: -1
-playerShip1_green
+playerShip1green
   rotate: false
   xy: 558, 17
   size: 99, 75
   orig: 99, 75
   offset: 0, 0
   index: -1
-playerShip1_orange
+playerShip1orange
   rotate: false
   xy: 659, 17
   size: 99, 75
   orig: 99, 75
   offset: 0, 0
   index: -1
-playerShip1_red
+playerShip1red
   rotate: false
   xy: 760, 17
   size: 99, 75
   orig: 99, 75
   offset: 0, 0
   index: -1
-playerShip3_blue
+playerShip3blue
   rotate: false
   xy: 861, 17
   size: 98, 75
   orig: 98, 75
   offset: 0, 0
   index: -1
-playerShip3_green
+playerShip3green
   rotate: false
   xy: 961, 17
   size: 98, 75
   orig: 98, 75
   offset: 0, 0
   index: -1
-playerShip3_orange
+playerShip3orange
   rotate: false
   xy: 1061, 17
   size: 98, 75
   orig: 98, 75
   offset: 0, 0
   index: -1
-playerShip3_red
+playerShip3red
   rotate: false
   xy: 1161, 17
   size: 98, 75
@@ -1812,21 +1812,21 @@ Power-ups/powerupBlue
   orig: 34, 33
   offset: 0, 0
   index: -1
-Power-ups/powerupBlue_bolt
+Power-ups/powerupBluebolt
   rotate: false
   xy: 37, 30
   size: 34, 33
   orig: 34, 33
   offset: 0, 0
   index: -1
-Power-ups/powerupBlue_shield
+Power-ups/powerupBlueshield
   rotate: false
   xy: 73, 30
   size: 34, 33
   orig: 34, 33
   offset: 0, 0
   index: -1
-Power-ups/powerupBlue_star
+Power-ups/powerupBluestar
   rotate: false
   xy: 109, 30
   size: 34, 33
@@ -1840,21 +1840,21 @@ Power-ups/powerupGreen
   orig: 34, 33
   offset: 0, 0
   index: -1
-Power-ups/powerupGreen_bolt
+Power-ups/powerupGreenbolt
   rotate: false
   xy: 181, 30
   size: 34, 33
   orig: 34, 33
   offset: 0, 0
   index: -1
-Power-ups/powerupGreen_shield
+Power-ups/powerupGreenshield
   rotate: false
   xy: 217, 30
   size: 34, 33
   orig: 34, 33
   offset: 0, 0
   index: -1
-Power-ups/powerupGreen_star
+Power-ups/powerupGreenstar
   rotate: false
   xy: 253, 30
   size: 34, 33
@@ -1868,21 +1868,21 @@ Power-ups/powerupRed
   orig: 34, 33
   offset: 0, 0
   index: -1
-Power-ups/powerupRed_bolt
+Power-ups/powerupRedbolt
   rotate: false
   xy: 325, 30
   size: 34, 33
   orig: 34, 33
   offset: 0, 0
   index: -1
-Power-ups/powerupRed_shield
+Power-ups/powerupRedshield
   rotate: false
   xy: 361, 30
   size: 34, 33
   orig: 34, 33
   offset: 0, 0
   index: -1
-Power-ups/powerupRed_star
+Power-ups/powerupRedstar
   rotate: false
   xy: 397, 30
   size: 34, 33
@@ -1896,133 +1896,133 @@ Power-ups/powerupYellow
   orig: 34, 33
   offset: 0, 0
   index: -1
-Power-ups/powerupYellow_bolt
+Power-ups/powerupYellowbolt
   rotate: false
   xy: 469, 30
   size: 34, 33
   orig: 34, 33
   offset: 0, 0
   index: -1
-Power-ups/powerupYellow_shield
+Power-ups/powerupYellowshield
   rotate: false
   xy: 505, 30
   size: 34, 33
   orig: 34, 33
   offset: 0, 0
   index: -1
-Power-ups/powerupYellow_star
+Power-ups/powerupYellowstar
   rotate: false
   xy: 541, 30
   size: 34, 33
   orig: 34, 33
   offset: 0, 0
   index: -1
-Power-ups/things_bronze
+Power-ups/thingsbronze
   rotate: false
   xy: 577, 31
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
-Power-ups/things_gold
+Power-ups/thingsgold
   rotate: false
   xy: 611, 31
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
-Power-ups/things_silver
+Power-ups/thingssilver
   rotate: false
   xy: 645, 31
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
-Power-ups/star_bronze
+Power-ups/starbronze
   rotate: false
   xy: 679, 33
   size: 31, 30
   orig: 31, 30
   offset: 0, 0
   index: -1
-Power-ups/star_gold
+Power-ups/stargold
   rotate: false
   xy: 679, 1
   size: 31, 30
   orig: 31, 30
   offset: 0, 0
   index: -1
-Power-ups/star_silver
+Power-ups/starsilver
   rotate: false
   xy: 712, 33
   size: 31, 30
   orig: 31, 30
   offset: 0, 0
   index: -1
-Power-ups/shield_bronze
+Power-ups/shieldbronze
   rotate: false
   xy: 712, 1
   size: 30, 30
   orig: 30, 30
   offset: 0, 0
   index: -1
-Power-ups/shield_gold
+Power-ups/shieldgold
   rotate: false
   xy: 744, 1
   size: 30, 30
   orig: 30, 30
   offset: 0, 0
   index: -1
-Power-ups/shield_silver
+Power-ups/shieldsilver
   rotate: false
   xy: 745, 33
   size: 30, 30
   orig: 30, 30
   offset: 0, 0
   index: -1
-Power-ups/bold_silver
+Power-ups/boldsilver
   rotate: false
   xy: 776, 1
   size: 19, 30
   orig: 19, 30
   offset: 0, 0
   index: -1
-Power-ups/bolt_bronze
+Power-ups/boltbronze
   rotate: false
   xy: 777, 33
   size: 19, 30
   orig: 19, 30
   offset: 0, 0
   index: -1
-Power-ups/bolt_gold
+Power-ups/boltgold
   rotate: false
   xy: 797, 1
   size: 19, 30
   orig: 19, 30
   offset: 0, 0
   index: -1
-Power-ups/pill_blue
+Power-ups/pillblue
   rotate: false
   xy: 1, 7
   size: 22, 21
   orig: 22, 21
   offset: 0, 0
   index: -1
-Power-ups/pill_green
+Power-ups/pillgreen
   rotate: false
   xy: 798, 42
   size: 22, 21
   orig: 22, 21
   offset: 0, 0
   index: -1
-Power-ups/pill_red
+Power-ups/pillred
   rotate: false
   xy: 25, 7
   size: 22, 21
   orig: 22, 21
   offset: 0, 0
   index: -1
-Power-ups/pill_yellow
+Power-ups/pillyellow
   rotate: false
   xy: 822, 42
   size: 22, 21
@@ -2113,84 +2113,84 @@ UI/cursor
   orig: 30, 33
   offset: 0, 0
   index: -1
-UI/playerLife2_blue
+UI/playerLife2blue
   rotate: false
   xy: 1231, 35
   size: 37, 26
   orig: 37, 26
   offset: 0, 0
   index: -1
-UI/playerLife2_green
+UI/playerLife2green
   rotate: false
   xy: 1270, 35
   size: 37, 26
   orig: 37, 26
   offset: 0, 0
   index: -1
-UI/playerLife2_orange
+UI/playerLife2orange
   rotate: false
   xy: 1309, 35
   size: 37, 26
   orig: 37, 26
   offset: 0, 0
   index: -1
-UI/playerLife2_red
+UI/playerLife2red
   rotate: false
   xy: 1348, 35
   size: 37, 26
   orig: 37, 26
   offset: 0, 0
   index: -1
-UI/playerLife1_blue
+UI/playerLife1blue
   rotate: false
   xy: 1387, 35
   size: 33, 26
   orig: 33, 26
   offset: 0, 0
   index: -1
-UI/playerLife1_green
+UI/playerLife1green
   rotate: false
   xy: 1422, 35
   size: 33, 26
   orig: 33, 26
   offset: 0, 0
   index: -1
-UI/playerLife1_orange
+UI/playerLife1orange
   rotate: false
   xy: 1457, 35
   size: 33, 26
   orig: 33, 26
   offset: 0, 0
   index: -1
-UI/playerLife1_red
+UI/playerLife1red
   rotate: false
   xy: 1492, 35
   size: 33, 26
   orig: 33, 26
   offset: 0, 0
   index: -1
-UI/playerLife3_blue
+UI/playerLife3blue
   rotate: false
   xy: 1527, 35
   size: 32, 26
   orig: 32, 26
   offset: 0, 0
   index: -1
-UI/playerLife3_green
+UI/playerLife3green
   rotate: false
   xy: 1561, 35
   size: 32, 26
   orig: 32, 26
   offset: 0, 0
   index: -1
-UI/playerLife3_orange
+UI/playerLife3orange
   rotate: false
   xy: 1595, 35
   size: 32, 26
   orig: 32, 26
   offset: 0, 0
   index: -1
-UI/playerLife3_red
+UI/playerLife3red
   rotate: false
   xy: 1629, 35
   size: 32, 26

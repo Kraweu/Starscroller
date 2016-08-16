@@ -21,7 +21,7 @@
     <ship Name="Player01">
         <speed>1.2</speed>
         <health>20</health>
-        <asset>playerShip1_blue</asset>
+        <asset>playerShip1blue</asset>
         <weaponslot>
             <position x="5" y="5"/>
             <weapon Name="Laser1">
