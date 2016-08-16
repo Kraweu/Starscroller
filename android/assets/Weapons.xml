@@ -19,8 +19,20 @@
         <projectile>
             <damage>1</damage>
             <speed x="0" y="300"/>
-            <size x="3" y="12"/>
             <accelleration>2</accelleration>
+            <rotation>0</rotation>
+            <asset>Lasers/laserRed01</asset>
+        </projectile>
+    </weapontype>
+    <weapontype Name="AILaser2">
+        <reloadtime>3.0</reloadtime>
+        <shotpos x="5" y="20"/>
+        <asset>Gunsandengines/weapon2</asset>
+        <projectile>
+            <damage>5</damage>
+            <speed x="0" y="100"/>
+            <sizemult>1.5</sizemult>
+            <accelleration>4</accelleration>
             <rotation>0</rotation>
             <asset>Lasers/laserRed01</asset>
         </projectile>

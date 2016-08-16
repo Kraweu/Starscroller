@@ -401,7 +401,7 @@ public class Loader
                 weaponTypes[i].setAcceleration((float) getdoubleValueofChild(projectile, "accelleration"));
                 weaponTypes[i].setSwaying((float) getdoubleValueofChild(projectile, "swaying"));
                 weaponTypes[i].setRotation((float) getdoubleValueofChild(projectile, "rotation"));
-
+                weaponTypes[i].setSizemult((float) getdoubleValueofChild(projectile, "sizemult"));
                 weaponTypes[i].setProjectileasset(getValueofChild(projectile, "asset"));
             }
         }

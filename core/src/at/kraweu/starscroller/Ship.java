@@ -235,28 +235,47 @@ public class Ship
      */
     public void render(SpriteBatch batch, Assets assets)
     {
+
         //Projectiles
+
         Iterator iter = projectiles.iterator();
         while (iter.hasNext())
         {
             Projectile proj = (Projectile) iter.next();
             TextureRegion textureRegion = assets.getRegion(proj.getAsset());
-            batch.draw(textureRegion,
-                    (float) proj.getPosx() - (textureRegion.getRegionWidth() / 2), (float) proj.getPosy() - (textureRegion.getRegionHeight() / 2),
+            batch.draw(
+                    textureRegion,
+                    (float) proj.getPosx() - (textureRegion.getRegionWidth() / 2),
+                    (float) proj.getPosy() - (textureRegion.getRegionHeight() / 2),
                     (float) (textureRegion.getRegionWidth() / 2), (float) (textureRegion.getRegionHeight() / 2),
                     textureRegion.getRegionWidth(), textureRegion.getRegionHeight(),
-                    1, 1, (float) proj.getRotation());
+                    proj.getSizemult(), proj.getSizemult(),
+                    (float) proj.getRotation()
+            );
         }
 
         if (!beingdestroyed)
         {
+
             //Weapons
+
             for (int i = 0; i < weaponSlots.length; i++)
             {
                 TextureRegion textureRegion = assets.getRegion(weaponSlots[i].getWeapon().getType().getAsset());
-                batch.draw(textureRegion, (float) (weaponSlots[i].posx + getPosx()), (float) (weaponSlots[i].posy + getPosy()));
+                batch.draw(
+                        textureRegion,
+                        (float) (weaponSlots[i].posx + getPosx()), (float) (weaponSlots[i].posy + getPosy()),
+                        (float) (textureRegion.getRegionWidth() / 2), (float) (textureRegion.getRegionHeight() / 2),
+                        textureRegion.getRegionWidth(), textureRegion.getRegionHeight(),
+                        weaponSlots[i].getWeapon().getType().getSizemult(),
+                        weaponSlots[i].getWeapon().getType().getSizemult(),
+                        0
+                );
+//                batch.draw(textureRegion, (float) (weaponSlots[i].posx + getPosx()), (float) (weaponSlots[i].posy + getPosy()));
             }
+
             //Ship
+
             batch.draw(assets.getRegion(getAsset()),
                     getPosx(), getPosy(),
                     (float) getSizex() / 2, (float) getSizex() / 2,

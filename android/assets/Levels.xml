@@ -37,5 +37,57 @@
 				</positions>
 			</enemy>
 		</wave>
+		<wave Nr="2" timeToStart="15">
+			<enemy>
+				<shiptype Name="Enemy03"/>
+				<positions>
+					<position x="-050" y="700" time="0.5"/>
+					<position x="100" y="500" time="0.5"/>
+					<position x="50" y="500" time="0.5"/>
+					<position x="0" y="500" time="0.5"/>
+				</positions>
+			</enemy>
+			<enemy>
+				<shiptype Name="Enemy03"/>
+				<positions>
+					<position x="435" y="700" time="0.5"/>
+					<position x="286" y="500" time="0.5"/>
+					<position x="336" y="500" time="0.5"/>
+					<position x="386" y="500" time="0.5"/>
+				</positions>
+			</enemy>
+		</wave>
     </level>
+	<level Name="TestLevel2">
+		<wave Nr="1" timeToStart="3">
+			<enemy>
+				<shiptype Name="Enemy03"/>
+				<positions>
+					<position x="-050" y="700" time="0.5"/>
+					<position x="100" y="500" time="0.5"/>
+					<position x="50" y="500" time="0.5"/>
+					<position x="0" y="500" time="0.5"/>
+				</positions>
+			</enemy>
+			<enemy>
+				<shiptype Name="Enemy03"/>
+				<positions>
+					<position x="200" y="900" time="0.5"/>
+					<position x="200" y="500" time="0.5"/>
+					<position x="210" y="600" time="0.5"/>
+					<position x="190" y="600" time="0.5"/>
+					<position x="200" y="500" time="0.5"/>
+				</positions>
+			</enemy>
+			<enemy>
+				<shiptype Name="Enemy03"/>
+				<positions>
+					<position x="435" y="700" time="0.5"/>
+					<position x="286" y="500" time="0.5"/>
+					<position x="336" y="500" time="0.5"/>
+					<position x="386" y="500" time="0.5"/>
+				</positions>
+			</enemy>
+		</wave>
+	</level>
 </levels>

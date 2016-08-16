@@ -15,6 +15,7 @@ public class WeaponType
     int shotposx; //Position relative to the Weapons left upper corner
     int shotposy;
     String asset = null;
+    private float sizemult = 1;
 
     //Projectile properties
 
@@ -150,4 +151,13 @@ public class WeaponType
         this.speedy = speedy;
     }
 
+    public float getSizemult()
+    {
+        return sizemult;
+    }
+
+    public void setSizemult(float sizemult)
+    {
+        this.sizemult = Math.abs(sizemult);
+    }
 }

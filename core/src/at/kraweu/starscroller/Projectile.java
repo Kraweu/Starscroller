@@ -25,14 +25,16 @@ public class Projectile
     float acceleration = 1;
     float swaying = 0;
     float rotation = 0;
+    float sizemult = 1;
 
-    public Projectile(float damage, float posx, float posy, float speedx, float speedy, float rotation, float acceleration, String asset)
+    public Projectile(float damage, float posx, float posy, float speedx, float speedy, float rotation, float acceleration, float sizemult, String asset)
     {
         this.damage = damage;
         this.posx = posx;
         this.posy = posy;
         this.rotation = rotation;
         this.acceleration = acceleration;
+        this.sizemult = sizemult;
         this.asset = asset;
 
         //Speed Vector Rotation
@@ -158,6 +160,16 @@ public class Projectile
     public void setRotation(float rotation)
     {
         this.rotation = rotation;
+    }
+
+    public float getSizemult()
+    {
+        return sizemult;
+    }
+
+    public void setSizemult(float sizemult)
+    {
+        this.sizemult = sizemult;
     }
 
     public boolean detectCollision(Ship ship, Ship owner)
