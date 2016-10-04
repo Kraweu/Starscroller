@@ -19,6 +19,11 @@ public class GameScreen implements Screen
     boolean pause;
     private SpriteBatch batch;
 
+    public Level getLevel()
+    {
+        return level;
+    }
+
     public GameScreen(Starscroller game, Player player, Level level)
     {
         this.game = game;
@@ -46,7 +51,7 @@ public class GameScreen implements Screen
         batch.begin();
         level.background.render(batch, game.assets, delta);
         player.render(batch, game.assets);
-        level.spawnedenemies.render(batch, game.assets);//TODO waves
+        level.spawnedenemies.render(batch, game.assets);
         batch.end();
         if (pause)
         {
@@ -60,9 +65,10 @@ public class GameScreen implements Screen
     {
         float delta = 0;
         delta = Gdx.graphics.getRawDeltaTime();
+        delta = Math.min(delta, 0.2f);
         player.movement(delta);
         player.shoot(delta, game.assets);
-        level.spawnedenemies.update(delta, game.assets);//TODO waves
+        level.spawnedenemies.update(delta, game.assets);
         level.update(delta);
     }
 

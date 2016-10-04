@@ -1,5 +1,9 @@
 package at.kraweu.starscroller;
 
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.scenes.scene2d.ui.Label;
+import com.badlogic.gdx.scenes.scene2d.ui.Skin;
+
 /**
  * Created by Kraweu on 13.10.2015.
  */
@@ -19,7 +23,8 @@ public class Level
     public boolean started = false;
     private boolean allspawned = false;
     private boolean completed = false;
-
+    private boolean displayMessage = false;
+    private Message message = new Message("");
     /**
      * Called when level is Started
      */
@@ -53,9 +58,45 @@ public class Level
         }
         if (allspawned && spawnedenemies.isEmpty() && !completed)
         {
+            message = new Message("Level " + name + " completed");
             completed = true;
             System.out.println("Level " + name + " completed");
         }
+        if (displayMessage)
+        {
+            displayMessage = message.displayMessage(delta);
+        }
+
     }
 
+    private class Message
+    {
+        float timeSinceStart;
+        float timeToDisplay = 1.5f;
+        Label label;
+        Skin skin;
+
+        public Message(String text)
+        {
+            skin = new Skin();
+            skin.load(Gdx.files.internal("uiskin.json"));
+            label = new Label(text, skin);
+        }
+
+        private void startDisplayMessage(String text)
+        {
+            displayMessage = true;
+
+        }
+
+        private boolean displayMessage(float delta)
+        {
+            timeSinceStart += delta;
+            if (timeSinceStart > timeToDisplay)
+                return false;
+            //todo: fading?
+            //and let it being Displayed in gamescreen render
+            return true;
+        }
+    }
 }

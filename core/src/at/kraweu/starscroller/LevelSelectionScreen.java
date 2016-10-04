@@ -8,10 +8,7 @@ import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Group;
 import com.badlogic.gdx.scenes.scene2d.Stage;
-import com.badlogic.gdx.scenes.scene2d.ui.Label;
-import com.badlogic.gdx.scenes.scene2d.ui.ScrollPane;
-import com.badlogic.gdx.scenes.scene2d.ui.Skin;
-import com.badlogic.gdx.scenes.scene2d.ui.Table;
+import com.badlogic.gdx.scenes.scene2d.ui.*;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 import com.badlogic.gdx.utils.Align;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
@@ -21,11 +18,10 @@ import com.badlogic.gdx.utils.viewport.ScreenViewport;
  */
 public class LevelSelectionScreen implements Screen
 {
-    private Background background;
+    private Image background;
     private Stage stage;
     private Skin skin;
     private Group ui;
-    private ScrollPane scrollPane;
     private Starscroller game;
 
     public LevelSelectionScreen(Starscroller game)
@@ -42,7 +38,16 @@ public class LevelSelectionScreen implements Screen
         skin.addRegions(new TextureAtlas("uiskin.atlas"));
         skin.load(Gdx.files.internal("uiskin.json"));
         Table levelTable = new Table();
-        scrollPane = new ScrollPane(levelTable);
+
+        ScrollPane scrollPane = new ScrollPane(levelTable);
+        scrollPane.setFadeScrollBars(true);
+        scrollPane.setOverscroll(false, true);
+
+//        background = new Image(skin, "Backgrounds/SpaceBackground3cut");
+//        stage.addActor(background);
+//        background = new Background();
+//        background.setAsset("Backgrounds/SpaceBackground3cut",0f);
+
         Table mainTable = new Table();
         mainTable.setFillParent(true);
         mainTable.add(label("Levels", Color.NAVY)).pad(120).top();
@@ -50,6 +55,7 @@ public class LevelSelectionScreen implements Screen
         mainTable.add(scrollPane);
         ui = new Group();
         ui.addActor(mainTable);
+//        stage.addActor(background);
         stage.addActor(ui);
         Gdx.input.setInputProcessor(stage);
 

@@ -329,7 +329,7 @@ public class Ship
             Projectile proj = (Projectile) iter.next();
             proj.movement(delta, assets);
             //TODO facilitate level selection
-            Iterator<Enemy> enemiesiter = Starscroller.getGame().levels[0].spawnedenemies.getIterator();
+            Iterator<Enemy> enemiesiter = ((GameScreen) (Starscroller.getGame().getScreen())).getLevel().spawnedenemies.getIterator();
             boolean hit = false;
             if (this.owner instanceof Player)//Player projectiles
             {

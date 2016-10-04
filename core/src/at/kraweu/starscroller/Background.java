@@ -25,14 +25,19 @@ public class Background
     {
         for (int i = 0; i < backgroundlayers.size(); i++)
         {
-            backgroundlayers.get(i).position += delta;
-//            beginn at the bottom of the image
-            float layerpositon = -(backgroundlayers.get(i).position * backgroundlayers.get(i).speed);
-            batch.draw(assets.getRegion(backgroundlayers.get(i).asset), 0, layerpositon);
-            if (layerpositon < -assets.getRegion(backgroundlayers.get(i).asset).originalHeight + Starscroller.gameheight)
-                batch.draw(assets.getRegion(backgroundlayers.get(i).asset), 0, layerpositon + assets.getRegion(backgroundlayers.get(i).asset).originalHeight);
-            if (layerpositon < -assets.getRegion(backgroundlayers.get(i).asset).originalHeight)
-                backgroundlayers.get(i).position = 0;
+            if (backgroundlayers.get(i).speed != 0)
+            {
+                backgroundlayers.get(i).position += delta;
+//              beginn at the bottom of the image
+                float layerpositon = -(backgroundlayers.get(i).position * backgroundlayers.get(i).speed);
+                batch.draw(assets.getRegion(backgroundlayers.get(i).asset), 0, layerpositon);
+                if (layerpositon < -assets.getRegion(backgroundlayers.get(i).asset).originalHeight + Starscroller.gameheight)
+                    batch.draw(assets.getRegion(backgroundlayers.get(i).asset), 0, layerpositon + assets.getRegion(backgroundlayers.get(i).asset).originalHeight);
+                if (layerpositon < -assets.getRegion(backgroundlayers.get(i).asset).originalHeight)
+                    backgroundlayers.get(i).position = 0;
+            } else
+                batch.draw(assets.getRegion(backgroundlayers.get(i).asset), 0, 0);
+
         }
 //        batch.draw(assets.getRegion(backgroundlayers.get(1).asset), 0, -45);
     }
