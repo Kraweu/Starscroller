@@ -64,7 +64,7 @@ public class StartMenuScreen implements Screen
             @Override
             public void mychanged(ChangeListener.ChangeEvent event, Actor actor)
             {
-                game.setScreen(new LevelSelectionScreen(game));/*TODO levels*/
+                game.setScreen(new LevelSelectionScreen(game));
             }
         };
         mainTable.add(buttonLevels.getbutton());

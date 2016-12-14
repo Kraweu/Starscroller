@@ -99,6 +99,18 @@ public class LevelSelectionScreen implements Screen
         levelTable.row();
         levelTable.add(label("Test", Color.GRAY)).pad(50);
         levelTable.row();
+        levelTable.add(label("Test", Color.GRAY)).pad(50);
+        levelTable.row();
+        MenuButton buttonBack = new MenuButton("Back", skin, "Go Back to the Main Menu")
+        {
+            @Override
+            public void mychanged(ChangeListener.ChangeEvent event, Actor actor)
+            {
+                game.setScreen(new StartMenuScreen(game));
+            }
+        };
+        levelTable.add(buttonBack.getbutton());
+        levelTable.row();
     }
 
     @Override
