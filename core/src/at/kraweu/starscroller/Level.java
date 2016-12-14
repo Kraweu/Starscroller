@@ -1,6 +1,5 @@
 package at.kraweu.starscroller;
 
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 
@@ -79,8 +78,8 @@ public class Level
         public Message(String text)
         {
             skin = new Skin();
-            skin.load(Gdx.files.internal("uiskin.json"));
-            label = new Label(text, skin);
+//            skin.load(Gdx.files.internal("uiskin.json"));
+//            label = new Label(text, skin);
         }
 
         private void startDisplayMessage(String text)

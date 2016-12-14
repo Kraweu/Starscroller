@@ -48,7 +48,7 @@ public class Projectile
     {
         if (deleted)
             return;
-        if (Border.inside(new Point((int) posx - assets.getRegion(asset).packedWidth, (int) posy - assets.getRegion(asset).packedHeight), Starscroller.gamesize, assets.getRegion(asset).packedWidth, assets.getRegion(asset).packedHeight))
+        if (Border.inside(new Point((int) posx /*- assets.getRegion(asset).packedWidth*/, (int) posy /*- assets.getRegion(asset).packedHeight*/), Starscroller.gamesize, assets.getRegion(asset).packedWidth, assets.getRegion(asset).packedHeight))
         {
             posx += speedx * delta;
             posy += speedy * delta;

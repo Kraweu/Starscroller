@@ -69,9 +69,9 @@ public class Border
                 throw new falseborderexception();
             if (sizex < 0 || sizey < 0)//Checks if size is Valid
                 throw new InvalidSizeException(sizex, sizey);
-            if (coordinate.getX() < borderBeginn.getX() || coordinate.getX() + sizex > borderEnd.getX())//Checks if x coordinate is completely inside Border
+            if (coordinate.getX() + sizex < borderBeginn.getX() || coordinate.getX() > borderEnd.getX())//Checks if x coordinate is completely inside Border
                 return false;
-            if (coordinate.getY() < borderBeginn.getY() || coordinate.getY() + sizey > borderEnd.getY())//Checks if y coordinate is completely inside Border
+            if (coordinate.getY() + sizey < borderBeginn.getY() || coordinate.getY() > borderEnd.getY())//Checks if y coordinate is completely inside Border
                 return false;
 
             return true;
