@@ -1,5 +1,5 @@
 <levels>
-    <level Name="TestLevel">
+	<level Name="TestLevel" nextLevel="TestLevel2">
 		<wave Nr="1" timeToStart="3">
 			<enemy>
 				<shiptype Name="Enemy01"/>
@@ -58,7 +58,7 @@
 			</enemy>
 		</wave>
     </level>
-	<level Name="ShortLevel">
+	<level Name="ShortLevel" nextLevel="TestLevel">
 		<wave Nr="1" timeToStart="0">
 			<enemy>
 				<shiptype Name="Enemy03"/>

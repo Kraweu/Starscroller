@@ -2084,9 +2084,16 @@ UI/flatDark21
   orig: 48, 48
   offset: 0, 0
   index: -1
-UI/shadedDark12
+UI/flatDark32
   rotate: false
   xy: 1049, 13
+  size: 48, 48
+  orig: 48, 48
+  offset: 0, 0
+  index: -1
+UI/shadedDark12
+  rotate: false
+  xy: 1099, 13
   size: 48, 48
   split: 5, 6, 4, 4
   orig: 48, 48
@@ -2094,105 +2101,112 @@ UI/shadedDark12
   index: -1
 UI/shadedDark22
   rotate: false
-  xy: 1099, 13
+  xy: 1149, 13
+  size: 48, 48
+  orig: 48, 48
+  offset: 0, 0
+  index: -1
+UI/shadedDark33
+  rotate: false
+  xy: 1199, 13
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
 UI/transparentDark20
   rotate: false
-  xy: 1149, 13
+  xy: 1249, 13
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
 UI/cursor
   rotate: false
-  xy: 1199, 28
+  xy: 1299, 28
   size: 30, 33
   orig: 30, 33
   offset: 0, 0
   index: -1
 UI/playerLife2blue
   rotate: false
-  xy: 1231, 35
+  xy: 1331, 35
   size: 37, 26
   orig: 37, 26
   offset: 0, 0
   index: -1
 UI/playerLife2green
   rotate: false
-  xy: 1270, 35
+  xy: 1370, 35
   size: 37, 26
   orig: 37, 26
   offset: 0, 0
   index: -1
 UI/playerLife2orange
   rotate: false
-  xy: 1309, 35
+  xy: 1409, 35
   size: 37, 26
   orig: 37, 26
   offset: 0, 0
   index: -1
 UI/playerLife2red
   rotate: false
-  xy: 1348, 35
+  xy: 1448, 35
   size: 37, 26
   orig: 37, 26
   offset: 0, 0
   index: -1
 UI/playerLife1blue
   rotate: false
-  xy: 1387, 35
+  xy: 1487, 35
   size: 33, 26
   orig: 33, 26
   offset: 0, 0
   index: -1
 UI/playerLife1green
   rotate: false
-  xy: 1422, 35
+  xy: 1522, 35
   size: 33, 26
   orig: 33, 26
   offset: 0, 0
   index: -1
 UI/playerLife1orange
   rotate: false
-  xy: 1457, 35
+  xy: 1557, 35
   size: 33, 26
   orig: 33, 26
   offset: 0, 0
   index: -1
 UI/playerLife1red
   rotate: false
-  xy: 1492, 35
+  xy: 1592, 35
   size: 33, 26
   orig: 33, 26
   offset: 0, 0
   index: -1
 UI/playerLife3blue
   rotate: false
-  xy: 1527, 35
+  xy: 1627, 35
   size: 32, 26
   orig: 32, 26
   offset: 0, 0
   index: -1
 UI/playerLife3green
   rotate: false
-  xy: 1561, 35
+  xy: 1661, 35
   size: 32, 26
   orig: 32, 26
   offset: 0, 0
   index: -1
 UI/playerLife3orange
   rotate: false
-  xy: 1595, 35
+  xy: 1695, 35
   size: 32, 26
   orig: 32, 26
   offset: 0, 0
   index: -1
 UI/playerLife3red
   rotate: false
-  xy: 1629, 35
+  xy: 1729, 35
   size: 32, 26
   orig: 32, 26
   offset: 0, 0
@@ -2206,7 +2220,7 @@ UI/numeral0
   index: -1
 UI/numeral1
   rotate: false
-  xy: 1663, 42
+  xy: 1763, 42
   size: 19, 19
   orig: 19, 19
   offset: 0, 0
@@ -2220,7 +2234,7 @@ UI/numeral2
   index: -1
 UI/numeral3
   rotate: false
-  xy: 1684, 42
+  xy: 1784, 42
   size: 19, 19
   orig: 19, 19
   offset: 0, 0
@@ -2234,7 +2248,7 @@ UI/numeral4
   index: -1
 UI/numeral5
   rotate: false
-  xy: 1705, 42
+  xy: 1805, 42
   size: 19, 19
   orig: 19, 19
   offset: 0, 0
@@ -2248,7 +2262,7 @@ UI/numeral6
   index: -1
 UI/numeral7
   rotate: false
-  xy: 1726, 42
+  xy: 1826, 42
   size: 19, 19
   orig: 19, 19
   offset: 0, 0
@@ -2262,7 +2276,7 @@ UI/numeral8
   index: -1
 UI/numeral9
   rotate: false
-  xy: 1747, 42
+  xy: 1847, 42
   size: 19, 19
   orig: 19, 19
   offset: 0, 0

@@ -16,6 +16,7 @@ public class Level
 
     public Wave[] waves;
     public String name;
+    public String nextLevel;
     public int nextWave = 0;
     public boolean displayMessage = false;
 
@@ -24,19 +25,35 @@ public class Level
      */
     public double time = 0;
     public boolean started = false;
+
+    private Skin skin;
     private boolean allspawned = false;
+    private int score = 0;
     private boolean completed = false;
-    public Message message = new Message("");
+
+    public Message message;
+    public Label scoreLabel;
+    public Label nextLevelLabel;
 
     /**Called when level is Started*/
     public void prepare()
     {
+        skin = new Skin();
+        skin.addRegions(new TextureAtlas("uiskin.atlas"));
+        skin.load(Gdx.files.internal("uiskin.json"));
+
+        message = new Message("");
+        scoreLabel = new Label("1", skin);
+        scoreLabel.setAlignment(0, 1);
+        nextLevelLabel = new Label("1", skin);
+        nextLevelLabel.setAlignment(0, 1);
+
         background.addLayer("Backgrounds/sprstarsfarcropped", 7.1f);
         background.addLayer("Backgrounds/sprstarsnearcropped", 20.2f);
         started = true;
     }
 
-    /**Called regularly to control the environment(enemy movement, enemySpawning, winCheck)*/
+    /**Called regularly to control the environment(enemySpawning, winCheck, MessageDisplay)*/
     public void update(float delta)
     {
         //Time Taking
@@ -75,11 +92,30 @@ public class Level
     {
         completed = true;
         message.startDisplayMessage("Level " + name + " completed");
+        scoreLabel.setText(Integer.toString(score));
+        nextLevelLabel.setText(nextLevel);
     }
+
+    public boolean getCompleted()
+    {
+        return completed;
+    }
+
+
 
     public Label getMessageLabel()
     {
         return message.getLabel();
+    }
+
+    public Label getScoreLabel()
+    {
+        return scoreLabel;
+    }
+
+    public Label getNextLevelLabel()
+    {
+        return nextLevelLabel;
     }
 
     private class Message
@@ -87,13 +123,9 @@ public class Level
         float timeSinceStart;
         float timeToDisplay = 3.5f;
         Label label;
-        Skin skin;
 
         public Message(String text)
         {
-            skin = new Skin();
-            skin.addRegions(new TextureAtlas("uiskin.atlas"));
-            skin.load(Gdx.files.internal("uiskin.json"));
             label = new Label(text, skin);
             label.setWrap(true);
             label.setAlignment(0,1);
@@ -122,4 +154,18 @@ public class Level
             return label;
         }
     }
+
+    /**
+     * Returns Level with given name, if Level is not found null
+     */
+    public static Level getLevel(String name, Level[] levels)
+    {
+        for (int i = 0; i < levels.length; i++)
+        {
+            if (levels[i].name == name)
+                return levels[i];
+        }
+        return null;
+    }
+
 }

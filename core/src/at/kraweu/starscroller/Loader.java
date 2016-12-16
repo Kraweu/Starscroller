@@ -122,6 +122,10 @@ public class Loader
                             levels[i].name = "No Name Found";
                         else
                             levels[i].name = element.getAttribute("Name");
+                        if (element.getAttribute("nextLevel").isEmpty())
+                            levels[i].nextLevel = null;
+                        else
+                            levels[i].nextLevel = element.getAttribute("nextLevel");
                     } catch (Exception e)
                     {
                         System.out.println("Error loading level name in Level: " + i);

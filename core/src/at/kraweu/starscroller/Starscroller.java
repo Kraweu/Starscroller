@@ -45,6 +45,8 @@ public class Starscroller extends Game
     public Viewport viewport;
     public Camera camera;
 
+    String nextLevel = null;
+
     @Override
     public void create () {
         game = this;
@@ -78,6 +80,7 @@ public class Starscroller extends Game
 
         player = new Player();
         player.setShip(ships[0].myClone(), assets);
+
 
         setScreen(new StartMenuScreen(this));
 //        setScreen(new GameScreen(this, player, levels[0]));//skip menu for debugging
