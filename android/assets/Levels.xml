@@ -58,6 +58,19 @@
 			</enemy>
 		</wave>
     </level>
+	<level Name="ShortLevel">
+		<wave Nr="1" timeToStart="0">
+			<enemy>
+				<shiptype Name="Enemy03"/>
+				<positions>
+					<position x="180" y="500" time="1.0"/>
+					<position x="60" y="600" time="1.7"/>
+					<position x="300" y="600" time="1.0"/>
+					<position x="180" y="500" time="1.0"/>
+				</positions>
+			</enemy>
+		</wave>
+	</level>
 	<level Name="TestLevel2">
 		<wave Nr="1" timeToStart="3">
 			<enemy>
