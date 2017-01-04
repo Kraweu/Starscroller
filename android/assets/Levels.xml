@@ -1,4 +1,6 @@
 <levels>
+	<level Name="TestLevels" isLabel="">
+	</level>
 	<level Name="TestLevel" nextLevel="TestLevel2">
 		<wave Nr="1" timeToStart="3">
 			<enemy>

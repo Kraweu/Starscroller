@@ -66,21 +66,25 @@ public class LevelSelectionScreen implements Screen
         MenuButton[] levelbuttons = new MenuButton[game.levels.length];
         for (int i = 0; i < game.levels.length; i++)
         {
-            levelbuttons[i] = new MenuButton(game.levels[i].name, skin)
+            if (game.levels[i].isLabel)
             {
-                @Override
-                public void mychanged(ChangeListener.ChangeEvent event, Actor actor)
+
+            } else
+                levelbuttons[i] = new MenuButton(game.levels[i].name, skin)
                 {
-                    try
+                    @Override
+                    public void mychanged(ChangeListener.ChangeEvent event, Actor actor)
                     {
-                        game.setScreen(new GameScreen(game, game.player, game.levels[Integer.parseInt(actor.getName())]));
-                    } catch (NumberFormatException e)
-                    {
-                        System.out.println("LevelButton not named Properly: " + actor.getName());
-                        System.out.println("Level could not be Started");
+                        try
+                        {
+                            game.setScreen(new GameScreen(game, game.player, game.levels[Integer.parseInt(actor.getName())]));
+                        } catch (NumberFormatException e)
+                        {
+                            System.out.println("LevelButton not named Properly: " + actor.getName());
+                            System.out.println("Level could not be Started");
+                        }
                     }
-                }
-            };
+                };
             levelbuttons[i].getbutton().setName("" + i);
             levelTable.add(levelbuttons[i].getbutton());
             levelTable.row();

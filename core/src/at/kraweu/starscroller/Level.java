@@ -17,6 +17,7 @@ public class Level
     public Wave[] waves;
     public String name;
     public String nextLevel;
+    public boolean isLabel = false;
     public int nextWave = 0;
     public boolean displayMessage = false;
 

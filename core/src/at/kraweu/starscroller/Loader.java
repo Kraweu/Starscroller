@@ -119,9 +119,12 @@ public class Loader
                     {
                         Element element = (Element) tempnode;
                         if (element.getAttribute("Name").isEmpty())
-                            levels[i].name = "No Name Found";
+                            levels[i].name = "Unnamed";
                         else
                             levels[i].name = element.getAttribute("Name");
+
+                        levels[i].isLabel = element.hasAttribute("isLabel");
+
                         if (element.getAttribute("nextLevel").isEmpty())
                             levels[i].nextLevel = null;
                         else

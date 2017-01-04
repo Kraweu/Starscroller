@@ -77,7 +77,7 @@ public class GameScreen implements Screen
             }
         };
         mainTable.row().right().padRight(100);
-        mainTable.add(menuButton.getbutton().pad(20));
+        mainTable.add(menuButton.getbutton().pad(20));//ToDO: Button not Alligned Right
 
         ui.addActor(mainTable);
         stage.addActor(ui);
