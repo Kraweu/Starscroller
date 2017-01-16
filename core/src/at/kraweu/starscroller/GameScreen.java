@@ -78,11 +78,10 @@ public class GameScreen implements Screen
         };
         mainTable.row().right().expand(false, false).fill(false, false);
         mainTable.add(menuButton.getbutton());
-
+        mainTable.setVisible(false);
         ui.addActor(mainTable);
         stage.addActor(ui);
         ui.setSize(480, 854);
-
         pause = false;
     }
 
@@ -116,7 +115,10 @@ public class GameScreen implements Screen
         level.spawnedenemies.update(delta, game.assets);
         level.update(delta);
         if (level.getCompleted())
+        {
             game.nextLevel = level.nextLevel;
+            mainTable.setVisible(true);
+        }
     }
 
     @Override
