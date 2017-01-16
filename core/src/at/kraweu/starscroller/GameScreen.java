@@ -76,12 +76,12 @@ public class GameScreen implements Screen
                 game.setScreen(new StartMenuScreen(game));
             }
         };
-        mainTable.row().right().padRight(100);
-        mainTable.add(menuButton.getbutton().pad(20));//ToDO: Button not Alligned Right
+        mainTable.row().right().expand(false, false).fill(false, false);
+        mainTable.add(menuButton.getbutton());
 
         ui.addActor(mainTable);
         stage.addActor(ui);
-
+        ui.setSize(480, 854);
 
         pause = false;
     }
@@ -124,7 +124,7 @@ public class GameScreen implements Screen
     {
         //TODO Fix distortion when the window was resized and then setscreen Gamescreen is called
         game.viewport.update(width, height, true);
-        ui.setSize(width, height);
+//        ui.setSize(width, height); //setup in show
         pause = true;
     }
 

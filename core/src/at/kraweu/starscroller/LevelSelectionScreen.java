@@ -68,8 +68,12 @@ public class LevelSelectionScreen implements Screen
         {
             if (game.levels[i].isLabel)
             {
-
+                //TODO
+                Label label = new Label(game.levels[i].name, skin);
+                levelTable.add(label);
+                levelTable.row();
             } else
+            {
                 levelbuttons[i] = new MenuButton(game.levels[i].name, skin)
                 {
                     @Override
@@ -85,20 +89,11 @@ public class LevelSelectionScreen implements Screen
                         }
                     }
                 };
-            levelbuttons[i].getbutton().setName("" + i);
-            levelTable.add(levelbuttons[i].getbutton());
-            levelTable.row();
+                levelbuttons[i].getbutton().setName("" + i);
+                levelTable.add(levelbuttons[i].getbutton());
+                levelTable.row();
+            }
         }
-        levelTable.add(label("Test", Color.GRAY)).pad(50);
-        levelTable.row();
-        levelTable.add(label("Test", Color.GRAY)).pad(50);
-        levelTable.row();
-        levelTable.add(label("Test", Color.GRAY)).pad(50);
-        levelTable.row();
-        levelTable.add(label("Test", Color.GRAY)).pad(50);
-        levelTable.row();
-        levelTable.add(label("Test", Color.GRAY)).pad(50);
-        levelTable.row();
         levelTable.add(label("Test", Color.GRAY)).pad(50);
         levelTable.row();
         levelTable.add(label("Test", Color.GRAY)).pad(50);
