@@ -5,9 +5,7 @@ import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
-import com.badlogic.gdx.scenes.scene2d.Actor;
-import com.badlogic.gdx.scenes.scene2d.Group;
-import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.scenes.scene2d.*;
 import com.badlogic.gdx.scenes.scene2d.ui.*;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 import com.badlogic.gdx.utils.Align;
@@ -39,9 +37,29 @@ public class LevelSelectionScreen implements Screen
         skin.load(Gdx.files.internal("uiskin.json"));
         Table levelTable = new Table();
 
-        ScrollPane scrollPane = new ScrollPane(levelTable);
+        final ScrollPane scrollPane = new ScrollPane(levelTable);
         scrollPane.setFadeScrollBars(true);
         scrollPane.setOverscroll(false, true);
+        //Enable Mouse Scrolling
+        scrollPane.addListener(new InputListener()
+        {
+            public boolean scrolled(InputEvent event, float x, float y, int amount)
+            {
+                scrollPane.setScrollX(amount);
+                return true;
+            }
+
+            public void enter(InputEvent event, float x, float y, int pointer, Actor toActor)
+            {
+                stage.setScrollFocus(toActor);
+            }
+
+            public void exit(InputEvent event, float x, float y, int pointer, Actor toActor)
+            {
+                stage.setScrollFocus(null);
+            }
+        });
+
 
 //        background = new Image(skin, "Backgrounds/SpaceBackground3cut");
 //        stage.addActor(background);
