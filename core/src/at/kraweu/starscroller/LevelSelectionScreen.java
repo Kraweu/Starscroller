@@ -48,7 +48,8 @@ public class LevelSelectionScreen implements Screen
                 scrollPane.setScrollX(amount);
                 return true;
             }
-
+            /*
+            //Normal implementation, not used because focus should be always on this scrollpane
             public void enter(InputEvent event, float x, float y, int pointer, Actor toActor)
             {
                 stage.setScrollFocus(toActor);
@@ -57,7 +58,7 @@ public class LevelSelectionScreen implements Screen
             public void exit(InputEvent event, float x, float y, int pointer, Actor toActor)
             {
                 stage.setScrollFocus(null);
-            }
+            }*/
         });
 
 
@@ -71,16 +72,21 @@ public class LevelSelectionScreen implements Screen
         mainTable.add(label("Levels", Color.NAVY)).pad(120).top();
         mainTable.row();
         mainTable.add(scrollPane);
+
         ui = new Group();
         ui.addActor(mainTable);
 //        stage.addActor(background);
         stage.addActor(ui);
+
+        stage.setScrollFocus(scrollPane);
+
         Gdx.input.setInputProcessor(stage);
 
 
         levelTable.defaults().pad(30);
         levelTable.center();
         levelTable.top().padTop(50);
+
         MenuButton[] levelbuttons = new MenuButton[game.levels.length];
         for (int i = 0; i < game.levels.length; i++)
         {

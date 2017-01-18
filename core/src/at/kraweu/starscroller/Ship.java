@@ -1,5 +1,6 @@
 package at.kraweu.starscroller;
 
+import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 
@@ -22,6 +23,7 @@ public class Ship
     private float destroytime;
 
     private String asset = null;
+    private Animation destructionAnimation = null;
     private MovementInterface owner = null;
     private WeaponSlot[] weaponSlots = null;
     private Set<Projectile> projectiles = new HashSet<Projectile>();
@@ -238,6 +240,32 @@ public class Ship
 
         //Projectiles
 
+        renderProjectiles(batch, assets);
+
+        if (!beingdestroyed)
+        {
+            renderShip(batch, assets);
+        } else
+        {
+            //While being destroyed(Explosion)
+
+            if (destructionAnimation == null)
+                destructionAnimation = new Animation(0.05f, assets.getRegions("Effects/explosion"));
+//            if (destroytime<0.1)
+//            {
+//                renderShip(batch,assets);
+//            }
+            TextureRegion currentFrame = destructionAnimation.getKeyFrame(destroytime, false);
+            batch.draw(currentFrame,
+                    getPosx() + 20, getPosy() + 30,
+                    (float) getSizex() / 2, (float) getSizex() / 2,
+                    getSizex() * 1.5f, getSizey() * 1.5f, 1, 1, getRotation());
+        }
+
+    }
+
+    private void renderProjectiles(SpriteBatch batch, Assets assets)
+    {
         Iterator iter = projectiles.iterator();
         while (iter.hasNext())
         {
@@ -253,39 +281,37 @@ public class Ship
                     (float) proj.getRotation()
             );
         }
+    }
 
-        if (!beingdestroyed)
+    private void renderShip(SpriteBatch batch, Assets assets)
+    {
+        //Weapons
+
+        for (int i = 0; i < weaponSlots.length; i++)
         {
-
-            //Weapons
-
-            for (int i = 0; i < weaponSlots.length; i++)
-            {
-                TextureRegion textureRegion = assets.getRegion(weaponSlots[i].getWeapon().getType().getAsset());
-                batch.draw(
-                        textureRegion,
-                        (float) (weaponSlots[i].posx + getPosx()), (float) (weaponSlots[i].posy + getPosy()),
-                        (float) (textureRegion.getRegionWidth() / 2), (float) (textureRegion.getRegionHeight() / 2),
-                        textureRegion.getRegionWidth(), textureRegion.getRegionHeight(),
-                        weaponSlots[i].getWeapon().getType().getSizemult(),
-                        weaponSlots[i].getWeapon().getType().getSizemult(),
-                        0
-                );
+            TextureRegion textureRegion = assets.getRegion(weaponSlots[i].getWeapon().getType().getAsset());
+            batch.draw(
+                    textureRegion,
+                    (float) (weaponSlots[i].posx + getPosx()), (float) (weaponSlots[i].posy + getPosy()),
+                    (float) (textureRegion.getRegionWidth() / 2), (float) (textureRegion.getRegionHeight() / 2),
+                    textureRegion.getRegionWidth(), textureRegion.getRegionHeight(),
+                    weaponSlots[i].getWeapon().getType().getSizemult(),
+                    weaponSlots[i].getWeapon().getType().getSizemult(),
+                    0
+            );
 //                batch.draw(textureRegion, (float) (weaponSlots[i].posx + getPosx()), (float) (weaponSlots[i].posy + getPosy()));
-            }
-
-            //Ship
-
-            batch.draw(assets.getRegion(getAsset()),
-                    getPosx(), getPosy(),
-                    (float) getSizex() / 2, (float) getSizex() / 2,
-                    getSizex(), getSizey(), 1, 1, getRotation());
-            //        batch.draw(backgroundlayers.getRegion(getAsset()),
-            //                (float) getPosx()-(getSizex() / 2), (float) getPosy()-(getSizey() / 2),
-            //                getSizex() / 2, getSizey() / 2,
-            //                getSizex(), getSizey(), 1, 1, getRotation());
         }
 
+        //Ship
+
+        batch.draw(assets.getRegion(getAsset()),
+                getPosx(), getPosy(),
+                (float) getSizex() / 2, (float) getSizex() / 2,
+                getSizex(), getSizey(), 1, 1, getRotation());
+        //        batch.draw(backgroundlayers.getRegion(getAsset()),
+        //                (float) getPosx()-(getSizex() / 2), (float) getPosy()-(getSizey() / 2),
+        //                getSizex() / 2, getSizey() / 2,
+        //                getSizex(), getSizey(), 1, 1, getRotation());
     }
 
     public void shoot(float delta)
@@ -387,6 +413,7 @@ public class Ship
     {
         if (beingdestroyed)
         {
+
             if (destroytime < timetodelete)
             {
                 destroytime += delta;

@@ -28,6 +28,39 @@ public class Assets
         iterator = regionlist.iterator();
     }
 
+    public Array<AtlasRegion> getRegions(String name)
+    {
+        Array<AtlasRegion> found = new Array();
+        try
+        {
+            if (name == null || name.isEmpty())
+            {
+                System.out.println("Searched Regionname was null or empty");
+                throw new RegionNotFound();
+            }
+            iterator = regionlist.iterator();
+            while (iterator.hasNext())
+            {
+                AtlasRegion regiontemp = iterator.next();
+                if (regiontemp.name.equals(name))
+                {
+                    found.add(regiontemp);
+                }
+            }
+            if (found.size == 0)
+            {
+                throw new RegionNotFound();
+            }
+            return found;
+        } catch (RegionNotFound regionNotFound)
+        {
+            System.out.println();
+            regionNotFound.printStackTrace();
+            System.out.println();
+            System.out.println("AtlasRegion not Found: " + name);
+        }
+        return null;
+    }
     /**
      * Returns AltasRegion of Specific Name
      * Or Null if Not Found + Exception
