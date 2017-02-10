@@ -9,6 +9,7 @@ import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Group;
 import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
@@ -26,12 +27,14 @@ public class GameScreen implements Screen
     private InputMultiplexer inputMultiplexer;
     private Stage stage;
     private Group ui;
-    private Table mainTable;
+    private Table levelCompleteTable;
+    private Table pauseTable;
+    private Table menuTable;
 
     /**
      * If True Game will be Paused
      */
-    boolean pause;
+    boolean pause = false;
     private SpriteBatch batch;
 
     public Level getLevel()
@@ -67,20 +70,33 @@ public class GameScreen implements Screen
         inputMultiplexer.addProcessor(stage);
 
         ui = new Group();
-        mainTable = new Table();
-        mainTable.defaults().pad(30).expandX().fillX();
-        mainTable.top().padTop(50);
-        mainTable.setFillParent(true);
-        mainTable.padLeft(10).padRight(10);
-        mainTable.add(level.getMessageLabel());
-        mainTable.row();
-        mainTable.add(level.getScoreLabel());
-        mainTable.row();
-        mainTable.add(level.getNextLevelLabel());
 
-        ui.addActor(mainTable);
+        levelCompleteTable = new Table();
+        levelCompleteTable.defaults().pad(30).expandX().fillX();
+        levelCompleteTable.top().padTop(50);
+        levelCompleteTable.setFillParent(true);
+        levelCompleteTable.padLeft(10).padRight(10);
+        levelCompleteTable.add(level.getMessageLabel());
+        levelCompleteTable.row();
+        levelCompleteTable.add(level.getScoreLabel());
+        levelCompleteTable.row();
+        levelCompleteTable.add(level.getNextLevelLabel());
+        levelCompleteTable.setVisible(false);
 
-        Table menuTable = new Table();
+        ui.addActor(levelCompleteTable);
+
+        pauseTable = new Table();
+        pauseTable.defaults().pad(30).expandX().fillX();
+        pauseTable.top().padTop(50).center();
+        pauseTable.setFillParent(true);
+        pauseTable.add(new Label("Pause", skin));
+        pauseTable.row();
+        pauseTable.add(level.getScoreLabel());
+        pauseTable.row();
+
+        ui.addActor(pauseTable);
+
+        menuTable = new Table();
         menuTable.setFillParent(true);
         MenuButton menuButton = new MenuButton("Menu", game.assets.getRegion("UI/flatDark32"), game.assets.getRegion("UI/shadedDark33"), skin, "Back to the Menu")
         {
@@ -92,10 +108,10 @@ public class GameScreen implements Screen
         };
         menuTable.right().bottom().pad(20);
         menuTable.add(menuButton.getbutton());
+        menuTable.setVisible(false);
 
         ui.addActor(menuTable);
 
-        ui.setVisible(false);
         stage.addActor(ui);
 
         ui.setSize(480, 854);
@@ -105,6 +121,10 @@ public class GameScreen implements Screen
     @Override
     public void render(float delta)
     {
+        if (pause)
+        {
+            delta = 0;
+        }
         Gdx.gl.glClearColor(0, 0, 0, 0);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT | GL20.GL_DEPTH_BUFFER_BIT);
         batch.begin();
@@ -116,10 +136,14 @@ public class GameScreen implements Screen
         stage.draw();
         if (pause)
         {
-
+            pauseTable.setVisible(true);
+            menuTable.setVisible(true);
         } else
+        {
+            pauseTable.setVisible(false);
+            menuTable.setVisible(false);
             updateGame();
-        pause = false;
+        }
     }
 
     public void updateGame()//called when Game is running
@@ -134,7 +158,8 @@ public class GameScreen implements Screen
         if (level.getCompleted())
         {
             game.nextLevel = level.nextLevel;
-            ui.setVisible(true);
+            levelCompleteTable.setVisible(true);
+            menuTable.setVisible(true);
         }
     }
 
@@ -145,29 +170,39 @@ public class GameScreen implements Screen
         game.viewport.update(width, height, true);
 //        ui.setSize(width, height); //setup in show
         pause = true;
+        System.out.println("resize");
     }
 
     @Override
     public void pause()
     {
         pause = true;
+        System.out.println("paused");
     }
 
     @Override
     public void resume()
     {
-
+        System.out.println("resume");
     }
 
     @Override
     public void hide()
     {
-
+        System.out.println("hide");
+        pause = true;
     }
 
     @Override
     public void dispose()
     {
+        System.out.println("dispose");
+    }
+
+    public void togglePause()
+    {
+        pause = !pause;
+        System.out.println("togglePause");
 
     }
 }
