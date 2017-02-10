@@ -1,7 +1,7 @@
 package at.kraweu.starscroller;
 
-import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.Input.Keys;
+import com.badlogic.gdx.InputProcessor;
 
 /**
  * Created by Alex on 17.05.2015.
@@ -42,6 +42,12 @@ public class Input implements InputProcessor
 
             case Keys.SPACE:
                 game.player.setShoot(true);
+                break;
+            //Pausing
+
+            case Keys.ESCAPE:
+                if (game.getScreen() instanceof GameScreen)
+                    ((GameScreen) game.getScreen()).togglePause();
                 break;
         }
         return false;
