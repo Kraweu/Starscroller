@@ -1,6 +1,7 @@
 package at.kraweu.starscroller;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.InputMultiplexer;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -22,6 +23,7 @@ public class GameScreen implements Screen
     private Player player;
     private Level level;
     private Skin skin;
+    private InputMultiplexer inputMultiplexer;
     private Stage stage;
     private Group ui;
     private Table mainTable;
@@ -47,7 +49,9 @@ public class GameScreen implements Screen
         this.level.prepare();
 
         batch = new SpriteBatch();
-        Gdx.input.setInputProcessor(game.input);
+
+        inputMultiplexer = new InputMultiplexer();
+        Gdx.input.setInputProcessor(inputMultiplexer);
     }
 
     @Override
@@ -56,7 +60,12 @@ public class GameScreen implements Screen
         skin = new Skin();
         skin.addRegions(new TextureAtlas("uiskin.atlas"));
         skin.load(Gdx.files.internal("uiskin.json"));
+
         stage = new Stage(new ScreenViewport());
+
+        inputMultiplexer.addProcessor(game.input);
+        inputMultiplexer.addProcessor(stage);
+
         ui = new Group();
         mainTable = new Table();
         mainTable.defaults().pad(30).expandX().fillX();
@@ -68,6 +77,11 @@ public class GameScreen implements Screen
         mainTable.add(level.getScoreLabel());
         mainTable.row();
         mainTable.add(level.getNextLevelLabel());
+
+        ui.addActor(mainTable);
+
+        Table menuTable = new Table();
+        menuTable.setFillParent(true);
         MenuButton menuButton = new MenuButton("Menu", game.assets.getRegion("UI/flatDark32"), game.assets.getRegion("UI/shadedDark33"), skin, "Back to the Menu")
         {
             @Override
@@ -76,11 +90,14 @@ public class GameScreen implements Screen
                 game.setScreen(new StartMenuScreen(game));
             }
         };
-        mainTable.row().right().expand(false, false).fill(false, false);
-        mainTable.add(menuButton.getbutton());
-        mainTable.setVisible(false);
-        ui.addActor(mainTable);
+        menuTable.right().bottom().pad(20);
+        menuTable.add(menuButton.getbutton());
+
+        ui.addActor(menuTable);
+
+        ui.setVisible(false);
         stage.addActor(ui);
+
         ui.setSize(480, 854);
         pause = false;
     }
@@ -117,7 +134,7 @@ public class GameScreen implements Screen
         if (level.getCompleted())
         {
             game.nextLevel = level.nextLevel;
-            mainTable.setVisible(true);
+            ui.setVisible(true);
         }
     }
 
